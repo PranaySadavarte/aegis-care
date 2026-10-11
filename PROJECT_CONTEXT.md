@@ -48,3 +48,8 @@ Latest report: reports/test-results/sdk-0.47.0-offline-2026-10-11.md. Historical
 ## Eight-category coverage correction — 2026-10-11
 All eight evaluation categories now mapped in reports/sdk-evaluation/category-coverage-2026-10-11.md. Catalog expanded to 32 cases with installation permissions/rollback, developer experience, functional contracts, testability, compatibility and deployment coverage.
 No new tests executed. Full baseline remains incomplete; installer evaluation takes priority before additional agent work.
+
+## CLI/installer milestone — 2026-10-11
+Located existing CLI at default LOCALAPPDATA/guava/bin; direct query verifies 0.47.0. Installed binary is NotSigned per Authenticode. Current official installer downloaded and statically audited without execution: no explicit checksum/signature verification; direct destination replacement raises untested rollback risk.
+CLI and isolated SDK versions now both verified 0.47.0; authentication, original installer provenance and comprehensive behavior/security remain unverified.
+Details: reports/sdk-evaluation/installer-audit-2026-10-11.md. No machine PATH or existing install changes.

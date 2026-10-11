@@ -57,3 +57,9 @@ QA-001 target SDK baseline resolved separately; original scaffold still uses 0.4
 ## Coverage correction — 2026-10-11
 QA-011: evaluation coverage/sequencing gap, AEGIS owner. Installer case SDK-002 existed but was not implemented/executed; developer experience and deployment lacked dedicated cases. Added SDK-013 through SDK-020 and eight-category coverage matrix. These remain NOT_RUN. No new vulnerability claims.
 Expected comprehensive category tracking before declaring a baseline; actual only isolated Python SDK subset verified. Next prioritize CLI and non-executing installer inspection. Prior results/evidence unchanged.
+
+## Installer evidence milestone — 2026-10-11
+QA-002 resolved for discovery/version: CLI exists at default install path and directly reports 0.47.0. PATH repair not performed.
+QA-007 refined with new evidence: CLI-F001 confirms exact installed binary is NotSigned; CLI-F002 confirms current downloaded installer lacks explicit checksum/AuthentiCode verification. Original 0.47.0 installer provenance remains unverified. These are confirmed control gaps, not demonstrated exploitation.
+CLI-H001 potential incomplete replacement/rollback risk remains hypothesis; failure injection not run.
+SDK-002 now PARTIAL. Evidence hashes, owner recommendations and proposed untested workarounds recorded in reports/sdk-evaluation/installer-audit-2026-10-11.md.
