@@ -40,3 +40,9 @@ Reports omit configured phone/project/organization identifiers. Historical secur
 
 ## Owner escalation standard
 For every meaningful finding record exact versions, timestamp, current step, expected/actual behavior, reproduction, raw evidence location, impact, confidence, owner and workaround. SDK/platform attribution requires a minimal reproduction excluding application logic where feasible. Observations and hypotheses must never be promoted to confirmed vulnerabilities without supporting evidence.
+
+## Coverage milestone — 2026-10-11
+QA-009: Confirmed coverage gap / AEGIS project. Expected detailed executed SDK security cases before application troubleshooting; actual broad plans only at inspection. Added 24 detailed cases and stage gates; all NOT_RUN. No executable automation yet. Proposed solution: establish exact-version runtime baseline then implement and execute cases, retaining evidence.
+Coverage report: reports/sdk-evaluation/coverage-audit-2026-10-11.md.
+Catalog: reports/test-plans/test-cases.csv. Execution ledger: reports/test-results/execution-status-2026-10-11.md.
+No new confirmed vulnerabilities. Identity contamination, API exposure, prompt injection, echo and interrupted-disclosure notes are test hypotheses. Previously reported favorable call observations are not AEGIS test results.

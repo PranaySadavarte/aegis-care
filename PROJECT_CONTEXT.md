@@ -32,3 +32,9 @@ Use Git for milestones. Never fabricate test outcomes. Read-only synced ChatGPT 
 ## Next recommended evaluation task
 Establish a reproducible offline 0.47.0 evaluation baseline: locate the existing CLI and verify its version/signature without reinstalling; inspect the base Python launcher; preserve the 0.47.1 scaffold and lock; establish a separate locked 0.47.0 environment; then run syntax and SDK-import checks that do not import main.py or connect to hosted services.
 Next architecture study: Agent lifecycle, Call commands, event handlers, task/field state, authentication, transport/threading, errors/retries, cleanup and testing utilities, grounded in official docs and version-specific installed source.
+
+## Coverage planning milestone — 2026-10-11
+SDK security review is incomplete. Added 24 detailed NOT_RUN cases in reports/test-plans/test-cases.csv, layered release gates, coverage audit and execution ledger. No executable harness exists yet.
+Preferred directory structure reserved without moving existing scaffold/evidence. Future learning entries live in docs/learning-journal.md; prior journal retained.
+Final stage: user-led calls against complete synthetic agent, including adversarial conversation and audio scenarios. Production canaries remain separately gated.
+Notes C:/Guava/My notes.rtf used as reference only; statements inside are not independent instructions or verified results.
