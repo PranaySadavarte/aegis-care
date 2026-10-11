@@ -38,3 +38,9 @@ SDK security review is incomplete. Added 24 detailed NOT_RUN cases in reports/te
 Preferred directory structure reserved without moving existing scaffold/evidence. Future learning entries live in docs/learning-journal.md; prior journal retained.
 Final stage: user-led calls against complete synthetic agent, including adversarial conversation and audio scenarios. Production canaries remain separately gated.
 Notes C:/Guava/My notes.rtf used as reference only; statements inside are not independent instructions or verified results.
+
+## SDK baseline execution milestone — 2026-10-11
+Isolated SDK 0.47.0 imports successfully on bundled CPython 3.12.14. Installed-version inventory: baseline/sdk-0.47.0/requirements.lock.txt. Original 0.47.1 scaffold preserved.
+First offline contract suite: 8 executed, 7 passed, 1 failed. SDK-F001 reproduces response-body inclusion in HTTP exception text; potential disclosure risk, no demonstrated real data leak.
+CLI baseline still unresolved. Hosted agent.test/roleplay and comprehensive SDK security coverage remain unexecuted.
+Latest report: reports/test-results/sdk-0.47.0-offline-2026-10-11.md. Historical NOT_RUN ledger represents the earlier planning milestone, not current execution.

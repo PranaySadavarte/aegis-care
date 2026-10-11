@@ -6,3 +6,5 @@
 !**/.env.example
 evidence/
 *.log
+baseline/uv-cache/
+baseline/sdk-0.47.0/installed-inventory.json

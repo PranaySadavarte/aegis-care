@@ -46,3 +46,10 @@ QA-009: Confirmed coverage gap / AEGIS project. Expected detailed executed SDK s
 Coverage report: reports/sdk-evaluation/coverage-audit-2026-10-11.md.
 Catalog: reports/test-plans/test-cases.csv. Execution ledger: reports/test-results/execution-status-2026-10-11.md.
 No new confirmed vulnerabilities. Identity contamination, API exposure, prompt injection, echo and interrupted-disclosure notes are test hypotheses. Previously reported favorable call observations are not AEGIS test results.
+
+## SDK baseline execution — 2026-10-11
+QA-010 / SDK-F001: confirmed exception-content behavior, potential privacy risk; Guava SDK owner. SDK 0.47.0 check_response copies synthetic sensitive response body into HTTPStatusError message. Offline security acceptance test fails. No real credential/PHI leak demonstrated; severity and hosted impact unassessed.
+Proposed workaround: safe status/correlation-only boundary logging; not yet implemented/tested. Vendor recommendation: default-redacted bounded diagnostics.
+8 offline tests ran: 7 PASS, 1 FAIL. Detailed scope, expected/actual, raw evidence reference, limitations and remaining coverage in reports/test-results/sdk-0.47.0-offline-2026-10-11.md.
+QA-003 workaround validated for new isolated environment only: bundled Python runs; original scaffold launcher not repaired.
+QA-001 target SDK baseline resolved separately; original scaffold still uses 0.47.1. QA-002 CLI verification remains blocked.
