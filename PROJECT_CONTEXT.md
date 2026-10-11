@@ -53,3 +53,8 @@ No new tests executed. Full baseline remains incomplete; installer evaluation ta
 Located existing CLI at default LOCALAPPDATA/guava/bin; direct query verifies 0.47.0. Installed binary is NotSigned per Authenticode. Current official installer downloaded and statically audited without execution: no explicit checksum/signature verification; direct destination replacement raises untested rollback risk.
 CLI and isolated SDK versions now both verified 0.47.0; authentication, original installer provenance and comprehensive behavior/security remain unverified.
 Details: reports/sdk-evaluation/installer-audit-2026-10-11.md. No machine PATH or existing install changes.
+
+## Installation-method classification — 2026-10-11
+User confirmed irm (not ifm). Added reports/test-plans/installation-method-matrix.md and component/method scope columns to the catalog.
+uv installation results apply to Python SDK; current irm/iex installer inspection applies to Windows CLI script. Existing CLI original install route remains UNKNOWN; direct artifact inspection is not proof of route.
+No new tests ran. SDK exception behavior is not attributed to uv without controlled comparison evidence.

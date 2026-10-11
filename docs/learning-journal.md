@@ -20,3 +20,7 @@ Eight categories require separate evidence and completion criteria. Added missin
 Direct path execution verified CLI 0.47.0 even though this process cannot resolve guava on PATH. Authenticode reports NotSigned for the installed binary.
 Read-only installer audit found no explicit checksum/signature enforcement in current official script. HTTPS, checksums and publisher signatures address different trust boundaries; a recorded local hash preserves identity but does not authenticate the publisher.
 Direct downloads over the destination raise a failure-recovery question, not a proven rollback defect. Next use isolated/mocked failure paths before drawing behavioral conclusions.
+
+## 2026-10-11 — Installation methods
+uv manages Python package/environment installation here. irm retrieves the Windows installer script; iex executes it, and that script installs the CLI binary. Route labels distinguish supply-chain/setup tests from SDK runtime tests.
+A defect observed after uv installation is not automatically caused by uv. Controlled comparisons require matching versions, runtime and transitive artifacts.

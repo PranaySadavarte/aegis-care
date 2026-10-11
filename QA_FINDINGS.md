@@ -63,3 +63,9 @@ QA-002 resolved for discovery/version: CLI exists at default install path and di
 QA-007 refined with new evidence: CLI-F001 confirms exact installed binary is NotSigned; CLI-F002 confirms current downloaded installer lacks explicit checksum/AuthentiCode verification. Original 0.47.0 installer provenance remains unverified. These are confirmed control gaps, not demonstrated exploitation.
 CLI-H001 potential incomplete replacement/rollback risk remains hypothesis; failure injection not run.
 SDK-002 now PARTIAL. Evidence hashes, owner recommendations and proposed untested workarounds recorded in reports/sdk-evaluation/installer-audit-2026-10-11.md.
+
+## Installation-method attribution — 2026-10-11
+SDK-F001 reproduced after uv SDK installation; not established as uv-specific.
+CLI-F001 unsigned binary observed directly; original installation method unknown.
+CLI-F002 verification gap belongs to current downloaded Windows installer; not retroactively assigned to original installed binary's setup.
+Added method-specific test matrix; no new executions or findings. Optional pip comparison and package artifact/hash enforcement tests remain NOT_RUN.
