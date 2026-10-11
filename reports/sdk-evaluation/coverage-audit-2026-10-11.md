@@ -22,10 +22,11 @@ Do not treat current docs as proof of historical 0.47.0 behavior. Verify APIs ag
 Reviewed tracked repository and existing reports; no pre-existing test suite found.
 Notes source: C:/Guava/My notes.rtf; original left unchanged. RTF body content was reviewed using a lossy text preview; this is not an authoritative conversion of embedded objects or full formatting.
 Notes' positive call observations, compliance statements and installer claims are user reference observations, not reproduced results. No compliance certification conclusions are drawn.
-Existing raw documentation snapshot/hash manifest retained unchanged. New notes hash retained locally for provenance.
+Existing raw documentation snapshot/hash manifest retained unchanged. Notes hash collection was attempted but blocked because another process holds the file. No notes hash was obtained.
 
 ## 6. Problem statement, owners and workarounds
 Problem: no executed security baseline means subsequent healthcare failures could be misattributed to SDK/platform.
 Owner: AEGIS project for harness/application and environment; Guava only for reproduced vendor issues.
 Workaround: preserve current scaffold, establish isolated exact-version baseline, execute SDK checks first, and use minimal reproductions for vendor suspects.
 Live behavior comparison is unavailable: no AEGIS call has been evaluated. Each future finding must compare actual recorded behavior with its stated acceptance condition and show whether a workaround was tested or only proposed.
+
