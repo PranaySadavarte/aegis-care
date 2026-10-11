@@ -1,0 +1,34 @@
+# AEGIS Care project context
+Updated: 2026-10-11
+Repository: C:/Users/prana/aegis-care
+Project: AEGIS Care — Guava SDK and Voice AI QA Evaluation
+Agent scaffold: harborcare-agent (HarborCare inbound agent)
+
+## Objective and scope
+Evaluate Guava CLI/SDK v0.47.0 and build a healthcare-first voice agent for patient identity verification, insurance eligibility, claims, appointments, billing and payment security. Use synthetic patient/insurance records and simulated payments. Produce an evidence-backed technical assessment for Guava's founders and CEO.
+
+## Current milestone
+Initial scaffold audit completed and recorded in reports/scaffold-audit-2026-10-11.md. Git baseline: 47e92e7. Application remains Guava's introduction/RAG demo; healthcare features have not been implemented.
+Target CLI/SDK: 0.47.0. CLI version/authentication: user-reported, not reverified. Actual locked and installed SDK metadata: 0.47.1. Do not attribute 0.47.1 results to 0.47.0. Preserve current lock/environment evidence before selecting a separate 0.47.0 evaluation environment.
+
+## Verified checks and limitations
+- Scaffold/configuration/source files inspected; local Git baseline established.
+- Current official starter documentation retrieved on 2026-10-11 and matched bundled documentation by SHA256.
+- Dependency lock and installed package metadata inspected; runtime import not verified.
+- uv --version succeeded: 0.12.9.
+- guava --version failed to resolve on this session's PATH.
+- Virtual-environment Python invocation failed before execution. Syntax and import checks did not run.
+- No SDK behavior, healthcare functional, conversation, security exploit, audio, reliability or cross-platform tests executed.
+- No live calls, deployments, number purchases or payment operations performed.
+
+## Working rules
+Read current official Guava documentation before using SDK APIs. Study SDK architecture before modifying application code. Teach concepts at each implementation step and update journal/learning-journal.md.
+Update PROJECT_CONTEXT.md and QA_FINDINGS.md after each meaningful milestone, including current step, exact test status, evidence and next action.
+Preserve raw evidence locally; redact secrets and sensitive identifiers in reports. evidence/ is ignored by Git, so Git does not back it up. Keep original evidence files and add new timestamped records.
+Separate confirmed vulnerabilities, observed defects, potential risks and hypotheses. Classify ownership as application, SDK/platform, environment or unknown; require minimal reproduction before assigning vendor defects.
+Do not purchase phone numbers, deploy paid infrastructure or run destructive operations without explicit approval.
+Use Git for milestones. Never fabricate test outcomes. Read-only synced ChatGPT project references must remain untouched.
+
+## Next recommended evaluation task
+Establish a reproducible offline 0.47.0 evaluation baseline: locate the existing CLI and verify its version/signature without reinstalling; inspect the base Python launcher; preserve the 0.47.1 scaffold and lock; establish a separate locked 0.47.0 environment; then run syntax and SDK-import checks that do not import main.py or connect to hosted services.
+Next architecture study: Agent lifecycle, Call commands, event handlers, task/field state, authentication, transport/threading, errors/retries, cleanup and testing utilities, grounded in official docs and version-specific installed source.
