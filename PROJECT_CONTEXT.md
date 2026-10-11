@@ -44,3 +44,7 @@ Isolated SDK 0.47.0 imports successfully on bundled CPython 3.12.14. Installed-v
 First offline contract suite: 8 executed, 7 passed, 1 failed. SDK-F001 reproduces response-body inclusion in HTTP exception text; potential disclosure risk, no demonstrated real data leak.
 CLI baseline still unresolved. Hosted agent.test/roleplay and comprehensive SDK security coverage remain unexecuted.
 Latest report: reports/test-results/sdk-0.47.0-offline-2026-10-11.md. Historical NOT_RUN ledger represents the earlier planning milestone, not current execution.
+
+## Eight-category coverage correction — 2026-10-11
+All eight evaluation categories now mapped in reports/sdk-evaluation/category-coverage-2026-10-11.md. Catalog expanded to 32 cases with installation permissions/rollback, developer experience, functional contracts, testability, compatibility and deployment coverage.
+No new tests executed. Full baseline remains incomplete; installer evaluation takes priority before additional agent work.

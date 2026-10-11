@@ -53,3 +53,7 @@ Proposed workaround: safe status/correlation-only boundary logging; not yet impl
 8 offline tests ran: 7 PASS, 1 FAIL. Detailed scope, expected/actual, raw evidence reference, limitations and remaining coverage in reports/test-results/sdk-0.47.0-offline-2026-10-11.md.
 QA-003 workaround validated for new isolated environment only: bundled Python runs; original scaffold launcher not repaired.
 QA-001 target SDK baseline resolved separately; original scaffold still uses 0.47.1. QA-002 CLI verification remains blocked.
+
+## Coverage correction — 2026-10-11
+QA-011: evaluation coverage/sequencing gap, AEGIS owner. Installer case SDK-002 existed but was not implemented/executed; developer experience and deployment lacked dedicated cases. Added SDK-013 through SDK-020 and eight-category coverage matrix. These remain NOT_RUN. No new vulnerability claims.
+Expected comprehensive category tracking before declaring a baseline; actual only isolated Python SDK subset verified. Next prioritize CLI and non-executing installer inspection. Prior results/evidence unchanged.
