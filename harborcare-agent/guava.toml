@@ -1,0 +1,9 @@
+project_id = "gp-3e6088e6-f5de-4e35-a813-54bce2140001"
+org_id = "6ab4c75da86e2fb6b86e7fec"
+name = "harborcare-agent"
+call_direction = "inbound"
+base_image = "python-sandbox:3.14"
+phone_number = "+12402251787"
+tier = "guava-seed"
+replicas = 1
+enable_healthcheck = true
