@@ -1,19 +1,96 @@
-# AEGIS Care
-QA umbrella for the HarborCare synthetic healthcare administrative agent.
-Caller-facing prototype: agent/harborcare.py; synthetic backend: backend/synthetic.py.
-Local dashboard: http://127.0.0.1:8765/dashboard/ — Overview, Calls, Test runs, ASR, LLM and robustness pages.
-Run supported suites with baseline/sdk-0.47.0/.venv/Scripts/python.exe tests/run_all.py --suite offline, hosted, or all. Hosted uses live services; offline includes the static installer audit.
-After each instrumented call: limited local authorization/outcome checks. Full suites run on demand. Broad planned catalog, audio/outbound scenarios and production features remain incomplete.
-Read PROJECT_CONTEXT.md, QA_FINDINGS.md and reports/test-results/service-runner-2026-10-11.md for exact results.
-Original harborcare-agent scaffold and prior evidence retained. No real patient records/payments. Do not provide real personal/card details.
+# AEGIS Care - Guava SDK and Voice AI QA Evaluation
 
-### Text and audio evaluation update
-Use the baseline interpreter with `agent/harborcare.py --mode text` for plain terminal chat. `--mode chat` is text-only; `--mode webrtc` prints a temporary browser audio URL; `--mode local` uses native audio helper and hosted services. Browser two-way audio is user-confirmed, native helper routing remains unverified. Synthetic patient1001 / code4242. On Test runs select offline, hosted, security, audio or all; full tests run on demand. Corpus references are in fixtures/audio/manifest.json and text scenarios in fixtures/text-security-scenarios.json; executed hostile scripts in tests/integration/security_hosted.py. See reports/test-results/usability-repair-2026-10-11.md for actual results and limitations.
+AEGIS Care evaluates **Guava CLI/SDK 0.47.0** through an intentionally scrutinized **HarborCare** synthetic healthcare agent. The project contains layered tests, a local evidence dashboard, manual scripts and an evidence-backed leadership assessment. It is not a production healthcare/payment service.
 
-### Defect discovery and robustness
-Open dashboard/defects.html for reviewed failures and measured noise/echo conditions. Baseline Python runs tests/run_all.py --suite adversarial or --suite robustness; hostedusage applies. Prompt fixtures:fixtures/defect-discovery-text.json. Audio:fixtures/audio/robustness/manifest.json. Full assessment:reports/sdk-evaluation/product-robustness-assessment-2026-10-11.md. SyntheticSensitiveProcessor is isolated test processing, not wired into live payments/clinical service; QA SQLite tracks metadata, not patient records.
+## Start here
 
-KPI measurements and commands:docs/kpi-methodology.md anddocs/runbook.md. Test inputs:dashboard/data-library.html. Agent behavior files:docs/agent-profile/README.md;loaded on newExpert startup. Overview includes all inventories andreviewed open defects. KPI suite uses a separate CPUmetrics environment andfixed model revision.
+- [Leadership report](reports/leadership/AEGIS-Care-Guava-Assessment-2026-10-12.md)
+- [Presentation PDF](reports/leadership/AEGIS-Care-Guava-Assessment-2026-10-12.pdf)
+- [How to use the agent](docs/manual-validation-script.md)
+- [Current context](PROJECT_CONTEXT.md) / [findings](QA_FINDINGS.md)
+- [Finding-to-test map](reports/test-plans/finding-to-test-map.md)
 
+## Windows setup
 
-Current startup, fixed-suite commands and manual synthetic challenges: [Operator guide](docs/operator-guide.md). Expanded SDK/adaptive results: reports/test-results/extended-sdk-2026-10-11.md. Known failing discovery assertions are intentionally retained.
+Supported evaluation baseline: Windows, Python 3.12, SDK 0.47.0. Install Git and uv from their official distributions first. Setup downloads pinned Python dependencies; it does not install the Guava CLI, buy a number or deploy anything.
+
+```powershell
+git clone https://github.com/PranaySadavarte/aegis-care.git
+Set-Location aegis-care
+.\scripts\setup-windows.ps1
+.\scripts\start-dashboard.ps1
+```
+
+Open **http://127.0.0.1:8765/dashboard/**. Keep the dashboard terminal running. Stop it with Ctrl+C. If port 8765 is occupied, reuse the existing dashboard or stop its known process; do not terminate unrelated processes.
+
+The repository includes a **sanitized historical snapshot**. Viewing it requires no Guava credentials. Raw call/installer evidence and virtual environments are intentionally excluded. Historical results do not claim that tests ran on your machine.
+
+## Run core tests without Guava credentials
+
+In a second PowerShell terminal:
+
+```powershell
+.\scripts\run-offline.ps1
+```
+
+This runs SDK contracts and deterministic application methods, blocks hosted network activity within the offline harness, and preserves new output under `evidence/portable-offline/`. Expected reference results are **47/53 SDK PASS with six retained discovery failures**, and **32/32 application PASS**. Your actual results may differ. A nonzero exit is expected while discovery failures remain unresolved.
+
+This portable runner deliberately does **not** claim to rerun the original installer audit: its exact raw retrieved script is private evidence. Existing audit findings and proof limits are in the reports. `tests/run_all.py --suite offline` is the original investigator runner and requires that archived installer input; use the portable runner on a fresh clone.
+
+## Hosted text, roleplay and audio tests
+
+Authenticate through your own Guava account using **`guava login`** if the official CLI is already installed; check `guava version` against the target before relying on CLI-version-specific results. The SDK can also use an API key according to Guava's current official SDK documentation. Do not commit keys, OAuth files, tokens or `.env` files.
+
+```powershell
+$taskPython = '.\baseline\sdk-0.47.0\.venv\Scripts\python.exe'
+& $taskPython agent/harborcare.py --mode text
+# Or browser microphone/audio:
+& $taskPython agent/harborcare.py --mode webrtc
+# Fixed hosted safety scenarios:
+& $taskPython tests/run_all.py --suite security
+& $taskPython tests/run_all.py --suite compliance
+# Native persona and roleplay:
+& $taskPython tests/run_all.py --suite extended
+& $taskPython tests/run_all.py --suite adaptive
+# Prerecorded noise/echo:
+& $taskPython tests/run_all.py --suite robustness
+```
+
+Hosted modes use live services and may consume usage. Do not run `--suite all` unless you intend to execute every hosted suite. BERTScore/ROUGE need the optional separate metrics environment: `scripts/setup-windows.ps1 -WithMetrics`; model download and CPU time may be substantial.
+
+Synthetic patient **1001**, code **4242**; speak digits individually. One workflow per call. No real patient information or cards. Payments use a simulated token and explicit simulation consent.
+
+Phone mode reads `harborcare-agent/guava.toml`. This private repository retains the original evaluation configuration; **replace it with your own authorized Guava project/owned test number before using phone mode on another account**. Do not copy its routing identifiers into a new deployment. The listener must remain running. No automatic outbound calls, paid deployment or number purchase is part of setup.
+
+## Dashboard pages and evidence
+
+- **All test cases:** filter by use, stage, status; open method assertions, scenario and evidence details.
+- **Defect discovery:** 20 reviewed findings with provenance and ownership; not 20 proven exploitable Guava vulnerabilities.
+- **Audio comparison / Robustness:** clean versus noise/echo observations, samples and acceptance limits.
+- **How to use the agent:** workflow prompts and manual appointment/defect tests.
+- **Calls:** limited per-call metadata checks; a call does not automatically run the full regression suite.
+- **Test runs:** investigator suite execution on demand. Fresh clones may lack historical raw inputs required by some page builders; sanitized historical pages remain the reference snapshot.
+
+Do not equate process duration with ASR/LLM latency, rubric PASS with safety, or mocked commands with live telephony success. `OBSERVED`, `PARTIAL`, `NOT_RUN` and `TIMEOUT` remain explicit.
+
+## Structure
+
+```text
+agent/                 HarborCare Expert using native Guava callbacks/tasks
+backend/               Synthetic healthcare and isolated sensitive-data probes
+tests/                 SDK, functional, security, audio, integration and metrics
+fixtures/              Synthetic text/audio labels and public dataset provenance
+dashboard/             Local pages, sanitized snapshots and page builders
+reports/               Test plans, results, findings and leadership assessment
+docs/                  Learning journal, architecture, profiles and operator guides
+scripts/               Setup, launch, portable core test and publish-check helpers
+evidence/              Local raw execution artifacts (Git-ignored)
+```
+
+## Reproducibility and sharing
+
+Run `python scripts/check_publish.py` before sharing. It checks common secret patterns and tracked private-file mistakes; it is not a comprehensive security guarantee. Preserve raw originals locally and redact report copies. Recorded test cards are synthetic; selected published audio contains only reviewed synthetic output. Public audio attribution is in `docs/audio-datasets.md` and fixture manifests.
+
+No general open-source license is assigned here. Third-party SDK, documentation and datasets retain their own licenses; consult source attribution before redistribution. Findings are intended for private technical review with Guava, not claims of a production incident or legal compliance certification.
+
+[Guava CLI documentation](https://goguava.ai/docs/cli-reference) / [SDK architecture](https://goguava.ai/docs/architecture-overview) / [Action callbacks](https://goguava.ai/docs/on-action-request-execute).

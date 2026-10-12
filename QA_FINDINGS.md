@@ -157,3 +157,8 @@ User heard nine hundred and eleven in both saved TTS-911 recordings; ROB-009 hum
 ## October 12: result drill-down and appointment diagnosis
 
 Fixed ROB-009/010 table continuity. Added categorized case details, individual method assertions/statuses, seven robustness detail pages, agent usage/appointment guide and requested navigation ordering. Executed focused handler checks:3 methods PASS including six workflow subcases. Hosted appointment trace: I choose appointments -> switch_patient; Expert clears verification before action execution; hosted process TIMEOUT50s. AddedROB-011 with raw evidence and proposed owner changes; exact original PSTN root cause unverified. Expert/backend unchanged. Historical appointmentPASS retained; follow-up shown separately. Learning: mocked callbacks bypass natural-language classification, and action proposals must not mutate authorization before confirmation.
+
+
+## October 12: leadership report and GitHub packaging
+
+Prepared private leadership assessment PDF/Markdown covering20reviewed findings, explicit owner/proof boundaries, real execution counts, KPI samples and five unrun plans. Added Windows pinned-environment setup, local dashboard launch, portable core test runner and publish-pattern scan. Fresh staged-source export reproduced53SDK methods with6failures and32applicationPASS using the existing pinned runtime; dependency downloads were not retested. Raw installer/call evidence remains ignored; original investigator runs may require private inputs absent from clones. Navigation now has explicit flex spacing and wrapped links. GitHub private repository PranaySadavarte/aegis-care created through signed-in browser; upload verification pending. No agent fixes, new hosted campaign, paid deploy or outbound call.

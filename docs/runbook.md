@@ -13,7 +13,7 @@ Set-Location -LiteralPath 'C:\Users\prana\aegis-care'
 & .\baseline\sdk-0.47.0\.venv\Scripts\python.exe tests/run_all.py --suite all
 ```
 
-Select one command; do not paste the whole block unless you intend to run every suite separately and again in all. Offline includes32 application/16SDK methods and installer source audit; known failure/open findings are expected. Hosted includes workflow conversations and native rubric. Security includes three earlier adversarial scripts. Adversarial adds independent product gaps and sensitive-field/hostile text probes. Robustness covers six paired synthetic audio conditions. KPI measures native intent helper, recorded-responseBERTScore/ROUGE, text-turn event interval and public human audio. Metric observations are not acceptancePASS assertions.
+Select one command; do not paste the whole block unless you intend to run every suite separately and again in all. Offline includes32 application/53SDK methods and installer source audit; known failure/open findings are expected. Hosted includes workflow conversations and native rubric. Security includes three earlier adversarial scripts. Adversarial adds independent product gaps and sensitive-field/hostile text probes. Robustness covers six paired synthetic audio conditions. KPI measures native intent helper, recorded-responseBERTScore/ROUGE, text-turn event interval and public human audio. Metric observations are not acceptancePASS assertions.
 
 Focused commands:
 ```powershell
@@ -32,3 +32,6 @@ KPI environment is isolated under baseline/metrics, with its own requirements.lo
 
 
 Current startup, fixed-suite commands and manual synthetic challenges: [Operator guide](operator-guide.md). Expanded SDK/adaptive results: reports/test-results/extended-sdk-2026-10-11.md. Known failing discovery assertions are intentionally retained.
+
+
+Fresh clone: follow README.md and scripts/setup-windows.ps1. scripts/run-offline.ps1 runs core contracts without archived private installer input; historical investigator suites have separate prerequisites.
