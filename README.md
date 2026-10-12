@@ -5,8 +5,8 @@ AEGIS Care evaluates **Guava CLI/SDK 0.47.0** through an intentionally scrutiniz
 ## Start here
 
 - [Plain-language faults, tests and flowchart](docs/understanding-aegis-care.md)
-- [Leadership report](reports/leadership/AEGIS-Care-Guava-Assessment-2026-10-12.md)
-- [Presentation PDF](reports/leadership/AEGIS-Care-Guava-Assessment-2026-10-12.pdf)
+- [Leadership report](reports/leadership/AEGIS-Care-Guava-Assessment-2026-10-11.md)
+- [Presentation PDF](reports/leadership/AEGIS-Care-Guava-Assessment-2026-10-11.pdf)
 - [How to use the agent](docs/manual-validation-script.md)
 - [Current context](PROJECT_CONTEXT.md) / [findings](QA_FINDINGS.md)
 - [Finding-to-test map](reports/test-plans/finding-to-test-map.md)

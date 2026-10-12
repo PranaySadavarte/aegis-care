@@ -124,3 +124,8 @@ Private repository https://github.com/PranaySadavarte/aegis-care published on ma
 ## Plain-language learning milestone
 
 Explained all20findings in developer workflow order, with separate confirmed behavior and possible consequences. Added layered test overview and implemented agent flow SVG; explained task/field/callback and verification-versus-authority. Expanded SDK-X004/X005/ROB-007 with actual inputs, safety expectations and proof limits. Moved SDK-X002 to bottom of walkthrough table, preserving evidence. Corrected SDK-X005 evidence excerpt selection and plain log description. No new product/hosted tests, Expert/backend fixes or changed raw artifacts.
+
+
+## Report presentation-date and email-draft update
+
+At user request, removed the Prepared for Guava co-founders and CEO audience line and changed the report presentation date/filenames to11October2026. Preserved actual execution timestamps and evidence provenance. Updated local and GitHub report references. Reviewed native set_persona/roleplay source:four scoped persona controlsPASS; adaptive paymentPARTIAL_PASS; unauthorized/DOB controlsPASS within invariants. No isolated persona/roleplay API defect established. First adaptive payment actor violated refusal instruction, so initial debit alert was invalid; fixed-turn safety failures remain valid separate evidence. Preparing unsent joint email draft to Nico and Anthony with PDF attached and scoped counts85methods/36textentries/24audioentries/20findings.

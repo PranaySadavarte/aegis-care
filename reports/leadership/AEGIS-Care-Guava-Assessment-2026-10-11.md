@@ -1,8 +1,7 @@
 # AEGIS Care - Guava 0.47.0 Technical Assessment
 
-**Prepared for:** Guava co-founders and CEO
 **Prepared by:** AEGIS Care / Pranay Sadavarte
-**Date:** October 12, 2026 (America/Los_Angeles)
+**Date:** 11th October 2026
 **Distribution:** Private technical review; synthetic data only.
 
 ## Executive assessment
