@@ -114,3 +114,8 @@ Fixed ROB-009/010 table continuity. Added categorized case details, individual m
 ## October 12: leadership report and GitHub packaging
 
 Prepared private leadership assessment PDF/Markdown covering20reviewed findings, explicit owner/proof boundaries, real execution counts, KPI samples and five unrun plans. Added Windows pinned-environment setup, local dashboard launch, portable core test runner and publish-pattern scan. Fresh staged-source export reproduced53SDK methods with6failures and32applicationPASS using the existing pinned runtime; dependency downloads were not retested. Raw installer/call evidence remains ignored; original investigator runs may require private inputs absent from clones. Navigation now has explicit flex spacing and wrapped links. GitHub private repository PranaySadavarte/aegis-care created through signed-in browser; upload verification pending. No agent fixes, new hosted campaign, paid deploy or outbound call.
+
+
+## GitHub publication verified
+
+Private repository https://github.com/PranaySadavarte/aegis-care published on main with existing history. Verified remote17fcc68 before this journal update; normal Git authentication used, no credential extraction. Final11-page leadership PDF rendered and visually reviewed; binary Git attributes preserve PDF/audio bytes. Overview browser check:14links, flex-wrap enabled,18px column gap. Tracked-files/history secret-pattern scan found no matches; raw evidence and credentials excluded. Fresh source export core results reproduced:SDK53tests6failures, application32PASS using existing pinned runtime, no dependency-download rerun or hosted campaign. README and issue template document execution, scoped failures, evidence handling and original private-installer prerequisites.

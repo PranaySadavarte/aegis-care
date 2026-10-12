@@ -39,7 +39,7 @@ This portable runner deliberately does **not** claim to rerun the original insta
 
 ## Hosted text, roleplay and audio tests
 
-Authenticate through your own Guava account using **`guava login`** if the official CLI is already installed; check `guava version` against the target before relying on CLI-version-specific results. The SDK can also use an API key according to Guava's current official SDK documentation. Do not commit keys, OAuth files, tokens or `.env` files.
+Authenticate through your own Guava account using **`guava login`** if the official CLI is already installed; check `guava --version` against the target before relying on CLI-version-specific results. The SDK can also use an API key according to Guava's current official SDK documentation. Do not commit keys, OAuth files, tokens or `.env` files.
 
 ```powershell
 $taskPython = '.\baseline\sdk-0.47.0\.venv\Scripts\python.exe'
