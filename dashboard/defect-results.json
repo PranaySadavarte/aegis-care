@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T05:49:32.249274+00:00",
+  "generated_at_utc": "2026-10-12T06:01:59.858856+00:00",
   "findings": [
     {
       "id": "ROB-001",
@@ -210,6 +210,51 @@
       "evidence": "evidence/2026-10-11/extended-sdk/installer-partial-write-*/result.json",
       "recommendation": "Use a staged/verified atomic replacement design; this is a proposed owner solution, not an applied fix.",
       "evidence_report": "reports/findings/evidence/CLI-X003.md"
+    },
+    {
+      "id": "SDK-F001",
+      "severity": "Potential high disclosure risk",
+      "classification": "Response body copied into exception",
+      "owner": "Guava SDK and downstream application logging",
+      "problem": "The default HTTP exception copies the response body verbatim, exposing a synthetic sensitive marker in the reproduced error.",
+      "expected": "Default exceptions omit response bodies and redact sensitive URL values; allowed diagnostic identifiers remain useful.",
+      "actual": "SDK0.47.0 check_response produced an HTTP401 exception containing Body: synthetic-sensitive-marker. No production leak demonstrated.",
+      "evidence": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/SDK-offline.txt",
+      "recommendation": "Guava should sanitize default exceptions; application owners should restrict raw diagnostics and sanitize log/export sinks. Proposed changes are not applied.",
+      "pipeline_stage": "SDK errors / logging",
+      "attribution_confidence": "Confirmed SDK behavior; downstream disclosure impact remains unverified",
+      "ownership_category": "Guava SDK / installer",
+      "evidence_report": "reports/findings/evidence/SDK-F001.md"
+    },
+    {
+      "id": "CLI-F001",
+      "severity": "Release integrity gap",
+      "classification": "Installed CLI lacks Authenticode signature",
+      "owner": "Guava release engineering",
+      "problem": "The inspected Windows CLI0.47.0 executable has no Authenticode publisher signature.",
+      "expected": "A Windows release can be authenticated against a trusted publisher identity before activation.",
+      "actual": "Get-AuthenticodeSignature reported NotSigned and no signer certificate for the inspected artifact. No evidence of tampering.",
+      "evidence": "evidence/2026-10-11/installer-audit/baseline.json",
+      "recommendation": "Publish signed Windows releases and verify the trusted signer. An unsigned result alone does not establish malware; the existing binary is unchanged.",
+      "pipeline_stage": "Installation / supply chain",
+      "attribution_confidence": "Confirmed for the inspected installed binary; original installation provenance unknown",
+      "ownership_category": "Guava SDK / installer",
+      "evidence_report": "reports/findings/evidence/CLI-F001.md"
+    },
+    {
+      "id": "CLI-F002",
+      "severity": "Installer integrity control gap",
+      "classification": "No explicit installer checksum / signature checks",
+      "owner": "Guava installer",
+      "problem": "The retrieved official installer does not explicitly compare the downloaded binary against a trusted release checksum or validate Authenticode.",
+      "expected": "Verify artifact integrity and publisher identity before activation, using independently authenticated release metadata.",
+      "actual": "Whole-source audit and preserved static results show absent explicit checksum and Authenticode checks. HTTPS is present. Original installer provenance unknown.",
+      "evidence": "evidence/2026-10-11/installer-audit/static-results.json; evidence/2026-10-11/installer-audit/install-current.ps1",
+      "recommendation": "Use authenticated expected digests and trusted publisher verification before staged atomic replacement. A locally computed hash is evidence identification, not proof of authenticity.",
+      "pipeline_stage": "Installation / supply chain",
+      "attribution_confidence": "Confirmed gap in retrieved current script; no compromised download demonstrated",
+      "ownership_category": "Guava SDK / installer",
+      "evidence_report": "reports/findings/evidence/CLI-F002.md"
     }
   ],
   "audio": [

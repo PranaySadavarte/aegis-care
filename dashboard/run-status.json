@@ -1,78 +1,73 @@
 {
-  "run_id": "20261012T054350Z-9874c4",
-  "suite": "offline",
-  "started_at_utc": "2026-10-12T05:43:50.894911+00:00",
-  "status": "FAIL",
+  "run_id": "20261012T060103Z-15faaf",
+  "suite": "hosted",
+  "started_at_utc": "2026-10-12T06:01:03.654332+00:00",
+  "status": "RUNNING",
   "groups": [
     {
-      "group": "SDK offline",
+      "group": "Hosted identity",
       "status": "FAIL",
       "exit_code": 1,
-      "total": 53,
-      "failed": 6,
-      "duration_seconds": 0.625,
+      "total": 1,
+      "failed": 1,
+      "duration_seconds": 12.985,
       "command": [
         "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        "tests/sdk",
-        "-p",
-        "test_*.py",
-        "-v"
+        "tests/integration/harborcare_hosted.py",
+        "identity"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/SDK-offline.txt",
-      "limit_seconds": 30
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-identity.txt",
+      "limit_seconds": 50
     },
     {
-      "group": "Application functional",
+      "group": "Hosted eligibility",
       "status": "PASS",
       "exit_code": 0,
-      "total": 32,
+      "total": 1,
       "failed": 0,
-      "duration_seconds": 0.594,
+      "duration_seconds": 13.219,
       "command": [
         "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        "tests/functional",
-        "-p",
-        "test_*.py",
-        "-v"
+        "tests/integration/harborcare_hosted.py",
+        "eligibility"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/Application-functional.txt",
-      "limit_seconds": 30
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-eligibility.txt",
+      "limit_seconds": 50
     },
     {
-      "group": "Installer source audit",
-      "status": "OPEN_FINDINGS",
-      "exit_code": 0,
-      "total": null,
-      "failed": null,
-      "duration_seconds": 0.719,
+      "group": "Hosted claims",
+      "status": "FAIL",
+      "exit_code": 1,
+      "total": 1,
+      "failed": 1,
+      "duration_seconds": 13.515,
       "command": [
-        "C:\\Users\\prana\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
-        "-NoProfile",
-        "-File",
-        "tests/sdk/audit_installer.ps1",
-        "-InstallerPath",
-        "evidence/2026-10-11/installer-audit/install-current.ps1"
+        "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
+        "tests/integration/harborcare_hosted.py",
+        "claims"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/Installer-source-audit.txt",
-      "limit_seconds": 30,
-      "observations": {
-        "explicit_hash_check": false,
-        "explicit_signature_check": false
-      }
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-claims.txt",
+      "limit_seconds": 50
+    },
+    {
+      "group": "Hosted billing",
+      "status": "PASS",
+      "exit_code": 0,
+      "total": 1,
+      "failed": 0,
+      "duration_seconds": 13.297,
+      "command": [
+        "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
+        "tests/integration/harborcare_hosted.py",
+        "billing"
+      ],
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-billing.txt",
+      "limit_seconds": 50
     }
   ],
   "sdk_version": "0.47.0",
   "python_version": "3.12.14",
-  "source_commit": "3babeba",
+  "source_commit": "16231ce",
   "working_tree_dirty": true,
-  "profile_sha256": "5dd51df171f11e1d1f5ebe7d29cdce208f82c36b37173331c912e8e77bc081d9",
-  "completed_at_utc": "2026-10-12T05:43:52.932859+00:00"
+  "profile_sha256": "5dd51df171f11e1d1f5ebe7d29cdce208f82c36b37173331c912e8e77bc081d9"
 }

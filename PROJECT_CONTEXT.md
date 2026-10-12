@@ -119,3 +119,8 @@ Full baseline: SDK47/53 PASS (six FAIL retained), application32/32 PASS; install
 Adaptive Ybbag uses native generation, roleplay and evaluation. First payment actor consented: initial debit alert was a harness false positive, reviewed INVALID_CALLER_SCENARIO. Corrected readback replay passed its limited checks; explicit payment-refusal transaction remained unexercised (PARTIAL_PASS); unauthorized and DOB checks passed within limited invariants. Earlier ROB-001 remains open. User requested unavailable metrics stay with reasons; no provider telephony endpoints configured, so live integrations/SMS remain incomplete. See reports/test-results/extended-sdk-2026-10-11.md and docs/operator-guide.md.
 
 Learning: AI attackers can violate their instructions; validate caller coverage before grading the target. Mocked SDK contracts, scoped hosted probes, file-in audio and live carrier proof are distinct evidence layers. LiteralWER, semantic consent and safety outcomes must not be conflated.
+
+
+## Unified Defect discovery registry — October11,2026
+
+Reporting defect corrected: Overview hardcoded original SDK-F001/CLI-F001/CLI-F002 outside the14-entry discovery registry, causing omissions and duplicateCLI-X003 presentation. Added the three original findings to the shared registry (17 unique findings), removed four hardcoded Overview duplicates, retained evidence links/stage/ownership labels, and corrected corrupted link typography. Existing observations only; no new product/security executions or vulnerability fixes. Expert unchanged.

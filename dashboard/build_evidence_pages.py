@@ -35,6 +35,7 @@ def excerpts(path,fid):
   return '\n'.join(result)
  return json.dumps(obj,indent=2)[:5000]
 for f in findings:
+ if f['id'] in ('SDK-F001','CLI-F001','CLI-F002'):continue
  paths=[]
  for ref in f['evidence'].split(';'):
   ref=ref.strip();relative=ref if ref.startswith('evidence/') else 'evidence/2026-10-11/robustness-audit/'+ref
