@@ -84,3 +84,8 @@ Learning: AI attackers can violate their instructions; validate caller coverage 
 ## Unified Defect discovery registry — October11,2026
 
 Reporting defect corrected: Overview hardcoded original SDK-F001/CLI-F001/CLI-F002 outside the14-entry discovery registry, causing omissions and duplicateCLI-X003 presentation. Added the three original findings to the shared registry (17 unique findings), removed four hardcoded Overview duplicates, retained evidence links/stage/ownership labels, and corrected corrupted link typography. Existing observations only; no new product/security executions or vulnerability fixes. Expert unchanged.
+
+
+## Discovery walkthrough — October11,2026
+
+Added reports/test-results/defect-discovery-walkthrough-2026-10-11.md:17 findings traced to method, steps, observed output and proof limits; linked from Defect discovery. Preserved terminal/transcript examples distinguish native judge output from independent safety review. Corrected report-only PAN redaction to preserve decimal metrics and spacing; raw evidence unchanged. No new product tests executed.
