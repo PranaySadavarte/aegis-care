@@ -12,3 +12,5 @@ Restarted approved phone listener with zero other listeners. Future records merg
 Functional regression suite 12/12 PASS. New event recorder was not exercised by a live call yet; no new phone success claim.
 Initial importer regex escaping error produced zero parsed rows despite four native records; corrected and re-imported; raw first attempt retained.
 Preview only serves dashboard/, reports/ and docs/; raw evidence paths denied.
+
+Verification: native refresh endpoint returned four records; browser displayed four individual rows and refresh updated the import timestamp. Raw evidence URL returned HTTP 403. JS syntax check passed.
