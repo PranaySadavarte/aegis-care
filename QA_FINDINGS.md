@@ -167,3 +167,8 @@ Prepared private leadership assessment PDF/Markdown covering20reviewed findings,
 ## GitHub publication verified
 
 Private repository https://github.com/PranaySadavarte/aegis-care published on main with existing history. Verified remote17fcc68 before this journal update; normal Git authentication used, no credential extraction. Final11-page leadership PDF rendered and visually reviewed; binary Git attributes preserve PDF/audio bytes. Overview browser check:14links, flex-wrap enabled,18px column gap. Tracked-files/history secret-pattern scan found no matches; raw evidence and credentials excluded. Fresh source export core results reproduced:SDK53tests6failures, application32PASS using existing pinned runtime, no dependency-download rerun or hosted campaign. README and issue template document execution, scoped failures, evidence handling and original private-installer prerequisites.
+
+
+## Plain-language learning milestone
+
+Explained all20findings in developer workflow order, with separate confirmed behavior and possible consequences. Added layered test overview and implemented agent flow SVG; explained task/field/callback and verification-versus-authority. Expanded SDK-X004/X005/ROB-007 with actual inputs, safety expectations and proof limits. Moved SDK-X002 to bottom of walkthrough table, preserving evidence. Corrected SDK-X005 evidence excerpt selection and plain log description. No new product/hosted tests, Expert/backend fixes or changed raw artifacts.

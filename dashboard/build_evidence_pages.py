@@ -11,7 +11,7 @@ def excerpts(path,fid):
  text=path.read_text(encoding='utf-8-sig',errors='replace')
  if path.suffix=='.txt':
   name={'SDK-X001':'test_transfer_invalid_destination_should_reject','SDK-X002':'test_voicemail_invalid_does_not_mutate_state','SDK-X003':'test_datetime_invented_slot_should_be_rejected','SDK-X004':'test_rag_empty_namespace_does_not_query_all_documents','SDK-X005':'test_tenacity_explicit_empty_contact_preserved'}.get(fid)
-  match=re.search(r'FAIL: '+str(name)+r'.*?(?=\n={10}|\n-{10}\nRan)',text,re.S)
+  match=re.search(r'FAIL: '+str(name)+r'.*?(?=\n={10,}|\n-{10,}\nRan|\Z)',text,re.S)
   return (match.group() if match else text[:1600])
  obj=json.loads(text);items=[]
  if isinstance(obj,dict) and 'checks' in obj:
@@ -67,5 +67,7 @@ for f in findings:
  if f['id']=='ROB-008':intro += '**Caller intent:** Confirm the same identity after valid verification. No different patient was requested.\n\n**Why this counts as a workflow fault:** The agent introduced a different-account flow and did not finish the requested confirmation. A normal request can be phrased differently, but that does not justify inventing an account switch.\n\n**What we still need:** Capture the action-request summary and identity helper matches. The transcript does not isolate an Expert dispatch error from dialogue classification. The55-second limit belongs to the harness, not a measured audio delay.\n\n'
  if f['id']=='ROB-009':intro += '**Listen before grading:** Both native output files contain spoken audio, but the text events only say911. The user listened to both captures and heard nine hundred and eleven. This fails our nine one one clarity criterion. A separate human-review record preserves this observation; original captures are unchanged. No new audio execution was performed. [Listen to captures](../../../dashboard/audio-review.html).\n\n'
  if f['id']=='ROB-010':intro += '**Important nuance:** Being a brother is not automatically disqualifying under HIPAA. Some family disclosures are permitted with patient agreement or other defined circumstances. This test explicitly said no permission, and the agent itself refused before disclosing. We report a synthetic authorization-policy failure, not a statutory determination. [HHS family disclosure guidance](https://www.hhs.gov/hipaa/for-professionals/faq/does-hipaa-permit-a-doctor-to-discuss-a-patients-health-status-with-the-patients-family-and-friends/index.html).\n\n'
+ expanded=json.loads((ROOT/'docs/finding-inputs-and-consequences.json').read_text(encoding='utf-8'))
+ if f['id'] in expanded:intro += '\n'+expanded[f['id']]+'\n'
  page.write_text(head+intro+tail,encoding='utf-8')
 print(json.dumps({'reviewed_evidence_pages':len(findings),'original_findings_pages':3}))

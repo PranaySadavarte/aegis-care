@@ -2,7 +2,7 @@
 
 ## In plain language
 
-An empty document collection sends no explicit key restriction. We need the vendor to explain how the server interprets this before calling it a data leak.
+An empty document-search helper sends no document restriction. It sends None instead of an explicit empty list. Wider search or wrong-source answers are possible only if the server interprets missing restrictions that way; no leak was demonstrated.
 
 ## Which test caught this?
 
@@ -17,6 +17,29 @@ An empty document collection sends no explicit key restriction. We need the vend
 **Execution layer:** Mocked retrieval boundary
 
 [Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-x004)
+
+
+## Expected input and what could happen
+
+RAG means looking up relevant documents before answering. Think of a helper as a search folder, and document keys as the names of the files it is allowed to search. This probe concerns native ServerRAG; HarborCare's six live workflows read our synthetic backend, not this document helper.
+
+**Actual tested input:** an empty ServerRAG instance with namespace `audit-empty`, no tracked document keys, and the question `query`. Its retrieval call was replaced with a mock so no document search reached the server.
+
+```text
+Known documents in this instance: none
+Expected safety outcome: refuse the search or explicitly restrict it to no documents
+Actual client argument: document_keys = None
+Our assertion expected: document_keys = []
+Result: AssertionError: None != []
+```
+
+`[]` means an explicitly empty list. `None` means no list was supplied. They are different values. Whether the server treats either value as unrestricted must be confirmed with Guava; an empty list is not itself a proven server-side protection.
+
+**Possible consequence:** if missing keys mean search everything the account can access, an empty collection could answer from unrelated documents instead of saying it has nothing to search. That could produce incorrect answers or expose documents outside the application's intended selection. It does not demonstrate access beyond the account's permissions or across organizations.
+
+**Confirmed:** the omitted restriction at the client boundary. **Not confirmed:** a broader live search, confidential document return or data leak. The populated-document control passed a specific allowed key; the empty live query was deliberately not sent.
+
+**Safe proposed workaround:** reject empty collections before asking, require a nonempty allowlist of intended keys, and confirm server semantics. Do not assume merely adding a namespace label enforces permission. No application or SDK fix was applied.
 
 
 **Current step:** SDK and unchanged Expert adversarial evaluation.

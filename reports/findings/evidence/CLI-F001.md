@@ -2,7 +2,7 @@
 
 ## In plain language
 
-The installed Windows binary does not identify a signer through Authenticode. Unsigned is not the same as malicious.
+The installed program has no publisher signature. Windows cannot use a signature to confirm who released this inspected file. We found no evidence of malware or tampering.
 
 ## Which test caught this?
 

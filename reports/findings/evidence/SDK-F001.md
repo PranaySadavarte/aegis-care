@@ -2,7 +2,7 @@
 
 ## In plain language
 
-An HTTP error can carry its entire response body into downstream logs. We demonstrated this with a synthetic marker, not a real secret.
+An error copies the whole server response into its exception message. If a response contains private data, copying it into logs/support tickets could expose it. We demonstrated a synthetic marker, not a production leak.
 
 ## Which test caught this?
 

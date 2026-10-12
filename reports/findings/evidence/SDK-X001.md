@@ -2,7 +2,7 @@
 
 ## In plain language
 
-The SDK accepts a plainly malformed transfer destination locally. That shows missing early validation; it does not mean a carrier accepted or completed the transfer.
+The SDK accepts a badly formatted transfer destination into its outgoing command queue. A developer gets no early rejection; the call could fail later. We did not make a transfer or prove it reaches the wrong person.
 
 ## Which test caught this?
 

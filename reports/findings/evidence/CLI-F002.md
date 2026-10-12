@@ -2,7 +2,7 @@
 
 ## In plain language
 
-The current installer does not explicitly authenticate the downloaded binary with a trusted checksum or publisher signature.
+The installer does not explicitly check the downloaded file against a trusted checksum or signature. A damaged or substituted file might not be caught by these missing checks. The retrieved installer was inspected; original installation provenance is unknown.
 
 ## Which test caught this?
 

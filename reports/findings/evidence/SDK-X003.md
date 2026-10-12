@@ -2,7 +2,7 @@
 
 ## In plain language
 
-The helper checks output shape but does not ensure a returned appointment was actually in the supplied availability list.
+A date helper trusts an AI-produced appointment that was not in the allowed list. It could offer a nonexistent slot unless the application checks membership. The bad AI answer was deliberately mocked; our real booking backend has a separate slot check.
 
 ## Which test caught this?
 

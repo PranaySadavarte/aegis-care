@@ -2,7 +2,7 @@
 
 ## In plain language
 
-An invalid voicemail request throws an error after partially changing state. Catching the error does not restore the original call state.
+A rejected voicemail setup still changes an internal setting. You ask for contradictory behavior: hang up and leave a message. It correctly raises an error, but does not leave the SDK exactly as it was. A later retry might be affected; that live consequence is untested.
 
 ## Which test caught this?
 

@@ -2,7 +2,7 @@
 
 ## In plain language
 
-An interrupted replacement can destroy the previous artifact in our isolated simulation. The actual installed Guava executable was not changed.
+An interrupted replacement can leave a broken new file instead of keeping the working old one. Our isolated partial-download experiment lost the old file. Your actual installation was not changed.
 
 ## Which test caught this?
 
