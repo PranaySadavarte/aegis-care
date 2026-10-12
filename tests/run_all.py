@@ -86,7 +86,7 @@ def run(suite):
     history_path=ROOT/"dashboard/run-history.json"
     history=json.loads(history_path.read_text()) if history_path.exists() else []
     history.append(state);atomic(history_path,history)
-    for builder in ("build_evidence_pages.py","build_metrics_snapshot.py","build_metrics_pages.py","build_defect_dashboard.py","build_inventory.py","build_data.py","build_extended_pages.py","build_coverage_status.py"):
+    for builder in ("build_evidence_pages.py","build_metrics_snapshot.py","build_metrics_pages.py","build_defect_dashboard.py","build_inventory.py","build_data.py","build_extended_pages.py","build_coverage_status.py","build_case_pages.py"):
         updated=subprocess.run([str(PY),str(ROOT/"dashboard"/builder)],cwd=ROOT,capture_output=True,text=True,timeout=15)
         (folder/(builder+".txt")).write_text(updated.stdout+updated.stderr,encoding="utf-8")
         if updated.returncode:print("Metric refresh failed; previous snapshot retained. See local builder evidence.")

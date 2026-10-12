@@ -267,3 +267,8 @@ These are the actual detector cases, methods or manual inspections. A reporting 
 **Execution layer:** Hosted native Agent.test; fixed caller turns
 
 [Observed output and limits](../findings/evidence/ROB-010.md)
+
+
+## rob-011
+
+APPT-DIAG-001: tests/integration/trace_appointments.py. Native appointment routing trace found switch_patient on a same-patient appointment selection; 50-second hosted timeout. See appointments-diagnostic-2026-10-12 report. Deterministic handler tests bypass classifier.

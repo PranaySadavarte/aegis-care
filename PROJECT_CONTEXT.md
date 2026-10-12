@@ -144,3 +144,8 @@ Audio comparison now includes word-weighted clean/noise/echoWER0/16.67/12.50%, p
 ## October 12: manual validation and listening verdict
 
 User heard nine hundred and eleven in both saved TTS-911 recordings; ROB-009 human-confirmed. Original audio captures preserved, separate listening-review evidence added. No phone listener existed while WebRTC ran; restored approved inbound listener PID36368 with zero other listeners registered. Answered-call success remains unverified. Overview now separates SDK47/53, application32/32, hosted6/8, security2/3, representative cases and audio observations. Walkthrough covers19findings. Added eight manual spoken cases, launcher and result template. No new hosted regression campaign; Expert/backend unchanged. Learning: authentication differs from representative authority, live listeners must remain running, and transcript digits do not establish pronunciation.
+
+
+## October 12: result drill-down and appointment diagnosis
+
+Fixed ROB-009/010 table continuity. Added categorized case details, individual method assertions/statuses, seven robustness detail pages, agent usage/appointment guide and requested navigation ordering. Executed focused handler checks:3 methods PASS including six workflow subcases. Hosted appointment trace: I choose appointments -> switch_patient; Expert clears verification before action execution; hosted process TIMEOUT50s. AddedROB-011 with raw evidence and proposed owner changes; exact original PSTN root cause unverified. Expert/backend unchanged. Historical appointmentPASS retained; follow-up shown separately. Learning: mocked callbacks bypass natural-language classification, and action proposals must not mutate authorization before confirmation.

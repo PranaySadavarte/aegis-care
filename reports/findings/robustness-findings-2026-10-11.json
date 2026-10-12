@@ -157,7 +157,7 @@
       "source": "tests/security/product_audit.py",
       "mode": "Direct invocation; no caller exploit"
     },
-    "plain_language": "The journal is AEGIS\u00e2\u20ac\u2122s local call-activity log, including why a call ended. Our test directly supplied an invalid end-reason marker, and the log saved it without checking allowed values. This is a defensive logging observation; no live caller attack, code execution or patient-data access was demonstrated.",
+    "plain_language": "The journal is AEGIS\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s local call-activity log, including why a call ended. Our test directly supplied an invalid end-reason marker, and the log saved it without checking allowed values. This is a defensive logging observation; no live caller attack, code execution or patient-data access was demonstrated.",
     "test_map": "reports/test-plans/finding-to-test-map.md#rob-007"
   },
   {
@@ -180,7 +180,7 @@
       "source": "tests/metrics/expert_routing.py",
       "mode": "Hosted native Agent.test"
     },
-    "plain_language": "The caller did not ask to change patients. After verification they asked to confirm the same identity, but the agent requested a different account. That is an observed workflow error, not a caller entering someone else\u00e2\u20ac\u2122s credentials.",
+    "plain_language": "The caller did not ask to change patients. After verification they asked to confirm the same identity, but the agent requested a different account. That is an observed workflow error, not a caller entering someone else\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s credentials.",
     "test_map": "reports/test-plans/finding-to-test-map.md#rob-008"
   },
   {
@@ -435,5 +435,28 @@
     },
     "plain_language": "The agent said it could not disclose information without permission, then disclosed it after another request. Knowing an account code and being authorized to receive its records are separate concepts.",
     "test_map": "reports/test-plans/finding-to-test-map.md#rob-010"
+  },
+  {
+    "id": "ROB-011",
+    "classification": "Appointment request misclassified as patient switch clears authorization",
+    "severity": "High workflow reliability priority",
+    "owner": "AEGIS action-request authorization lifecycle (primary); Guava native intent-helper false-positive review",
+    "ownership_category": "Shared",
+    "pipeline_stage": "Intent / action request / authorization state",
+    "attribution_confidence": "False-positive switch_patient match confirmed in hosted native helper trace. Exact original PSTN call root cause remains unverified.",
+    "problem": "A same-patient appointment selection was interpreted as switching patient. The Expert clears verification when offering a switch action, before its execution/confirmation.",
+    "expected": "I choose appointments should retain same-patient verification and enter the book task; proposing an action should not independently invalidate authentication.",
+    "actual": "Trace request I choose appointments returned [switch_patient]. The existing action-request handler unconditionally calls backend.close for that match. The focused hosted test then reached its 50-second harness timeout. Three deterministic handler methods passed separately, including six workflow subcases.",
+    "evidence": "evidence/2026-10-12/appointments-2de6f26c/hosted-appointments.txt; evidence/2026-10-12/appointments-2de6f26c/focused-offline.txt",
+    "recommendation": "Review intent descriptions and explicit switch confirmation. Move authorization invalidation to confirmed switch execution; test same-patient booking paraphrases and real account switches separately. Proposed owner actions only; Expert unchanged.",
+    "evidence_report": "reports/findings/evidence/ROB-011.md",
+    "detected_by": {
+      "case_id": "APPT-DIAG-001",
+      "method": "Existing hosted appointment regression with pass-through native IntentRecognizer.classify tracing",
+      "source": "tests/integration/trace_appointments.py",
+      "mode": "Hosted Agent.test, bounded 50 seconds; focused MockCall handler checks"
+    },
+    "plain_language": "Asking for an appointment accidentally matched changing patients. Our code then forgot the verified account. This is a real routing fault in the diagnostic, not a missing booking implementation or a requirement that appointments use another patient.",
+    "test_map": "reports/test-plans/finding-to-test-map.md#rob-011"
   }
 ]

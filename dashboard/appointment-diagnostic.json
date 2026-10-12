@@ -1,0 +1,15 @@
+{
+  "started_at_utc": "2026-10-12T07:50:05.258131+00:00",
+  "scope": "Existing native Agent.test appointment control with pass-through intent trace; no PSTN call; no Expert modifications",
+  "focused-offline": {
+    "status": "PASS",
+    "evidence": "evidence/2026-10-12/appointments-2de6f26c/focused-offline.txt",
+    "sha256": "4626cd5109d0a13a4b4025af78b03b366b4b927f2aa59e1c55b531f3d5c616a3"
+  },
+  "hosted-appointments": {
+    "status": "TIMEOUT",
+    "evidence": "evidence/2026-10-12/appointments-2de6f26c/hosted-appointments.txt",
+    "sha256": "457453238183f6d1885025785228811fa9c46f3d8a4a55f935aa8670c9e38211"
+  },
+  "completed_at_utc": "2026-10-12T07:50:55.838023+00:00"
+}
