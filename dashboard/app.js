@@ -26,7 +26,7 @@ const rows=[["Application tests",m.functional.passed+"/"+m.functional.total],
 ["Billed usage / real accent coverage","Not measured"]];
 el("pending").innerHTML=rows.map(([k,v])=>'<div class="metric"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join("");
 }).catch(()=>{el("pending").textContent="Metric snapshot unavailable; no values inferred.";});
-window.addEventListener("error",e=>{const note=document.createElement("p");note.textContent="Display error: "+e.message+" — reload this page.";document.querySelector("main").prepend(note);});
+window.addEventListener("error",e=>{const note=document.createElement("p");note.textContent="Display error: "+e.message+" â€” reload this page.";document.querySelector("main").prepend(note);});
 
 fetch("test-inventory.json",{cache:"no-store"}).then(r=>r.json()).then(i=>{
  d.cases=i.rows;
@@ -36,5 +36,12 @@ fetch("test-inventory.json",{cache:"no-store"}).then(r=>r.json()).then(i=>{
  el("inventory").addEventListener("change",render);render();
 }).catch(()=>{el("count").textContent="Inventory unavailable; showing recorded catalog only.";});
 fetch("defect-results.json",{cache:"no-store"}).then(r=>r.json()).then(i=>{
- el("discovered-findings").innerHTML=i.findings.map(f=>'<article class="finding"><span class="badge fail">Open '+esc(f.id)+'</span><h3>'+esc(f.classification)+'</h3><p>'+esc(f.problem)+'</p><p>Owner: '+esc(f.owner)+'</p><a href="defects.html">Expected, actual, evidence and next action</a></article>').join("");
+ el("discovered-findings").innerHTML=i.findings.map(f=>'<article class="finding"><span class="badge fail">Open '+esc(f.id)+'</span><h3>'+esc(f.classification)+'</h3><p>'+esc(f.problem)+'</p><p>Owner: '+esc(f.owner)+'</p><a href="../'+esc(f.evidence_report)+'">Observed output and evidence</a></article>').join("");
 }).catch(()=>{el("discovered-findings").textContent="Reviewed defects unavailable; open the Defect discovery page.";});
+
+Promise.all(["intent-metrics.json","answer-metrics.json","expert-routing-metrics.json","roleplay-results.json","interruption-results.json"].map(p=>fetch(p,{cache:"no-store"}).then(r=>r.json()))).then(([i,a,e,r,b])=>{
+ const rows=[["Native intent helper",i.single_intent_correct+"/"+i.single_intent_total+" clear; unsupported "+i.unsupported_rejected+"/"+i.unsupported_total],["Expert initial completion",e.correct+"/"+e.total],["BERTScore mean F1",a.bert_score_f1_mean.toFixed(4)],["ROUGE1 / 2 / L",Object.values(a.rouge_f1_means).map(x=>x.toFixed(4)).join(" / ")],["Persona / roleplay",r.rows.filter(x=>x.status==="PASS").length+"/"+r.rows.length+" latest scenarios"],["Native interruption flags",b.interrupted_flags+" observed; acoustic delay unavailable"],["Confidence", "No numeric calibrated score exposed"]];
+ document.getElementById("additional-metrics").innerHTML=rows.map(([k,v])=>'<div class="metric"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join("");
+}).catch(()=>{const node=document.getElementById("additional-metrics");if(node)node.textContent="Some metric artifacts unavailable; no values inferred.";});
+
+fetch("metrics-snapshot.json",{cache:"no-store"}).then(r=>r.json()).then(m=>{const text=m.sdk.passed+" / "+m.sdk.total;el("offline-readiness").textContent=text;el("offline-description").textContent=text+" SDK contracts passed; "+m.sdk.failed+" failed. ";document.querySelector(".bar div").style.width=(m.sdk.passed/m.sdk.total*100)+"%";});

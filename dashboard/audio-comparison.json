@@ -1,0 +1,113 @@
+{
+  "samples": [
+    {
+      "sample_id": "librispeech-test-other-1688-142285-0007",
+      "dataset": "LibriSpeech test-other",
+      "rows": [
+        {
+          "condition": "clean",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 21,
+          "speech_events": 1
+        },
+        {
+          "condition": "noise0db",
+          "WER": 0.09523809523809523,
+          "CER": 0.041237113402061855,
+          "reference_words": 21,
+          "speech_events": 1
+        },
+        {
+          "condition": "echo180ms",
+          "WER": 0.09523809523809523,
+          "CER": 0.030927835051546393,
+          "reference_words": 21,
+          "speech_events": 1
+        }
+      ]
+    },
+    {
+      "sample_id": "speech-commands-yes",
+      "dataset": "Google Speech Commands mini subset",
+      "rows": [
+        {
+          "condition": "clean",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 1,
+          "speech_events": 1
+        },
+        {
+          "condition": "noise0db",
+          "WER": 1.0,
+          "CER": 0.6666666666666666,
+          "reference_words": 1,
+          "speech_events": 1
+        },
+        {
+          "condition": "echo180ms",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 1,
+          "speech_events": 1
+        }
+      ]
+    },
+    {
+      "sample_id": "speech-commands-no",
+      "dataset": "Google Speech Commands mini subset",
+      "rows": [
+        {
+          "condition": "clean",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 1,
+          "speech_events": 1
+        },
+        {
+          "condition": "noise0db",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 1,
+          "speech_events": 1
+        },
+        {
+          "condition": "echo180ms",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 1,
+          "speech_events": 1
+        }
+      ]
+    },
+    {
+      "sample_id": "speech-commands-stop",
+      "dataset": "Google Speech Commands mini subset",
+      "rows": [
+        {
+          "condition": "clean",
+          "WER": 0.0,
+          "CER": 0.0,
+          "reference_words": 1,
+          "speech_events": 1
+        },
+        {
+          "condition": "noise0db",
+          "WER": 1.0,
+          "CER": 1.0,
+          "reference_words": 1,
+          "speech_events": 1
+        },
+        {
+          "condition": "echo180ms",
+          "WER": 1.0,
+          "CER": 0.75,
+          "reference_words": 1,
+          "speech_events": 1
+        }
+      ]
+    }
+  ],
+  "scope": "Paired conditions per sample. Lower WER is better. Short single-word literal errors do not by themselves establish incorrect consent handling."
+}

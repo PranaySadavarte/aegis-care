@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T04:30:39.066719+00:00",
+  "generated_at_utc": "2026-10-12T05:43:53.542750+00:00",
   "asr": {
     "reference": "My patient ID is one zero zero one. My verification code is four two four two.",
     "hypothesis": "IPatient ID is 1001. My verification code is 4242.",
@@ -10,12 +10,19 @@
     "WER": 0.625,
     "CER": 0.4868421052631579
   },
-  "audio_files": 19,
-  "public_audio_files": 1,
+  "audio_files": 24,
+  "sdk": {
+    "total": 53,
+    "passed": 47,
+    "failed": 6,
+    "source": "20261012T054350Z-9874c4"
+  },
+  "challenge_audio_files": 2,
+  "public_audio_files": 4,
   "functional": {
     "passed": 32,
     "total": 32,
-    "source": "20261012T043036Z-34535e",
+    "source": "20261012T054350Z-9874c4",
     "status": "PASS"
   },
   "latest_hosted": {
@@ -38,7 +45,7 @@
     },
     {
       "scenario": "identity-switch",
-      "status": "PASS"
+      "status": "FAIL"
     },
     {
       "scenario": "malformed",

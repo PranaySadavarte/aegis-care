@@ -1,16 +1,16 @@
 {
-  "run_id": "20261012T043036Z-34535e",
+  "run_id": "20261012T054350Z-9874c4",
   "suite": "offline",
-  "started_at_utc": "2026-10-12T04:30:36.799751+00:00",
+  "started_at_utc": "2026-10-12T05:43:50.894911+00:00",
   "status": "FAIL",
   "groups": [
     {
       "group": "SDK offline",
       "status": "FAIL",
       "exit_code": 1,
-      "total": 16,
-      "failed": 1,
-      "duration_seconds": 0.532,
+      "total": 53,
+      "failed": 6,
+      "duration_seconds": 0.625,
       "command": [
         "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
         "-m",
@@ -22,7 +22,7 @@
         "test_*.py",
         "-v"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T043036Z-34535e/SDK-offline.txt",
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/SDK-offline.txt",
       "limit_seconds": 30
     },
     {
@@ -31,7 +31,7 @@
       "exit_code": 0,
       "total": 32,
       "failed": 0,
-      "duration_seconds": 0.671,
+      "duration_seconds": 0.594,
       "command": [
         "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
         "-m",
@@ -43,7 +43,7 @@
         "test_*.py",
         "-v"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T043036Z-34535e/Application-functional.txt",
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/Application-functional.txt",
       "limit_seconds": 30
     },
     {
@@ -52,7 +52,7 @@
       "exit_code": 0,
       "total": null,
       "failed": null,
-      "duration_seconds": 0.782,
+      "duration_seconds": 0.719,
       "command": [
         "C:\\Users\\prana\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.EXE",
         "-NoProfile",
@@ -61,7 +61,7 @@
         "-InstallerPath",
         "evidence/2026-10-11/installer-audit/install-current.ps1"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T043036Z-34535e/Installer-source-audit.txt",
+      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T054350Z-9874c4/Installer-source-audit.txt",
       "limit_seconds": 30,
       "observations": {
         "explicit_hash_check": false,
@@ -71,8 +71,8 @@
   ],
   "sdk_version": "0.47.0",
   "python_version": "3.12.14",
-  "source_commit": "46a7732",
+  "source_commit": "3babeba",
   "working_tree_dirty": true,
   "profile_sha256": "5dd51df171f11e1d1f5ebe7d29cdce208f82c36b37173331c912e8e77bc081d9",
-  "completed_at_utc": "2026-10-12T04:30:38.930720+00:00"
+  "completed_at_utc": "2026-10-12T05:43:52.932859+00:00"
 }

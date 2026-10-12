@@ -1,0 +1,65 @@
+{
+  "rows": [
+    {
+      "probe": "missing-auth",
+      "status_code": 401,
+      "rejected": true,
+      "body_sha256": "5e6c69b00291ff4c922472f9df9233e1ca5a4e21c42391eb7bec97c7000cf5ae",
+      "scope": "No valid account credential used; no expired signed-token test"
+    },
+    {
+      "probe": "invalid-auth",
+      "status_code": 401,
+      "rejected": true,
+      "body_sha256": "9bc03d75f6b1b1e17fd962950f5c3e48744c7927fa2e065c687a3b9fa5d943f7",
+      "scope": "No valid account credential used; no expired signed-token test"
+    },
+    {
+      "probe": "sip-reachability",
+      "host": "sip.goguava.ai",
+      "port": 5060,
+      "status": "UNVERIFIED_CONNECTIVITY_FAILURE",
+      "error": "TimeoutError",
+      "seconds": 5.0939999998081475
+    },
+    {
+      "probe": "sip-reachability",
+      "host": "sip.goguava.ai",
+      "port": 5061,
+      "status": "UNVERIFIED_CONNECTIVITY_FAILURE",
+      "error": "TimeoutError",
+      "seconds": 5.047000000020489
+    },
+    {
+      "probe": "SIP call/transfer",
+      "status": "NOT_CONFIGURED",
+      "reason": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "probe": "Twilio TwiML",
+      "status": "NOT_CONFIGURED",
+      "reason": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "probe": "Twilio Elastic SIP",
+      "status": "NOT_CONFIGURED",
+      "reason": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "probe": "Cisco CUBE/CUCM",
+      "status": "NOT_CONFIGURED",
+      "reason": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "probe": "Amazon Connect",
+      "status": "NOT_CONFIGURED",
+      "reason": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "probe": "Agentic Tenacity live SMS",
+      "status": "NOT_CONFIGURED",
+      "reason": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    }
+  ],
+  "scope": "Authentication rejection and non-invasive reachability only; no live integration certification"
+}

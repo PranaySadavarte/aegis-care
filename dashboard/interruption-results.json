@@ -1,0 +1,5 @@
+{
+  "interrupted_flags": 1,
+  "event_count": 4,
+  "scope": "Native file-in early-speech probe; callback timestamps are receipt times, not acoustic start/end. Audible onset/barge-in delay not measured."
+}

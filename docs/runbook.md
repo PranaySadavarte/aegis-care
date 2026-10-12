@@ -29,3 +29,6 @@ The full KPI wrapper supplies process-tree bounds. Direct public probe is intera
 Agent edits:docs/agent-profile/README.md explains the Markdown profile. New create_agent calls load it; restart your listener to apply changes. Use the isolated interpreter with agent/harborcare.py --mode text or --mode webrtc for manual checks. Browser/native audio uses hosted services and is not assumed free. Active phone process retains its previously loaded profile until restarted.
 
 KPI environment is isolated under baseline/metrics, with its own requirements.lock.txt and fixed model revision in fixtures/kpi-config.json. Reuse these rather than silently upgrading the SDK environment.
+
+
+Current startup, fixed-suite commands and manual synthetic challenges: [Operator guide](operator-guide.md). Expanded SDK/adaptive results: reports/test-results/extended-sdk-2026-10-11.md. Known failing discovery assertions are intentionally retained.

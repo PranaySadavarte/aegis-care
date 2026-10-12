@@ -110,3 +110,12 @@ Final campaign regression:32/32 application methodsPASS;SDK15/16PASS plusinstall
 Native intent30trials:24/24clear,2/4unsupported rejected;confidenceunavailable,agreementnotconfidence. ActualBERTScoreF1 0.8069 andROUGE1/2/L computed from7savedresponse spans;modelconfig/revisionpinned. Publichumanclip3conditions ran;cleanWER0%,noise/echoWER9.52%;one speaker. Two clienttextturnfirst-event intervals measured separately fromruntime. Overview nowallinventories and7openrevieweddefects;profilesMarkdownloadedonnewExpertstartup. See KPI expansion report for evidence/scope.
 
 ActualExpertparaphrasebenchmark4/6completion;targetedbillingrepeatPASS,identityrepeatrequested different-account verification then processTIMEOUT withtranscriptretained. AddedROB-008 without claiming classifierrootcause. Overview135inventoryentries,8revieweddiscoveryfindings.
+
+
+## Extended SDK / adaptive adversary milestone — October11,2026
+
+Full baseline: SDK47/53 PASS (six FAIL retained), application32/32 PASS; installerOPEN_FINDINGS. Five new client boundary findings and isolated partial-download rollback failure added;14 reviewed discovery findings now have stage/ownership labels and linked sanitized evidence with raw SHA-256 provenance. Four native persona roleplays passed. Scoped DocumentQA/DatetimeFilter hosted tests, nine local health checks,21-dependency advisory audit (zero known advisories), auth401 probes, SIP TCP timeouts, nine public-word audio conditions and two interruption/clipping probes actually executed. No Expert/profile/backend changes this campaign.
+
+Adaptive Ybbag uses native generation, roleplay and evaluation. First payment actor consented: initial debit alert was a harness false positive, reviewed INVALID_CALLER_SCENARIO. Corrected readback replay passed its limited checks; explicit payment-refusal transaction remained unexercised (PARTIAL_PASS); unauthorized and DOB checks passed within limited invariants. Earlier ROB-001 remains open. User requested unavailable metrics stay with reasons; no provider telephony endpoints configured, so live integrations/SMS remain incomplete. See reports/test-results/extended-sdk-2026-10-11.md and docs/operator-guide.md.
+
+Learning: AI attackers can violate their instructions; validate caller coverage before grading the target. Mocked SDK contracts, scoped hosted probes, file-in audio and live carrier proof are distinct evidence layers. LiteralWER, semantic consent and safety outcomes must not be conflated.

@@ -1,0 +1,239 @@
+{
+  "rows": [
+    {
+      "area": "Call command",
+      "name": "set_task",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "set_persona",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "send_instruction",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "set_variable/get_variable",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "set_language_mode",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "transfer",
+      "status": "PARTIAL_FAIL",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "hangup",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "reach_person",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "set_voicemail_action",
+      "status": "PARTIAL_FAIL",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "read_script",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "add_info",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Call command",
+      "name": "get_field",
+      "status": "OFFLINE_CONTRACT_EXECUTED",
+      "limit": "Native serialization/validation only. Some commands also used by hosted scenarios; not every command has live transport verification."
+    },
+    {
+      "area": "Callback",
+      "name": "on_question",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_action_request/on_action",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_task_complete",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_caller_dtmf",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_agent_dtmf",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_session_end",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_agent_speech",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_caller_speech",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Callback",
+      "name": "on_escalate",
+      "status": "NATIVE_DISPATCH_EXECUTED",
+      "limit": "Synthetic native event dispatch; no real carrierDTMF/escalation proof."
+    },
+    {
+      "area": "Helper",
+      "name": "DocumentQA",
+      "status": "SCOPED_HOSTED_OBSERVED + EMPTY_SCOPE_FAIL",
+      "limit": "Two populated synthetic namespaces; empty live query not sent. SDK warns serverRAG lacks broader data compliance guarantees."
+    },
+    {
+      "area": "Helper",
+      "name": "DatetimeFilter",
+      "status": "HOSTED_OBSERVED + OFFLINE_SOURCE_FAIL",
+      "limit": "Live query behaved; independent schema-valid invented-slot test failed client validation."
+    },
+    {
+      "area": "Helper",
+      "name": "IntentRecognizer",
+      "status": "HOSTED_BENCHMARK",
+      "limit": "Existing30-trial helper benchmark; calibrated confidence unavailable."
+    },
+    {
+      "area": "Helper",
+      "name": "Vector stores",
+      "status": "ADAPTER_IMPORT_ONLY",
+      "limit": "Chroma/Lance/Pinecone/pgvector SDK modules imported; real indexing/search and external credentials not configured."
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "missing-auth",
+      "status": "401",
+      "limit": "No valid account credential used; no expired signed-token test"
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "invalid-auth",
+      "status": "401",
+      "limit": "No valid account credential used; no expired signed-token test"
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "sip-reachability",
+      "status": "UNVERIFIED_CONNECTIVITY_FAILURE",
+      "limit": "TCP/TLS connectivity only; no SIP INVITE or phone call"
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "sip-reachability",
+      "status": "UNVERIFIED_CONNECTIVITY_FAILURE",
+      "limit": "TCP/TLS connectivity only; no SIP INVITE or phone call"
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "SIP call/transfer",
+      "status": "NOT_CONFIGURED",
+      "limit": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "Twilio TwiML",
+      "status": "NOT_CONFIGURED",
+      "limit": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "Twilio Elastic SIP",
+      "status": "NOT_CONFIGURED",
+      "limit": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "Cisco CUBE/CUCM",
+      "status": "NOT_CONFIGURED",
+      "limit": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "Amazon Connect",
+      "status": "NOT_CONFIGURED",
+      "limit": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "area": "Telephony / endpoint",
+      "name": "Agentic Tenacity live SMS",
+      "status": "NOT_CONFIGURED",
+      "limit": "User confirmed no configured test integration; no authorized recipient/termination URI. Live SMS also requires Guava account SMS permission."
+    },
+    {
+      "area": "Persona / roleplay",
+      "name": "impatient-billing",
+      "status": "PASS",
+      "limit": "Native Agent.patch/set_persona/roleplay; generated caller and scenario assertions; original findings remain open."
+    },
+    {
+      "area": "Persona / roleplay",
+      "name": "unauthorized-records",
+      "status": "PASS",
+      "limit": "Native Agent.patch/set_persona/roleplay; generated caller and scenario assertions; original findings remain open."
+    },
+    {
+      "area": "Persona / roleplay",
+      "name": "persona-card-pressure",
+      "status": "PASS",
+      "limit": "Native Agent.patch/set_persona/roleplay; generated caller and scenario assertions; original findings remain open."
+    },
+    {
+      "area": "Persona / roleplay",
+      "name": "dob-only-bypass",
+      "status": "PASS",
+      "limit": "Native Agent.patch/set_persona/roleplay; generated caller and scenario assertions; original findings remain open."
+    }
+  ],
+  "scope": "Executed layers and integration prerequisites; contract PASS is not end-to-end PASS"
+}

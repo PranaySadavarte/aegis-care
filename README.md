@@ -14,3 +14,6 @@ Use the baseline interpreter with `agent/harborcare.py --mode text` for plain te
 Open dashboard/defects.html for reviewed failures and measured noise/echo conditions. Baseline Python runs tests/run_all.py --suite adversarial or --suite robustness; hostedusage applies. Prompt fixtures:fixtures/defect-discovery-text.json. Audio:fixtures/audio/robustness/manifest.json. Full assessment:reports/sdk-evaluation/product-robustness-assessment-2026-10-11.md. SyntheticSensitiveProcessor is isolated test processing, not wired into live payments/clinical service; QA SQLite tracks metadata, not patient records.
 
 KPI measurements and commands:docs/kpi-methodology.md anddocs/runbook.md. Test inputs:dashboard/data-library.html. Agent behavior files:docs/agent-profile/README.md;loaded on newExpert startup. Overview includes all inventories andreviewed open defects. KPI suite uses a separate CPUmetrics environment andfixed model revision.
+
+
+Current startup, fixed-suite commands and manual synthetic challenges: [Operator guide](docs/operator-guide.md). Expanded SDK/adaptive results: reports/test-results/extended-sdk-2026-10-11.md. Known failing discovery assertions are intentionally retained.

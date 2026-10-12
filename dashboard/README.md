@@ -15,3 +15,6 @@ Suite runner: Test runs page or tests/run_all.py --suite offline/hosted/security
 Metrics now read scoped measurements from metrics-snapshot.json. Refresh using build_metrics_snapshot.py then build_metrics_pages.py; does not itself execute tests. Security suite runs three native hosted text scenarios. Audio suite observes capture/ASR rather than applying unapproved accuracy thresholds. Browser greeting playback and two-way WebRTC interaction were user-confirmed; native helper devices remain unverified.
 
 Defect discovery page:build_defect_dashboard.py reads raw campaign artifacts and reviewedfindingJSON, publishes redacted metric summaries and maintains localmetadata-onlySQLite. New adversarial/robustness suites available; failures remain visible. Reports distinguish native judge results from reviewed policy failures.
+
+
+Current startup, fixed-suite commands and manual synthetic challenges: [Operator guide](../docs/operator-guide.md). Expanded SDK/adaptive results: reports/test-results/extended-sdk-2026-10-11.md. Known failing discovery assertions are intentionally retained.

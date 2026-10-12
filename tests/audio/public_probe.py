@@ -2,7 +2,7 @@ import sys,json,time,uuid
 from pathlib import Path
 import soundfile as sf,numpy as np,jiwer,guava
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
-root=Path(__file__).resolve().parents[2];manifest=json.loads((root/'fixtures/audio/public/manifest.json').read_text());row=manifest[0]
+root=Path(__file__).resolve().parents[2];manifest=json.loads((root/'fixtures/audio/public/manifest.json').read_text());row=next((r for r in manifest if r["id"]==sys.argv[1]),manifest[0]) if len(sys.argv)>1 else manifest[0]
 folder=root/'evidence/2026-10-11/kpi-expansion'/('public-audio-'+uuid.uuid4().hex[:8]);folder.mkdir(parents=True)
 x,sr=sf.read(root/row['path']);assert sr==16000
 if x.ndim>1:x=x.mean(axis=1)
@@ -25,4 +25,6 @@ for condition in ['clean','noise0db','echo180ms']:
  result={'condition':condition,'reference':row['reference_text'],'hypothesis':hyp,'WER':word.wer,'CER':char.cer,'word_edits':word.substitutions+word.deletions+word.insertions,'reference_words':len(ref.split()),'char_edits':char.substitutions+char.deletions+char.insertions,'reference_chars':len(ref),'speech_events':len(heard),'signal_duration_seconds':len(x)/sr,'process_seconds':time.monotonic()-begin,'gain':gain,'scope':'One LibriSpeech test-other read-speech clip; conditions paired. No accent representativeness or audible turn timing claim.'}
  rows.append(result);(folder/(condition+'.json')).write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result),flush=True)
 summary={'dataset':row['dataset'],'sample_id':row['id'],'source_sha256':row['sha256'],'license':row['license'],'rows':rows,'scope':'Three conditions on one human recording, not3 independent speakers'}
-(folder/'summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8');(root/'dashboard/public-audio-metrics.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+(folder/'summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8');
+if len(sys.argv)==1:(root/'dashboard/public-audio-metrics.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+else:(folder/'public-sample-summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')

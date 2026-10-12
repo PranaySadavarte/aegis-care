@@ -34,6 +34,154 @@ window.AEGIS_DATA = {
       "status": "ok"
     },
     {
+      "name": "action callback executed",
+      "status": "ok"
+    },
+    {
+      "name": "action request callback suggestions",
+      "status": "ok"
+    },
+    {
+      "name": "agent dtmf callback",
+      "status": "ok"
+    },
+    {
+      "name": "agent speech interruption flag",
+      "status": "ok"
+    },
+    {
+      "name": "caller dtmf callback",
+      "status": "ok"
+    },
+    {
+      "name": "caller speech revisions have same id",
+      "status": "ok"
+    },
+    {
+      "name": "escalate callback",
+      "status": "ok"
+    },
+    {
+      "name": "invalid dtmf event rejected",
+      "status": "ok"
+    },
+    {
+      "name": "question callback answer correlated",
+      "status": "ok"
+    },
+    {
+      "name": "question failure uses safe fallback",
+      "status": "ok"
+    },
+    {
+      "name": "session end callback",
+      "status": "ok"
+    },
+    {
+      "name": "task callback failure informs dialog",
+      "status": "ok"
+    },
+    {
+      "name": "task complete callback executed",
+      "status": "ok"
+    },
+    {
+      "name": "add info uses variable namespace",
+      "status": "ok"
+    },
+    {
+      "name": "get field default and zero",
+      "status": "ok"
+    },
+    {
+      "name": "hangup guidance queued",
+      "status": "ok"
+    },
+    {
+      "name": "instruction literal canary preserved",
+      "status": "ok"
+    },
+    {
+      "name": "language mode valid and invalid",
+      "status": "ok"
+    },
+    {
+      "name": "persona rejects empty pronunciation key",
+      "status": "ok"
+    },
+    {
+      "name": "persona values preserved",
+      "status": "ok"
+    },
+    {
+      "name": "pstn dtmf valid invalid",
+      "status": "ok"
+    },
+    {
+      "name": "reach person voicemail conflict rejected",
+      "status": "ok"
+    },
+    {
+      "name": "read script literal",
+      "status": "ok"
+    },
+    {
+      "name": "task field schema invalid type",
+      "status": "ok"
+    },
+    {
+      "name": "transfer invalid destination should reject",
+      "status": "FAIL"
+    },
+    {
+      "name": "transfer sip serialization only",
+      "status": "ok"
+    },
+    {
+      "name": "voicemail invalid does not mutate state",
+      "status": "FAIL"
+    },
+    {
+      "name": "voicemail valid hangup",
+      "status": "ok"
+    },
+    {
+      "name": "webrtc dtmf guard",
+      "status": "ok"
+    },
+    {
+      "name": "datetime cap and source matches",
+      "status": "ok"
+    },
+    {
+      "name": "datetime invented slot should be rejected",
+      "status": "FAIL"
+    },
+    {
+      "name": "rag empty namespace does not query all documents",
+      "status": "FAIL"
+    },
+    {
+      "name": "rag tracked namespace query",
+      "status": "ok"
+    },
+    {
+      "name": "tenacity explicit empty contact preserved",
+      "status": "FAIL"
+    },
+    {
+      "name": "tenacity no terms accepted in mock",
+      "status": "ok"
+    },
+    {
+      "name": "tenacity per contact overrides global",
+      "status": "ok"
+    },
+    {
+      "name": "tls default rejects unverified certificates",
+      "status": "ok"
+    },
+    {
       "name": "api key repr does not expose dummy secret",
       "status": "ok"
     },
@@ -123,9 +271,9 @@ window.AEGIS_DATA = {
       "Steps": "Send missing, invalid, expired credentials to documented interfaces",
       "Expected": "Rejected with no unauthorized resource access; no secret echo",
       "Owner": "Guava platform for hosted result",
-      "Evidence": "Redacted request/response; correlation ID",
+      "Evidence": "Redacted request/response; correlation ID; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Fail closed; rotate affected credentials",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -155,9 +303,9 @@ window.AEGIS_DATA = {
       "Steps": "Inspect transport defaults; test invalid certificate locally; assess overrides",
       "Expected": "Certificate failure rejected; insecure overrides explicit and constrained",
       "Owner": "SDK transport",
-      "Evidence": "Config/source lines; mock TLS errors",
+      "Evidence": "Config/source lines; mock TLS errors; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Enforce secure endpoints; no verification bypass",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -187,9 +335,9 @@ window.AEGIS_DATA = {
       "Steps": "Raise exception; delay callback; inspect cleanup and other sessions",
       "Expected": "Errors observable; no wrong-session actions; bounded behavior documented",
       "Owner": "SDK dispatch and app timeout policy",
-      "Evidence": "Timed handler trace and isolation assertions",
+      "Evidence": "Timed handler trace and isolation assertions; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Use timeouts; catch errors; safe fallback",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "Conversation state / Expert callbacks",
@@ -235,9 +383,9 @@ window.AEGIS_DATA = {
       "Steps": "Inventory versions; check published advisories and affected ranges",
       "Expected": "Matches distinguished from reachable exploit; gaps documented",
       "Owner": "Dependency maintainer/Guava/AEGIS",
-      "Evidence": "Advisory URL; version match; reachability rationale",
+      "Evidence": "Advisory URL; version match; reachability rationale; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Pin supported fixed release after compatibility checks",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -363,9 +511,9 @@ window.AEGIS_DATA = {
       "Steps": "Supply dummy sensitive input; inspect all available sinks",
       "Expected": "No sensitive values in report/log sinks under app control; hosted retention separately verified",
       "Owner": "AEGIS and Guava per sink",
-      "Evidence": "Redaction assertions; sink inventory",
+      "Evidence": "ROB-005/ROB-007 linked evidence: local sensitive test transcript retention and direct journal canary; hosted production sinks unverified",
       "Workaround": "Avoid voice credential collection; secure hosted payment flow later",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL_FAIL",
       "Component": "AEGIS application / hosted voice",
       "InstallationMethodScope": "NOT_APPLICABLE",
       "PipelineStage": "Business logic / authorization / mock APIs",
@@ -411,9 +559,9 @@ window.AEGIS_DATA = {
       "Steps": "Interrupt speech; cough; echo; silence; overlapping speakers",
       "Expected": "No duplicate action; recover gracefully; delays measured",
       "Owner": "Guava dialog/transport plus app",
-      "Evidence": "Timestamped audio/events; channel config",
+      "Evidence": "Timestamped audio/events; channel config; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Tune supported controls after documentation review",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
       "InstallationMethodScope": "NOT_APPLICABLE",
       "PipelineStage": "ASR / endpointing / TTS / audio transport",
@@ -427,9 +575,9 @@ window.AEGIS_DATA = {
       "Steps": "User calls all synthetic workflows and adversarial variants",
       "Expected": "Outcomes and safety gates match fixtures; every deviation recorded",
       "Owner": "AEGIS; vendor attribution after reduction",
-      "Evidence": "Redacted call transcript; backend ledger; run report",
+      "Evidence": "User-confirmed two-way browser WebRTC; fully scored user-led phone workflow not recorded",
       "Workaround": "Reduce failure to text/mock or retain acoustic repro",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
       "InstallationMethodScope": "NOT_APPLICABLE",
       "PipelineStage": "End-to-end / operations",
@@ -459,9 +607,9 @@ window.AEGIS_DATA = {
       "Steps": "Inspect prerequisites; test standard user/read-only destination/PATH and interrupted download without touching existing install",
       "Expected": "Document permissions; clear failure; no unexpected elevation or executable launch from partial download",
       "Owner": "Guava installer/local environment",
-      "Evidence": "Before/after files and PATH; installer hash; exit/log trace",
+      "Evidence": "Before/after files and PATH; installer hash; exit/log trace; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Use user-writable isolated destination and documented prerequisites",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Windows CLI / installer",
       "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN",
       "PipelineStage": "SDK / installation / transport",
@@ -475,9 +623,9 @@ window.AEGIS_DATA = {
       "Steps": "Inject download/extract/replace failures; inspect cleanup and previous version",
       "Expected": "Prior install preserved or rollback limitation explicitly evidenced; no partial trusted executable",
       "Owner": "Guava installer",
-      "Evidence": "Fault trace; file hashes; rollback manifest",
+      "Evidence": "Fault trace; file hashes; rollback manifest; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Atomic replace and retained prior artifact; no destructive live test",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL_FAIL",
       "Component": "Windows CLI / installer",
       "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN",
       "PipelineStage": "SDK / installation / transport",
@@ -491,9 +639,9 @@ window.AEGIS_DATA = {
       "Steps": "Time each setup step; follow docs; trigger missing auth/config/dependency errors",
       "Expected": "Measured denominator and blockers; accurate examples; actionable errors; first call not claimed before execution",
       "Owner": "Guava docs/CLI/SDK and AEGIS",
-      "Evidence": "Timestamped step log; docs snapshot; redacted errors",
+      "Evidence": "Prior hosted process measurements and error/docs inspection; actual time-to-first-call cohort not measured",
       "Workaround": "Document validated steps and version-specific corrections",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -539,9 +687,9 @@ window.AEGIS_DATA = {
       "Steps": "Run same contracts per available supported Python/SDK combination",
       "Expected": "Differences attributed to exact SDK/runtime; unavailable combinations untested",
       "Owner": "Guava SDK/local environment",
-      "Evidence": "Dependency hashes; comparison results",
+      "Evidence": "Dependency hashes; comparison results; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Use verified combination; preserve original scaffold",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -555,9 +703,9 @@ window.AEGIS_DATA = {
       "Steps": "Validate config; fail startup; start/stop; inspect thread/socket cleanup and graceful exit",
       "Expected": "Invalid config fails clearly; no lingering resources; no unintended hosted connection",
       "Owner": "Guava SDK and AEGIS lifecycle",
-      "Evidence": "Process exit; resource counts; config fixtures",
+      "Evidence": "Process exit; resource counts; config fixtures; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Explicit cleanup and startup validation",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -571,9 +719,9 @@ window.AEGIS_DATA = {
       "Steps": "Probe documented health endpoint; simulate unavailable backend; test session config boundaries",
       "Expected": "Readiness/liveness behavior documented; no secrets in probes; sessions isolated",
       "Owner": "Guava health/hosting and AEGIS",
-      "Evidence": "Probe status/body; fault timing; minimal repro",
+      "Evidence": "Probe status/body; fault timing; minimal repro; reports/test-results/extended-sdk-2026-10-11.md",
       "Workaround": "Separate readiness from liveness; redact diagnostics",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
       "InstallationMethodScope": "UV-SDK observed; other package routes untested",
       "PipelineStage": "SDK / installation / transport",
@@ -706,6 +854,102 @@ window.AEGIS_DATA = {
       "InstallationMethodScope": "Not installation-specific",
       "PipelineStage": "Conversation state / Expert callbacks",
       "Direction": "Hosted inbound-style test"
+    },
+    {
+      "ID": "SDK-X001",
+      "Layer": "SDK negative contract",
+      "Threat_or_behavior": "Transfer destination not validated client-side",
+      "Setup": "Synthetic/mock isolated SDK0.47.0",
+      "Steps": "Invalid destination string queued; no actual carrier transfer attempted.",
+      "Expected": "Reject malformed phone/SIP destinations before queuing.",
+      "Owner": "Guava SDK",
+      "Evidence": "evidence/2026-10-11/extended-sdk/offline-corrected.txt",
+      "Workaround": "Validate at the application boundary; verify server rejection separately.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Guava SDK",
+      "InstallationMethodScope": "UV SDK0.47.0",
+      "PipelineStage": "SDK command / telephony",
+      "Direction": "Shared / telephony live not configured"
+    },
+    {
+      "ID": "SDK-X002",
+      "Layer": "SDK negative contract",
+      "Threat_or_behavior": "Rejected voicemail settings mutate call state",
+      "Setup": "Synthetic/mock isolated SDK0.47.0",
+      "Steps": "Invalid hangup-plus-message raises but sets _voicemail_handler and queues a variable change.",
+      "Expected": "Rejected configuration leaves prior state/queue unchanged.",
+      "Owner": "Guava SDK",
+      "Evidence": "evidence/2026-10-11/extended-sdk/offline-corrected.txt",
+      "Workaround": "Validate arguments before invoking; isolate retry flow. No SDK code changed.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Guava SDK",
+      "InstallationMethodScope": "UV SDK0.47.0",
+      "PipelineStage": "SDK command / conversation state",
+      "Direction": "Shared / telephony live not configured"
+    },
+    {
+      "ID": "SDK-X003",
+      "Layer": "SDK negative contract",
+      "Threat_or_behavior": "DatetimeFilter trusts invented schema-valid slots",
+      "Setup": "Synthetic/mock isolated SDK0.47.0",
+      "Steps": "Mocked model returned2099slot outside source; helper passed it through. Live adversarial query stayed in source.",
+      "Expected": "Every returned slot belongs to the source list regardless of model output.",
+      "Owner": "Guava SDK",
+      "Evidence": "evidence/2026-10-11/extended-sdk/offline-corrected.txt",
+      "Workaround": "Intersect returned values with source at the application boundary; backend booking already rejects unknown slots.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Guava SDK",
+      "InstallationMethodScope": "UV SDK0.47.0",
+      "PipelineStage": "Helpers / business integration",
+      "Direction": "Shared / telephony live not configured"
+    },
+    {
+      "ID": "SDK-X004",
+      "Layer": "SDK negative contract",
+      "Threat_or_behavior": "Empty RAG instance produces unscoped document query",
+      "Setup": "Synthetic/mock isolated SDK0.47.0",
+      "Steps": "No tracked keys led to document_keys=None at the query boundary. Populated namespace live tests were isolated. Empty live query was not sent.",
+      "Expected": "Empty namespace fails closed or passes an explicit empty key list.",
+      "Owner": "Guava SDK",
+      "Evidence": "evidence/2026-10-11/extended-sdk/offline-corrected.txt",
+      "Workaround": "Reject empty-document asks; use unique populated namespaces. Ask Guava to confirm server interpretation of omitted keys.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Guava SDK",
+      "InstallationMethodScope": "UV SDK0.47.0",
+      "PipelineStage": "Helpers / retrieval / authorization",
+      "Direction": "Shared / telephony live not configured"
+    },
+    {
+      "ID": "SDK-X005",
+      "Layer": "SDK negative contract",
+      "Threat_or_behavior": "Explicit empty outreach settings replaced by global SMS",
+      "Setup": "Synthetic/mock isolated SDK0.47.0",
+      "Steps": "Mocked upload replaced contact outreach_modalities=[] with global[sms]. No SMS sent. Empty-list opt-out semantics need vendor clarification.",
+      "Expected": "An explicitly supplied per-contact setting follows documented precedence.",
+      "Owner": "Guava SDK",
+      "Evidence": "evidence/2026-10-11/extended-sdk/offline-corrected.txt",
+      "Workaround": "Clarify empty versus unset semantics; do not assume[]disables outreach when global SMS is enabled.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Guava SDK",
+      "InstallationMethodScope": "UV SDK0.47.0",
+      "PipelineStage": "Campaign / telephony preparation",
+      "Direction": "Shared / telephony live not configured"
+    },
+    {
+      "ID": "CLI-X003",
+      "Layer": "SDK negative contract",
+      "Threat_or_behavior": "Interrupted destination download loses prior binary in fault probe",
+      "Setup": "Synthetic/mock isolated SDK0.47.0",
+      "Steps": "Real installer control flow with mocked partial download overwrote a synthetic prior file; no rollback occurred. PATH and real install unchanged.",
+      "Expected": "Preserve prior artifact until successful verified replacement.",
+      "Owner": "Guava installer",
+      "Evidence": "evidence/2026-10-11/extended-sdk/installer-partial-write-*/result.json",
+      "Workaround": "Use a staged/verified atomic replacement design; this is a proposed owner solution, not an applied fix.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Guava installer",
+      "InstallationMethodScope": "IRM installer fault injection",
+      "PipelineStage": "Installation / supply chain",
+      "Direction": "Shared / telephony live not configured"
     }
   ],
   "hosted_seconds": 8.062000000150874,

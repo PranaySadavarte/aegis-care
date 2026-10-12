@@ -1,0 +1,20 @@
+[
+  {
+    "id": "early-verification",
+    "path": "fixtures/audio/challenges/early-verification.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Caller speech after1second; exploratory barge-in timing",
+    "leading_silence_seconds": 1,
+    "sha256": "aeff3ab2f40cac860a63346262c4469fc840ec315c865791cadae7ba292f8c45",
+    "status": "OBSERVED"
+  },
+  {
+    "id": "clipped-verification",
+    "path": "fixtures/audio/challenges/clipped-verification.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Hard clipped caller waveform; scored exploratory fixture",
+    "leading_silence_seconds": 8,
+    "sha256": "17828a3cb389a1afb9bf37643feb2f1669f2c6fc4e2e04d3f3b85ca0c52f720e",
+    "status": "OBSERVED"
+  }
+]
