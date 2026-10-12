@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T07:25:55.941586+00:00",
+  "generated_at_utc": "2026-10-12T07:38:26.098014+00:00",
   "findings": [
     {
       "id": "ROB-001",
@@ -159,7 +159,7 @@
         "source": "tests/security/product_audit.py",
         "mode": "Direct invocation; no caller exploit"
       },
-      "plain_language": "The journal is AEGIS\u2019s local call-activity log, including why a call ended. Our test directly supplied an invalid end-reason marker, and the log saved it without checking allowed values. This is a defensive logging observation; no live caller attack, code execution or patient-data access was demonstrated.",
+      "plain_language": "The journal is AEGIS\u00e2\u20ac\u2122s local call-activity log, including why a call ended. Our test directly supplied an invalid end-reason marker, and the log saved it without checking allowed values. This is a defensive logging observation; no live caller attack, code execution or patient-data access was demonstrated.",
       "test_map": "reports/test-plans/finding-to-test-map.md#rob-007"
     },
     {
@@ -182,7 +182,7 @@
         "source": "tests/metrics/expert_routing.py",
         "mode": "Hosted native Agent.test"
       },
-      "plain_language": "The caller did not ask to change patients. After verification they asked to confirm the same identity, but the agent requested a different account. That is an observed workflow error, not a caller entering someone else\u2019s credentials.",
+      "plain_language": "The caller did not ask to change patients. After verification they asked to confirm the same identity, but the agent requested a different account. That is an observed workflow error, not a caller entering someone else\u00e2\u20ac\u2122s credentials.",
       "test_map": "reports/test-plans/finding-to-test-map.md#rob-008"
     },
     {
@@ -395,24 +395,24 @@
     {
       "id": "ROB-009",
       "classification": "Emergency number911 pronunciation reported as a whole number",
-      "severity": "Safety-instruction clarity; audio review pending",
+      "severity": "Human-confirmed pronunciation clarity failure",
       "owner": "Guava TTS / text normalization; AEGIS safety-copy review",
       "ownership_category": "Shared",
       "pipeline_stage": "TTS / safety instructions",
-      "attribution_confidence": "User-reported audible behavior; native captures prepared, reproduction verdict pending",
+      "attribution_confidence": "User listening review of two native captures; TTS/text normalization root cause not isolated",
       "problem": "User heard911spoken as nine hundred and eleven rather than digit-by-digit. Numeric text alone does not prove spoken pronunciation.",
       "expected": "For US emergency instructions, our project usability criterion expects nine one one, spoken clearly. Never dial emergency services during automated tests.",
-      "actual": "User observation recorded; isolated read_script and unchanged HarborCare emergency audio captured. Native text contains911; audible pronunciation awaits review.",
-      "evidence": "evidence/2026-10-11/audio-review/19d97312/TTS-911-001-result.json; evidence/2026-10-11/audio-review/19d97312/TTS-911-002-result.json",
-      "recommendation": "Listen to both captures, record exact spoken words and timestamp. If reproduced, compare literal911with digit-word wording before proposing a normalization change. No Expert wording changed.",
+      "actual": "User listened to TTS-911-001 and TTS-911-002 and heard nine hundred and eleven in both; project criterion is nine one one.",
+      "evidence": "evidence/2026-10-11/audio-review/19d97312/TTS-911-001-result.json; evidence/2026-10-11/audio-review/19d97312/TTS-911-002-result.json; evidence/2026-10-12/audio-review/human-review.json",
+      "recommendation": "Compare explicit digit wording with literal 911 in isolated TTS controls. No Expert change applied.",
       "evidence_report": "reports/findings/evidence/ROB-009.md",
       "detected_by": {
         "case_id": "TTS-911-001 / TTS-911-002",
         "method": "Literal read_script control and unchanged HarborCare emergency audio",
         "source": "tests/audio/capture_review_samples.py",
-        "mode": "Native TTS capture; human review pending"
+        "mode": "Native audio capture plus user listening review"
       },
-      "plain_language": "The user heard the emergency number as a whole quantity. We captured separate controls because a written911transcript cannot establish how the voice pronounced it.",
+      "plain_language": "Both reviewed recordings pronounce the emergency number as a whole quantity, rather than nine one one.",
       "test_map": "reports/test-plans/finding-to-test-map.md#rob-009"
     },
     {

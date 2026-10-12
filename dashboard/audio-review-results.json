@@ -2,21 +2,25 @@
   "rows": [
     {
       "id": "TTS-911-001",
-      "status": "AUDIO_CAPTURED_REVIEW_PENDING",
+      "status": "FAIL_HUMAN_REVIEW",
       "audio_url": "assets/review/TTS-911-001-19d97312.wav",
       "evidence": "evidence/2026-10-11/audio-review/19d97312/TTS-911-001-result.json",
       "duration_seconds": 14.78,
-      "human_pronunciation_verdict": "NOT_REVIEWED",
-      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI."
+      "human_pronunciation_verdict": "NINE_HUNDRED_AND_ELEVEN",
+      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI.",
+      "human_review_evidence": "evidence/2026-10-12/audio-review/human-review.json",
+      "human_review_recorded_at_utc": "2026-10-12T07:36:31.890016+00:00"
     },
     {
       "id": "TTS-911-002",
-      "status": "AUDIO_CAPTURED_REVIEW_PENDING",
+      "status": "FAIL_HUMAN_REVIEW",
       "audio_url": "assets/review/TTS-911-002-19d97312.wav",
       "evidence": "evidence/2026-10-11/audio-review/19d97312/TTS-911-002-result.json",
       "duration_seconds": 22.51,
-      "human_pronunciation_verdict": "NOT_REVIEWED",
-      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI."
+      "human_pronunciation_verdict": "NINE_HUNDRED_AND_ELEVEN",
+      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI.",
+      "human_review_evidence": "evidence/2026-10-12/audio-review/human-review.json",
+      "human_review_recorded_at_utc": "2026-10-12T07:36:31.890016+00:00"
     },
     {
       "id": "YBB-AUDIO-001",
