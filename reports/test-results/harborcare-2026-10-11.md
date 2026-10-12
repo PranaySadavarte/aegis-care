@@ -35,3 +35,5 @@ Next: approved listener + user call; audio dataset and event timing instrumentat
 No new confirmed SDK vulnerabilities in this milestone. Existing response-body and installer issues unresolved.
 Application limitations: public synthetic codes, in-memory persistence, one-workflow calls and untested adversarial/acoustic behavior. Owner AEGIS application.
 Workarounds: remain synthetic-only; evaluate each boundary before production. Do not call this release-ready healthcare software.
+
+Dashboard QA: updated overview served HTTP 200; ASR page served HTTP 200; pipeline ASR filter returned 2/32 catalog cases; ASR navigation verified in browser. Preview required restart because the prior local server was unavailable. Metric pages contain readiness definitions, not measured scores.
