@@ -36,3 +36,5 @@ No full nightly automation created. Frontend polling reads status only; it does 
 
 ## Next work
 Investigate malformed verification/early hangup; add expected scenario labels per manual call; exercise native roleplay/rubrics on adversarial cases; acquire labeled synthetic audio for WER/CER, latency and interruption metrics. Broad catalog and production service readiness remain incomplete.
+
+Browser verification: Test runs page displayed the actual dashboard-triggered SDK FAIL (16/1), application PASS (17/0), and installer OPEN_FINDINGS. Calls page displayed ten available masked history rows after refresh, including scoped payment metadata. Audit counts are labeled as audit rather than incomplete unit tests. Overview call count now reads the sanitized snapshot instead of retaining an obsolete hardcoded count.

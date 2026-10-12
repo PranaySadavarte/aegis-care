@@ -12,3 +12,4 @@ el("stage").addEventListener("change",render);el("search").addEventListener("inp
 el("export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=url;a.download="aegis-results-"+d.updated+".json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 
 
+fetch("calls.json",{cache:"no-store"}).then(r=>r.json()).then(s=>{d.manual_calls=s;if(el("call-count"))el("call-count").textContent=s.calls.length;}).catch(()=>{if(el("call-count"))el("call-count").textContent="See Calls";});
