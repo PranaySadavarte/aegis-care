@@ -73,10 +73,13 @@ if __name__=="__main__":
     args=argparse.ArgumentParser()
     args.add_argument("--mode",choices=["chat","phone","webrtc"],default="chat")
     options=args.parse_args()
+    from guava import logging_utils
+    logging_utils.configure_logging()
     agent,_=create_agent()
     if options.mode=="phone":
         config=tomllib.loads((Path(__file__).resolve().parents[1]/"harborcare-agent/guava.toml").read_text())
         agent.listen_phone(config["phone_number"])
     elif options.mode=="webrtc": agent.listen_webrtc()
     else: agent.chat()
+
 

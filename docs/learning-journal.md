@@ -40,3 +40,8 @@ A backend authorization gate checks the verified session subject before every se
 Payment idempotency needs both a stable key and matching request fingerprint. The synthetic ledger implements this in process memory, not durable production storage.
 Native Agent.test exercised six happy workflows and a wrong-code denial. Test harness errors must be preserved and separated from SDK/application defects.
 ASR RTF requires isolated recognition processing duration; total agent runtime cannot substitute. Model confidence and rubric pass are different concepts. BERT/ROUGE names remain provisional pending user confirmation.
+
+## 2026-10-11 — Approved inbound registration
+The local Expert registered with Guava via native listen_phone. Registration confirms an available listener but does not establish PSTN/audio quality or successful caller workflow.
+Startup deprecation warnings require tracking independently of actual failures; do not promote them into vulnerabilities.
+User confirmed BERTScore and ROUGE. Scores remain unmeasured.

@@ -74,3 +74,7 @@ Generator validates preserved result counts. SDK-016/017 catalog corrected to PA
 Synthetic agent implemented in agent/harborcare.py and backend/synthetic.py using native SDK APIs. Six workflow paths; 10 corrected functional methods PASS; six hosted happy workflows plus one corrected wrong-code denial PASS. Initial harness errors preserved and attributed to tests.
 PipelineStage/Direction catalog labels and ASR/LLM/robustness dashboard pages added. Metric functions not found in scoped public API are planned via established libraries, not fabricated scores.
 Phone listener was rejected by automatic approval review due to possible live/shared routing impact. No listener started; explicit user approval pending. Full prototype limitations/results in reports/test-results/harborcare-2026-10-11.md.
+
+## Approved phone listener — 2026-10-11
+User approved attachment to configured inbound number; listener registered successfully with zero other registered listeners. See reports/test-results/phone-listener-2026-10-11.md. No completed phone call claimed; awaiting user test.
+BERTScore and ROUGE names confirmed; metric pages regenerated. Startup WebSocket deprecation warning observed without registration failure.

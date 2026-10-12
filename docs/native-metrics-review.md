@@ -17,6 +17,7 @@ ASR RTF = isolated recognition processing time / audio duration. Hosted whole-ag
 Intent accuracy = correctly routed labeled intents / labeled intent trials. No calibrated confidence exposed in reviewed public API; do not turn rubric pass into confidence.
 Failure/fallback rates require predefined terminal failure and fallback events and denominators, split by fault cause.
 Latency distribution requires event boundary definition, clock alignment and p50/p95/p99 with sample size; process duration is separate.
-BERTScore/ROUGE (provisional interpretation of BET/Rogue) need reference answers and evaluator configuration; similarity does not prove authorization, medical correctness or groundedness.
+BERTScore/ROUGE (confirmed by user) need reference answers and evaluator configuration; similarity does not prove authorization, medical correctness or groundedness.
 Robustness: malformed events/inputs, accents, dialects, noise, echoes, interruption/overlap, silence, disconnects, identity switching and injection. Text trials cannot measure accent/dialect/audio behavior.
+
 

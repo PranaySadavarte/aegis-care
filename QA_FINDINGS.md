@@ -85,3 +85,6 @@ Dashboard milestone: installer control gaps remain unresolved and separate from 
 Application scope limitations, AEGIS owner: public demo identity codes; process-memory records/ledger; single-workflow call; only booking, not reschedule/cancel; adversarial/audio and production protections incomplete.
 SDK/installer findings remain unresolved; no new SDK vulnerability demonstrated.
 Phone attachment blocked by automatic approval review; routing unchanged. Report contains precise rejection and pending approval.
+
+Phone milestone: approved listener registration confirmed; zero other listeners reported. Previous no-answer symptom not yet confirmed resolved until a user call succeeds.
+QA-012: observed WebSocket connect() deprecation warning during SDK 0.47.0 startup; registration succeeded. Compatibility observation, not proven defect/vulnerability. Preserve warning for dependency/runtime review.
