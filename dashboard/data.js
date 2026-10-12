@@ -79,7 +79,9 @@ window.AEGIS_DATA = {
       "Workaround": "Use separate locked target environment",
       "Status": "PARTIAL",
       "Component": "CLI and Python SDK",
-      "InstallationMethodScope": "UV-SDK; DIRECT-CLI; original CLI route UNKNOWN"
+      "InstallationMethodScope": "UV-SDK; DIRECT-CLI; original CLI route UNKNOWN",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-002",
@@ -93,7 +95,9 @@ window.AEGIS_DATA = {
       "Workaround": "Propose vendor signed artifacts and authenticated verification",
       "Status": "PARTIAL",
       "Component": "Windows CLI / installer",
-      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN"
+      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-003",
@@ -107,7 +111,9 @@ window.AEGIS_DATA = {
       "Workaround": "Redact at source; restrict credential storage",
       "Status": "PARTIAL_FAIL",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-004",
@@ -121,7 +127,9 @@ window.AEGIS_DATA = {
       "Workaround": "Fail closed; rotate affected credentials",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-005",
@@ -135,7 +143,9 @@ window.AEGIS_DATA = {
       "Workaround": "Scope resource access and backend authorization",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-006",
@@ -149,7 +159,9 @@ window.AEGIS_DATA = {
       "Workaround": "Enforce secure endpoints; no verification bypass",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-007",
@@ -163,7 +175,9 @@ window.AEGIS_DATA = {
       "Workaround": "Bound and validate inputs at boundary",
       "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-008",
@@ -177,7 +191,9 @@ window.AEGIS_DATA = {
       "Workaround": "Use timeouts; catch errors; safe fallback",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-009",
@@ -191,7 +207,9 @@ window.AEGIS_DATA = {
       "Workaround": "Avoid global mutable patient state",
       "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-010",
@@ -205,7 +223,9 @@ window.AEGIS_DATA = {
       "Workaround": "Deduplicate app mutations using transaction IDs",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-011",
@@ -219,7 +239,9 @@ window.AEGIS_DATA = {
       "Workaround": "Pin supported fixed release after compatibility checks",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-012",
@@ -233,7 +255,9 @@ window.AEGIS_DATA = {
       "Workaround": "Use demonstrated supported runtime",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "APP-001",
@@ -245,9 +269,11 @@ window.AEGIS_DATA = {
       "Owner": "AEGIS application",
       "Evidence": "Backend access trace; state assertions",
       "Workaround": "Central authorization gate on every sensitive action",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-002",
@@ -259,9 +285,11 @@ window.AEGIS_DATA = {
       "Owner": "AEGIS application",
       "Evidence": "Conversation and backend denial trace",
       "Workaround": "Bind verified subject to session and request",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-003",
@@ -275,7 +303,9 @@ window.AEGIS_DATA = {
       "Workaround": "Enforce backend checks outside model decisions",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-004",
@@ -287,9 +317,11 @@ window.AEGIS_DATA = {
       "Owner": "AEGIS application",
       "Evidence": "API contract and mutation ledger",
       "Workaround": "Idempotency keys and conflict handling",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-005",
@@ -301,9 +333,11 @@ window.AEGIS_DATA = {
       "Owner": "AEGIS application",
       "Evidence": "Fixtures; API response; semantic rubric",
       "Workaround": "Explicit unavailable/unknown fallback",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-006",
@@ -315,9 +349,11 @@ window.AEGIS_DATA = {
       "Owner": "AEGIS application",
       "Evidence": "Ledger; fault timing; redacted events",
       "Workaround": "Authorize separately; idempotent transaction and reconciliation",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-007",
@@ -331,7 +367,9 @@ window.AEGIS_DATA = {
       "Workaround": "Avoid voice credential collection; secure hosted payment flow later",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "APP-008",
@@ -345,7 +383,9 @@ window.AEGIS_DATA = {
       "Workaround": "Track disclosure state; repeat or safely stop",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "Business logic / authorization / mock APIs",
+      "Direction": "Inbound prototype; outbound planned"
     },
     {
       "ID": "AUD-001",
@@ -359,7 +399,9 @@ window.AEGIS_DATA = {
       "Workaround": "Confirm critical fields; repeat or alternate channel",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "ASR / endpointing / TTS / audio transport",
+      "Direction": "Inbound and outbound planned"
     },
     {
       "ID": "AUD-002",
@@ -373,7 +415,9 @@ window.AEGIS_DATA = {
       "Workaround": "Tune supported controls after documentation review",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "ASR / endpointing / TTS / audio transport",
+      "Direction": "Inbound and outbound planned"
     },
     {
       "ID": "E2E-001",
@@ -387,7 +431,9 @@ window.AEGIS_DATA = {
       "Workaround": "Reduce failure to text/mock or retain acoustic repro",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "End-to-end / operations",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "CAN-001",
@@ -401,7 +447,9 @@ window.AEGIS_DATA = {
       "Workaround": "Pause rollout on agreed failure thresholds",
       "Status": "NOT_RUN",
       "Component": "AEGIS application / hosted voice",
-      "InstallationMethodScope": "NOT_APPLICABLE"
+      "InstallationMethodScope": "NOT_APPLICABLE",
+      "PipelineStage": "End-to-end / operations",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-013",
@@ -415,7 +463,9 @@ window.AEGIS_DATA = {
       "Workaround": "Use user-writable isolated destination and documented prerequisites",
       "Status": "NOT_RUN",
       "Component": "Windows CLI / installer",
-      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN"
+      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-014",
@@ -429,7 +479,9 @@ window.AEGIS_DATA = {
       "Workaround": "Atomic replace and retained prior artifact; no destructive live test",
       "Status": "NOT_RUN",
       "Component": "Windows CLI / installer",
-      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN"
+      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-015",
@@ -443,7 +495,9 @@ window.AEGIS_DATA = {
       "Workaround": "Document validated steps and version-specific corrections",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-016",
@@ -457,7 +511,9 @@ window.AEGIS_DATA = {
       "Workaround": "Boundary validation and minimal reproduction",
       "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-017",
@@ -471,7 +527,9 @@ window.AEGIS_DATA = {
       "Workaround": "Prefer deterministic checks; human review for ambiguous grading",
       "Status": "PARTIAL",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-018",
@@ -485,7 +543,9 @@ window.AEGIS_DATA = {
       "Workaround": "Use verified combination; preserve original scaffold",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-019",
@@ -499,7 +559,9 @@ window.AEGIS_DATA = {
       "Workaround": "Explicit cleanup and startup validation",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     },
     {
       "ID": "SDK-020",
@@ -513,8 +575,52 @@ window.AEGIS_DATA = {
       "Workaround": "Separate readiness from liveness; redact diagnostics",
       "Status": "NOT_RUN",
       "Component": "Python SDK / hosted interfaces",
-      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested",
+      "PipelineStage": "SDK / installation / transport",
+      "Direction": "Both / shared infrastructure"
     }
   ],
-  "hosted_seconds": 8.062000000150874
+  "hosted_seconds": 8.062000000150874,
+  "harborcare_runs": [
+    {
+      "workflow": "appointments",
+      "status": "PASS",
+      "process_seconds": 15.358999999938533
+    },
+    {
+      "workflow": "billing",
+      "status": "PASS",
+      "process_seconds": 12.328999999910593
+    },
+    {
+      "workflow": "claims",
+      "status": "PASS",
+      "process_seconds": 30.70299999997951
+    },
+    {
+      "workflow": "denied",
+      "status": "PASS",
+      "process_seconds": 9.405999999959022
+    },
+    {
+      "workflow": "eligibility",
+      "status": "PASS",
+      "process_seconds": 29.343000000109896
+    },
+    {
+      "workflow": "identity",
+      "status": "PASS",
+      "process_seconds": 12.766000000061467
+    },
+    {
+      "workflow": "payments",
+      "status": "PASS",
+      "process_seconds": 15.405999999959022
+    }
+  ],
+  "functional": {
+    "test_methods": 10,
+    "passed": 10,
+    "workflow_subcases": 6
+  }
 };

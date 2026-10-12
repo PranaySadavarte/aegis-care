@@ -79,3 +79,9 @@ Current docs' DocumentQA namespace warning added to test planning; not reproduce
 Hosted results: native Agent.test completed twice; second exact field/termination assertions passed. This establishes live text test viability, not phone routing or authorization security. Detailed evidence and KPI limitations in reports/test-results/hosted-smoke-2026-10-11.md.
 
 Dashboard milestone: installer control gaps remain unresolved and separate from unit-test failure count. Healthcare implementation and phone/audio KPIs remain pending. Browser search/filter/export validated; no vulnerability fix or SDK test executed during this milestone.
+
+## Application milestone — 2026-10-11
+10 corrected functional test methods PASS; seven corrected hosted scenarios PASS. Initial claims assertion type error and wrong-code extra-turn wait were harness defects, corrected with original evidence preserved.
+Application scope limitations, AEGIS owner: public demo identity codes; process-memory records/ledger; single-workflow call; only booking, not reschedule/cancel; adversarial/audio and production protections incomplete.
+SDK/installer findings remain unresolved; no new SDK vulnerability demonstrated.
+Phone attachment blocked by automatic approval review; routing unchanged. Report contains precise rejection and pending approval.

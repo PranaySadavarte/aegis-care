@@ -69,3 +69,8 @@ Hosted transition outcome: two synthetic live text runs completed; second assert
 ## Dashboard milestone — 2026-10-11
 Local dashboard: dashboard/index.html (preview http://127.0.0.1:8765/dashboard/). Sanitized snapshot with actual results, unresolved installer findings, coverage filters, JSON export and report links; no external hosting or live monitoring.
 Generator validates preserved result counts. SDK-016/017 catalog corrected to PARTIAL for existing executed subchecks; no new SDK tests. See dashboard/README.md for refresh and scope limitations.
+
+## HarborCare implementation / pipeline-stage milestone — 2026-10-11
+Synthetic agent implemented in agent/harborcare.py and backend/synthetic.py using native SDK APIs. Six workflow paths; 10 corrected functional methods PASS; six hosted happy workflows plus one corrected wrong-code denial PASS. Initial harness errors preserved and attributed to tests.
+PipelineStage/Direction catalog labels and ASR/LLM/robustness dashboard pages added. Metric functions not found in scoped public API are planned via established libraries, not fabricated scores.
+Phone listener was rejected by automatic approval review due to possible live/shared routing impact. No listener started; explicit user approval pending. Full prototype limitations/results in reports/test-results/harborcare-2026-10-11.md.

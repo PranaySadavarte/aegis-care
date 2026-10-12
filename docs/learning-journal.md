@@ -34,3 +34,9 @@ Hosted Agent.test now executed successfully; added stable extracted-field and te
 
 ## 2026-10-11 — Results dashboard
 A test pass count is not a count of resolved findings. Static installer observations, hypotheses and unexecuted coverage require separate views. A snapshot dashboard must label freshness and cannot imply continuous monitoring.
+
+## 2026-10-11 — HarborCare and stage-specific evaluation
+A backend authorization gate checks the verified session subject before every sensitive read or mutation; model field extraction does not itself grant access.
+Payment idempotency needs both a stable key and matching request fingerprint. The synthetic ledger implements this in process memory, not durable production storage.
+Native Agent.test exercised six happy workflows and a wrong-code denial. Test harness errors must be preserved and separated from SDK/application defects.
+ASR RTF requires isolated recognition processing duration; total agent runtime cannot substitute. Model confidence and rubric pass are different concepts. BERT/ROUGE names remain provisional pending user confirmation.
