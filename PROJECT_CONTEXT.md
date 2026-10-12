@@ -84,3 +84,7 @@ User live calls repeatedly failed verification; four accepted call sessions visi
 Easy synthetic credentials 1001/4242 added; legacy credentials preserved; bounded formatting normalization added. Corrected suite 12/12 functional methods PASS. Updated approved phone listener running; native local-audio mode ready, not launched. Local/WebRTC usage cannot be assumed free.
 
 Numeric credentials also passed one hosted text billing test (exit 0); live audio verification still awaits user retest.
+
+## Per-call history — 2026-10-11
+Dashboard now displays individual native inbound conversation records and on-demand refresh. Four historical records recovered; transcripts report verification denial; outcomes unscored. Timestamp timezone unknown in CLI display.
+Future approved listener now records masked start/finish/end outcomes locally; no credentials or transcript in dashboard. No new live call evaluated during this instrumentation milestone.

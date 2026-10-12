@@ -49,3 +49,7 @@ User confirmed BERTScore and ROUGE. Scores remain unmeasured.
 ## 2026-10-11 — Voice-friendly credentials
 Text correctness and spoken usability differ. Defined format normalization is safer than fuzzy credential matching; wrong digits still reject. Logs without entered values protect privacy but limit ASR root-cause attribution.
 call_local means local microphone/speakers with hosted WebRTC, not local model inference or necessarily free usage. Offline backend tests are the known no-hosted-call path.
+
+## 2026-10-11 — Call outcomes versus test grades
+A completed call or transcript denial is an observation. Pass/fail requires a known expected scenario: rejecting a wrong code may be correct, while rejecting a correct code is a defect.
+Native conversation records can reconstruct past calls, but precise application outcomes are easier to capture at the Expert callback. Mask identifiers and omit credentials; retain raw originals locally for attribution.

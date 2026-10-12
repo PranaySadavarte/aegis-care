@@ -8,16 +8,18 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import guava
 from backend.synthetic import SyntheticBackend, AccessDenied, Conflict
 
-def create_agent(backend=None, outcomes=None):
+def create_agent(backend=None, outcomes=None, recorder=None):
     backend=backend or SyntheticBackend()
     agent=guava.Agent(name="HarborCare",organization="AEGIS Care Synthetic Lab",
                       purpose="Handle synthetic healthcare administrative workflows.")
     def finish(call, result):
+        if recorder: recorder(call,"finished",{"workflow":call.get_field("workflow") or "verification","result_status":result.get("status","returned") if isinstance(result,dict) else "returned"})
         if outcomes is not None: outcomes.append(result)
         call.set_variable("qa_result",result)
         call.hangup("Read this synthetic result accurately, explain that no real healthcare or payment action occurred, then end: "+json.dumps(result))
     @agent.on_call_start
     def start(call):
+        if recorder: recorder(call,"started")
         call.set_task("verify",objective="Explain this is a synthetic test. Verify the synthetic patient before discussing records. Do not request real personal or payment details.",
                        checklist=[guava.Say("Welcome to HarborCare. This is a synthetic test, not medical advice or a real payment service."),
                                   guava.Field(key="patient_id",description="Collect synthetic patient ID as digits, such as 1001. Legacy HC-prefixed IDs also work."),
@@ -67,7 +69,9 @@ def create_agent(backend=None, outcomes=None):
     def question(call, question):
         return "This synthetic prototype supports administrative test workflows only. It cannot provide medical advice or collect real payment credentials."
     @agent.on_session_end
-    def ended(call, event): backend.close(call.id)
+    def ended(call, event):
+        if recorder: recorder(call,"ended",{"termination":event.termination_reason})
+        backend.close(call.id)
     return agent, backend
 
 if __name__=="__main__":
@@ -77,13 +81,16 @@ if __name__=="__main__":
     options=args.parse_args()
     from guava import logging_utils
     logging_utils.configure_logging()
-    agent,_=create_agent()
+    from backend.call_journal import CallJournal
+    journal=CallJournal(Path(__file__).resolve().parents[1]/"evidence/2026-10-11/call-history/manual-events.jsonl")
+    agent,_=create_agent(recorder=journal)
     if options.mode=="phone":
         config=tomllib.loads((Path(__file__).resolve().parents[1]/"harborcare-agent/guava.toml").read_text())
         agent.listen_phone(config["phone_number"])
     elif options.mode=="webrtc": agent.listen_webrtc()
     elif options.mode=="local": agent.call_local()
     else: agent.chat()
+
 
 
 

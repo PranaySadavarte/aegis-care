@@ -93,3 +93,6 @@ QA-013: application verification usability. Exact-match-only credential handling
 Initial normalization escaping bug caught and corrected before listener restart; raw initial failures retained.
 Four accepted PSTN sessions observed; no successful healthcare phone workflow claimed. Local microphone/WebRTC mode uses hosted service; metering unknown.
 WebRTC helper checksum path found by static review; distinct from unresolved CLI installer checksum/AuthentiCode gaps.
+
+QA-014: observability gap, AEGIS application. Manual calls were absent from snapshot dashboard; added native conversation import and masked per-call outcome journal. Four historical denial records recovered, not automatically graded. Refresh latest 30 records is on demand; no historical pagination/full recording viewer yet.
+12 functional regression methods PASS; live validation of newly added recorder awaits another call. Raw originals retained.

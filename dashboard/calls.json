@@ -1,0 +1,50 @@
+{
+  "refreshed_at_utc": "2026-10-12T01:26:06.064413+00:00",
+  "calls": [
+    {
+      "call": "call-a254a68f91",
+      "platform_time": "2026-10-12 01:02",
+      "timezone": "Not specified by CLI output",
+      "duration": "0:43",
+      "direction": "inbound",
+      "workflow": "Not established",
+      "outcome": "Transcript reports verification denial",
+      "grade": "Unscored \u2014 expected scenario not recorded",
+      "evidence": "Native Guava conversation list; locally preserved transcript"
+    },
+    {
+      "call": "call-0ee4e6fdc8",
+      "platform_time": "2026-10-12 01:01",
+      "timezone": "Not specified by CLI output",
+      "duration": "0:42",
+      "direction": "inbound",
+      "workflow": "Not established",
+      "outcome": "Transcript reports verification denial",
+      "grade": "Unscored \u2014 expected scenario not recorded",
+      "evidence": "Native Guava conversation list; locally preserved transcript"
+    },
+    {
+      "call": "call-7758c6e180",
+      "platform_time": "2026-10-12 00:56",
+      "timezone": "Not specified by CLI output",
+      "duration": "0:36",
+      "direction": "inbound",
+      "workflow": "Not established",
+      "outcome": "Transcript reports verification denial",
+      "grade": "Unscored \u2014 expected scenario not recorded",
+      "evidence": "Native Guava conversation list; locally preserved transcript"
+    },
+    {
+      "call": "call-0311092530",
+      "platform_time": "2026-10-12 00:55",
+      "timezone": "Not specified by CLI output",
+      "duration": "0:40",
+      "direction": "inbound",
+      "workflow": "Not established",
+      "outcome": "Transcript reports verification denial",
+      "grade": "Unscored \u2014 expected scenario not recorded",
+      "evidence": "Native Guava conversation list; locally preserved transcript"
+    }
+  ],
+  "note": "At most 30 inbound records for the configured number since 2026-10-11. Empty/missing records do not prove no call attempt. No transcripts or phone numbers embedded."
+}
