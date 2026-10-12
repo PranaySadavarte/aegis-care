@@ -15,6 +15,7 @@ el("export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blo
 fetch("calls.json",{cache:"no-store"}).then(r=>r.json()).then(s=>{d.manual_calls=s;if(el("call-count"))el("call-count").textContent=s.calls.length;}).catch(()=>{if(el("call-count"))el("call-count").textContent="See Calls";});
 
 fetch("metrics-snapshot.json",{cache:"no-store"}).then(r=>r.json()).then(m=>{
+if (el("functional-summary")) el("functional-summary").textContent = m.functional.passed + "/" + m.functional.total + " application regression methods passed. Separate defect-discovery failures are shown on their own page.";
 const rows=[["Application tests",m.functional.passed+"/"+m.functional.total],
 ["ASR WER (one synthetic clip)",(m.asr.WER*100).toFixed(2)+"%"],
 ["ASR CER (same clip)",(m.asr.CER*100).toFixed(2)+"%"],

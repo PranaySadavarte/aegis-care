@@ -1,7 +1,7 @@
 {
-  "run_id": "20261012T030048Z-fe905f",
+  "run_id": "20261012T032131Z-be98e6",
   "suite": "offline",
-  "started_at_utc": "2026-10-12T03:00:48.162977+00:00",
+  "started_at_utc": "2026-10-12T03:21:31.799065+00:00",
   "status": "FAIL",
   "groups": [
     {
@@ -10,15 +10,15 @@
       "exit_code": 1,
       "total": 16,
       "failed": 1,
-      "duration_seconds": 0.578
+      "duration_seconds": 0.484
     },
     {
       "group": "Application functional",
       "status": "PASS",
       "exit_code": 0,
-      "total": 26,
+      "total": 32,
       "failed": 0,
-      "duration_seconds": 0.641
+      "duration_seconds": 0.609
     },
     {
       "group": "Installer source audit",
@@ -26,12 +26,12 @@
       "exit_code": 0,
       "total": null,
       "failed": null,
-      "duration_seconds": 0.828,
+      "duration_seconds": 0.719,
       "observations": {
         "explicit_hash_check": false,
         "explicit_signature_check": false
       }
     }
   ],
-  "completed_at_utc": "2026-10-12T03:00:50.213616+00:00"
+  "completed_at_utc": "2026-10-12T03:21:33.639715+00:00"
 }

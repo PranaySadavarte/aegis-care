@@ -1,0 +1,71 @@
+[
+  {
+    "id": "clean-control",
+    "path": "fixtures/audio/robustness/clean-control.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Clean paired control",
+    "seed": 47,
+    "sample_rate": 16000,
+    "duration_seconds": 17.725,
+    "global_gain": 1,
+    "sha256": "78add89bcb59907a501707590c0fa0da49e0ac6600f101dffa8519e8e139d138"
+  },
+  {
+    "id": "noise-20db",
+    "path": "fixtures/audio/robustness/noise-20db.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Additive Gaussian noise",
+    "seed": 47,
+    "sample_rate": 16000,
+    "duration_seconds": 17.725,
+    "global_gain": 1,
+    "sha256": "dbf8a8a9c49dbbd86d108371c8228ecfc585a1e75c85e58644deb4de6e6a33bb",
+    "measured_prequantization_snr_db": 20.0
+  },
+  {
+    "id": "noise-10db",
+    "path": "fixtures/audio/robustness/noise-10db.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Additive Gaussian noise",
+    "seed": 47,
+    "sample_rate": 16000,
+    "duration_seconds": 17.725,
+    "global_gain": 0.987644000270245,
+    "sha256": "97c1a982d7b854d990091b91bd5bba94d618dc4371ed2d9f4f800aaff983b515",
+    "measured_prequantization_snr_db": 10.0
+  },
+  {
+    "id": "noise-0db",
+    "path": "fixtures/audio/robustness/noise-0db.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Additive Gaussian noise",
+    "seed": 47,
+    "sample_rate": 16000,
+    "duration_seconds": 17.725,
+    "global_gain": 0.8972789579257692,
+    "sha256": "14df0940ee7c700dc77d9cb49fdd00b7842ee778786c62c6fc9ea92f9a8c6870",
+    "measured_prequantization_snr_db": 9.64327466553287e-16
+  },
+  {
+    "id": "delayed-echo",
+    "path": "fixtures/audio/robustness/delayed-echo.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Caller delayed copy, 180 ms, gain 0.65; reverberation proxy, not speaker AEC test",
+    "seed": 47,
+    "sample_rate": 16000,
+    "duration_seconds": 17.725,
+    "global_gain": 0.9458121578855134,
+    "sha256": "298eb7fcaf82fb09245be5f2813f63954124ea6966215330daaafca78e83fa3e"
+  },
+  {
+    "id": "agent-speech-overlap",
+    "path": "fixtures/audio/robustness/agent-speech-overlap.wav",
+    "reference_text": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "condition": "Recorded agent greeting mixed with caller at gain0.6; single-channel contamination, not live barge-in",
+    "seed": 47,
+    "sample_rate": 16000,
+    "duration_seconds": 17.725,
+    "global_gain": 1,
+    "sha256": "fd429f2255eeeb369bf14f12edf8005bf1f6ea2c683c11cf6226549ab491931a"
+  }
+]

@@ -21,3 +21,5 @@ BERTScore/ROUGE (confirmed by user) need reference answers and evaluator configu
 Robustness: malformed events/inputs, accents, dialects, noise, echoes, interruption/overlap, silence, disconnects, identity switching and injection. Text trials cannot measure accent/dialect/audio behavior.
 
 
+
+Update October11:Agent.test_audio and caller-speech callbacks actually executed;Jiwer4.0.0 and pinnedNumPy/SoundFile used. Native sensitivePAN/CVV and vital fields exercised in isolated hosted text probes. TestSession.evaluate observed falsePASS and apparentfalseFAIL; exact safety guards added. Historical statements above are milestone-scoped, not current NOT_RUN status. See robustness assessment for measured results and unverified production redaction/AEC/RTF.
