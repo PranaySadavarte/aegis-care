@@ -1,0 +1,16 @@
+[
+  {
+    "id": "librispeech-test-other-1688-142285-0007",
+    "path": "fixtures/audio/public/librispeech-1688-142285-0007.wav",
+    "reference_text": "i really was very much afraid of showing him how much shocked i was at some parts of what he said",
+    "source_audio": "https://download.pytorch.org/torchaudio/tutorial-assets/ctc-decoding/1688-142285-0007.wav",
+    "source_repository": "https://github.com/pytorch/audio/blob/v2.8.0/examples/tutorials/asr_inference_with_ctc_decoder_tutorial.py",
+    "reference_source": "https://docs.pytorch.org/audio/2.8.0/tutorials/asr_inference_with_ctc_decoder_tutorial.html",
+    "dataset": "LibriSpeech test-other",
+    "license": "CC BY 4.0",
+    "license_source": "https://www.openslr.org/12/",
+    "sha256": "67dfc27041e572bea27936e75eedc542ccf6f3af5cc251a0ab4e1e947d787fc8",
+    "status": "DOWNLOADED_NOT_SCORED",
+    "scope": "Public read speech; not healthcare intent or a representative accent/dialect benchmark"
+  }
+]

@@ -22,7 +22,7 @@ class Handler(SimpleHTTPRequestHandler):
             if length<1 or length>1024: raise ValueError()
             request=json.loads(self.rfile.read(length))
             suite=request.get("suite")
-            if suite not in ("offline","hosted","security","audio","adversarial","robustness","all"):raise ValueError()
+            if suite not in ("offline","hosted","security","audio","adversarial","robustness","kpi","all"):raise ValueError()
             with lock:
                 state_path=root/"dashboard/run-status.json"
                 state=json.loads(state_path.read_text()) if state_path.exists() else {}

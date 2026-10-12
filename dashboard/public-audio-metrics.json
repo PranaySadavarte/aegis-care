@@ -1,0 +1,57 @@
+{
+  "dataset": "LibriSpeech test-other",
+  "sample_id": "librispeech-test-other-1688-142285-0007",
+  "source_sha256": "67dfc27041e572bea27936e75eedc542ccf6f3af5cc251a0ab4e1e947d787fc8",
+  "license": "CC BY 4.0",
+  "rows": [
+    {
+      "condition": "clean",
+      "reference": "i really was very much afraid of showing him how much shocked i was at some parts of what he said",
+      "hypothesis": "I really was very much afraid of showing him how much shocked I was at some parts of what he said.",
+      "WER": 0.0,
+      "CER": 0.0,
+      "word_edits": 0,
+      "reference_words": 21,
+      "char_edits": 0,
+      "reference_chars": 97,
+      "speech_events": 1,
+      "signal_duration_seconds": 7.06,
+      "process_seconds": 18.843999999808148,
+      "gain": 1,
+      "scope": "One LibriSpeech test-other read-speech clip; conditions paired. No accent representativeness or audible turn timing claim."
+    },
+    {
+      "condition": "noise0db",
+      "reference": "i really was very much afraid of showing him how much shocked i was at some parts of what he said",
+      "hypothesis": "I really was very much afraid of showing him how much shopper I was at some part of what he said.",
+      "WER": 0.09523809523809523,
+      "CER": 0.041237113402061855,
+      "word_edits": 2,
+      "reference_words": 21,
+      "char_edits": 4,
+      "reference_chars": 97,
+      "speech_events": 1,
+      "signal_duration_seconds": 7.06,
+      "process_seconds": 18.561999999918044,
+      "gain": 1,
+      "scope": "One LibriSpeech test-other read-speech clip; conditions paired. No accent representativeness or audible turn timing claim."
+    },
+    {
+      "condition": "echo180ms",
+      "reference": "i really was very much afraid of showing him how much shocked i was at some parts of what he said",
+      "hypothesis": "I really was very much afraid of showing him how much shock I was at some part of what he said.",
+      "WER": 0.09523809523809523,
+      "CER": 0.030927835051546393,
+      "word_edits": 2,
+      "reference_words": 21,
+      "char_edits": 3,
+      "reference_chars": 97,
+      "speech_events": 1,
+      "signal_duration_seconds": 7.06,
+      "process_seconds": 18.563000000081956,
+      "gain": 1,
+      "scope": "One LibriSpeech test-other read-speech clip; conditions paired. No accent representativeness or audible turn timing claim."
+    }
+  ],
+  "scope": "Three conditions on one human recording, not3 independent speakers"
+}

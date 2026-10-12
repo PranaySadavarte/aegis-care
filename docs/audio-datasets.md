@@ -1,0 +1,14 @@
+# Audio data, provenance and challenging inputs
+
+Current inputs:
+- fixtures/audio/manifest.json:12 syntheticSAPI clean/noise/silence/padded assets.
+- fixtures/audio/robustness/manifest.json:6 paired verification conditions, seededNumPy Gaussian noise20/10/0dB,180ms delayed caller copy gain0.65, and recorded-agent greeting overlap gain0.6. Seven probes ran including one echo repeat.
+- fixtures/audio/public/manifest.json:one real LibriSpeechtest-other recording from the official [TorchAudio GitHub tutorial](https://github.com/pytorch/audio/blob/v2.8.0/examples/tutorials/asr_inference_with_ctc_decoder_tutorial.py). Its official transcript, download URL, SHA256 and [CC BY4.0 dataset provenance](https://www.openslr.org/12/) are preserved. Clean,0dBnoise and180msecho conditions actually ran.
+
+Noise generation:draw a seeded Gaussian noise vector; scale RMS so10log10(speech power/noise power) equals the target SNR. Mix speech+noise and, where needed, apply a common global gain to prevent clipping. SoundFile writes16kHz monoPCM16. Store seed, intended/measured SNR, gain and file hash. This is stationary artificial noise, not a substitute for babble, room or traffic recordings.
+
+Echo generation:mix caller speech with a delayed/scaled copy. The recorded-agent overlap fixture mixes a known TTS recording into caller speech. Both are single-channel contamination probes. They do not demonstrate actual acoustic echo cancellation or live interruptions. PhysicalAEC needs a time-aligned speaker reference, microphone capture and duplex transport. Simply ignoring repeated transcript strings can discard legitimate caller repetition/consent.
+
+Expansion candidates (not downloaded/tested here): [MUSAN](https://www.openslr.org/17/) for real environmental/speech/music noise with attribution; [Speech Commands maintained by TensorFlow](https://github.com/tensorflow/datasets/blob/master/docs/catalog/speech_commands.md) for short yes/no/digit words, not long healthcare conversation; broader LibriSpeech clean/other selections for multiple speakers. Review per-file licenses/transcripts, preserve official splits and choose reproducible hashes. A repository containing recordings alone is not sufficient ground truth; labels and provenance are required.
+
+Next conditions:nonstationary noise, clipping, codec/packet loss, strong/weak echoes at several delays, voice overlap at controlled timings, accents/dialects with verified metadata and consent/license, malformed spoken numbers and actual interruption recovery. Public read speech does not validate healthcare intent or representative dialect accuracy.

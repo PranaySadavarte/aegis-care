@@ -1,0 +1,32 @@
+{
+  "correct": 4,
+  "total": 6,
+  "rows": [
+    {
+      "workflow": "identity",
+      "status": "FAIL"
+    },
+    {
+      "workflow": "eligibility",
+      "status": "PASS"
+    },
+    {
+      "workflow": "claims",
+      "status": "PASS"
+    },
+    {
+      "workflow": "appointments",
+      "status": "PASS"
+    },
+    {
+      "workflow": "billing",
+      "status": "FAIL"
+    },
+    {
+      "workflow": "payments",
+      "status": "PASS"
+    }
+  ],
+  "scope": "One labeled paraphrase per workflow, native Agent.test and actual Expert completion; no unsupported or multi-intent cases",
+  "profile_loaded": "docs/agent-profile at process start"
+}

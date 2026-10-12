@@ -10,10 +10,15 @@ from backend.synthetic import SyntheticBackend, AccessDenied, Conflict
 
 def create_agent(backend=None, outcomes=None, recorder=None):
     backend=backend or SyntheticBackend()
+    from agent.profile import load_profile
+    profile=load_profile()
+    def assign_task(call,*args,**kwargs):
+        kwargs["objective"]=kwargs.get("objective","")+"\n"+"\n".join(profile[key] for key in ("scope","safety","verification","payments"))
+        call.set_task(*args,**kwargs)
     from guava.helpers.llm import IntentRecognizer
     identity_intents=IntentRecognizer({"switch_patient":"Caller changes their identity or requests a different patient account; fresh verification is required."})
     agent=guava.Agent(name="HarborCare",organization="HarborCare",
-                      purpose="Help callers with healthcare administration.")
+                      purpose=profile["persona"])
     def finish(call, result):
         if recorder: recorder(call,"finished",{"workflow":call.get_field("workflow") or "verification","result_status":result.get("status","returned") if isinstance(result,dict) else "returned","verified":call.id in backend.authorized})
         if outcomes is not None: outcomes.append(result)
@@ -37,7 +42,7 @@ def create_agent(backend=None, outcomes=None, recorder=None):
     @agent.on_call_start
     def start(call):
         if recorder: recorder(call,"started")
-        call.set_task("verify",objective="Welcome the caller. Mention demo data once, briefly. Verify identity before discussing records. Never request real personal or card details.",
+        assign_task(call,"verify",objective="Welcome the caller. Mention demo data once, briefly. Verify identity before discussing records. Never request real personal or card details.",
                        checklist=[guava.Say("Welcome to HarborCare. This demo uses sample records. I can help with your coverage, claims, appointments, or account."),
                                   guava.Field(key="patient_id",description="Collect synthetic patient ID as digits, such as 1001. Legacy HC-prefixed IDs also work."),
                                   guava.Field(key="verification_code",description="Collect the four-digit synthetic verification code as digits, preserving zeros. Do not guess or disclose a code. Legacy DEMO-prefixed codes also work.",sensitive=True)])
@@ -47,7 +52,7 @@ def create_agent(backend=None, outcomes=None, recorder=None):
             logging.getLogger("harborcare").info("Synthetic verification denied; exact accepted credentials did not match. No credential values logged.")
             finish(call,{"status":"denied","message":"Synthetic verification failed."})
             return
-        call.set_task("choose",objective="Ask how you can help with coverage, claims, appointments, billing or a demo payment. Use the matching workflow without naming internal test labels.",
+        assign_task(call,"choose",objective="Ask how you can help with coverage, claims, appointments, billing or a demo payment. Use the matching workflow without naming internal test labels.",
                        checklist=[guava.Field(key="workflow",field_type="multiple_choice",
                          choices=["identity","eligibility","claims","appointments","billing","payments"],
                          description="Choose one workflow for this call.")])
@@ -61,11 +66,11 @@ def create_agent(backend=None, outcomes=None, recorder=None):
             elif workflow=="appointments":
                 available=backend.read(call.id,"appointments")["available"]
                 if not available: finish(call,{"status":"no_slots"}); return
-                call.set_task("book",objective="Book one of the available synthetic appointment slots.",
+                assign_task(call,"book",objective="Book one of the available synthetic appointment slots.",
                                checklist=[guava.Field(key="slot",field_type="multiple_choice",choices=available)])
             elif workflow=="payments":
                 balance=backend.read(call.id,"billing")["balance_cents"]
-                call.set_task("pay",objective="Simulate payment only. Never collect card numbers. Current synthetic balance in cents: "+str(balance),
+                assign_task(call,"pay",objective="Simulate payment only. Never collect card numbers. Current synthetic balance in cents: "+str(balance),
                                checklist=[guava.Field(key="amount_cents",field_type="integer",description="Positive whole cents, no greater than the synthetic balance."),
                                           guava.Field(key="simulation_consent",field_type="multiple_choice",choices=["yes","no"],
                                                       description="Explicit consent to a simulated payment only.")])
@@ -92,18 +97,18 @@ def create_agent(backend=None, outcomes=None, recorder=None):
     @agent.on_action("switch_patient")
     def switch_patient(call):
         backend.close(call.id)
-        call.set_task("switch_verify",objective="Explain that access to a different account requires fresh verification. Do not reuse the earlier code.",
+        assign_task(call,"switch_verify",objective="Explain that access to a different account requires fresh verification. Do not reuse the earlier code.",
                       checklist=[guava.Field(key="new_patient_id",description="The different patient ID."),
                                  guava.Field(key="new_verification_code",description="The code for that patient; never guess it.",sensitive=True)])
     @agent.on_task_complete("switch_verify")
     def switch_verified(call):
         if not backend.verify(call.id,str(call.get_field("new_patient_id") or ""),str(call.get_field("new_verification_code") or "")):
             finish(call,{"status":"denied"});return
-        call.set_task("choose",objective="Ask how you can help with coverage, claims, appointments, billing or a demo payment.",
+        assign_task(call,"choose",objective="Ask how you can help with coverage, claims, appointments, billing or a demo payment.",
                       checklist=[guava.Field(key="workflow",field_type="multiple_choice",choices=["identity","eligibility","claims","appointments","billing","payments"])])
     @agent.on_question
     def question(call, question):
-        return "I can help with coverage, claims, appointments and billing after verification. For medical questions, please contact your clinician. Please do not share card details."
+        return profile["question-fallback"]
     @agent.on_session_end
     def ended(call, event):
         if recorder: recorder(call,"ended",{"termination":event.termination_reason})

@@ -1,0 +1,95 @@
+[
+  {
+    "id": "identity-1",
+    "text": "Please confirm my identity.",
+    "expected": "identity",
+    "kind": "single"
+  },
+  {
+    "id": "identity-2",
+    "text": "I need to verify who I am.",
+    "expected": "identity",
+    "kind": "single"
+  },
+  {
+    "id": "eligibility-1",
+    "text": "Is my insurance coverage active?",
+    "expected": "eligibility",
+    "kind": "single"
+  },
+  {
+    "id": "eligibility-2",
+    "text": "What plan and copay do I have?",
+    "expected": "eligibility",
+    "kind": "single"
+  },
+  {
+    "id": "claims-1",
+    "text": "What is the status of my insurance claim?",
+    "expected": "claims",
+    "kind": "single"
+  },
+  {
+    "id": "claims-2",
+    "text": "Has my submitted claim been processed?",
+    "expected": "claims",
+    "kind": "single"
+  },
+  {
+    "id": "appointments-1",
+    "text": "Book an appointment for me.",
+    "expected": "appointments",
+    "kind": "single"
+  },
+  {
+    "id": "appointments-2",
+    "text": "I need a new appointment slot.",
+    "expected": "appointments",
+    "kind": "single"
+  },
+  {
+    "id": "billing-1",
+    "text": "How much do I owe?",
+    "expected": "billing",
+    "kind": "single"
+  },
+  {
+    "id": "billing-2",
+    "text": "Tell me my outstanding account balance.",
+    "expected": "billing",
+    "kind": "single"
+  },
+  {
+    "id": "payments-1",
+    "text": "I want to make a demo payment.",
+    "expected": "payments",
+    "kind": "single"
+  },
+  {
+    "id": "payments-2",
+    "text": "Can I pay ten dollars toward my bill?",
+    "expected": "payments",
+    "kind": "single"
+  },
+  {
+    "id": "ambiguous-1",
+    "text": "I need help with either my claim or paying a bill, I am not sure which.",
+    "expected_set": [
+      "claims",
+      "payments"
+    ],
+    "kind": "ambiguous"
+  },
+  {
+    "id": "unsupported-1",
+    "text": "What is the weather in Paris?",
+    "expected": null,
+    "kind": "unsupported"
+  },
+  {
+    "id": "unsupported-2",
+    "text": "Diagnose my illness and prescribe antibiotics.",
+    "expected": null,
+    "kind": "unsupported"
+  }
+]

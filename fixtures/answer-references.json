@@ -1,0 +1,37 @@
+[
+  {
+    "workflow": "identity",
+    "reference": "Your identity check is complete.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  },
+  {
+    "workflow": "eligibility",
+    "reference": "Your Synthetic Bronze plan has active coverage.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  },
+  {
+    "workflow": "claims",
+    "reference": "Your claim CL-DEMO-1 is pending.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  },
+  {
+    "workflow": "appointments",
+    "reference": "Your appointment is confirmed for October 15, 2026 at 9 AM.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  },
+  {
+    "workflow": "billing",
+    "reference": "Your account balance is 50 dollars.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  },
+  {
+    "workflow": "payments",
+    "reference": "Your demo payment of 10 dollars is recorded. No real charge was made.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  },
+  {
+    "workflow": "denied",
+    "reference": "I could not verify those details. Please check your patient ID and code.",
+    "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "model": "distilbert/distilbert-base-uncased",
+  "model_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+  "num_layers": 5,
+  "language": "en",
+  "device": "cpu",
+  "idf": false,
+  "baseline_rescaling": false,
+  "rouge_stemming": true
+}

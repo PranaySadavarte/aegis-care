@@ -75,5 +75,16 @@
     "actual": "Direct test invocation persisted a canary in termination metadata. No real platform/user exploit path demonstrated.",
     "evidence": "product-audit.json",
     "recommendation": "Validate termination enums and allowed detail keys; scrub exports. Do not label this an observed live data leak."
+  },
+  {
+    "id": "ROB-008",
+    "severity": "Medium workflow reliability",
+    "classification": "Same-identity confirmation rerouted to different-account verification",
+    "owner": "AEGIS identity-intent dispatch; Guava request/classification behavior needs isolation",
+    "problem": "After successful verification, a same-identity confirmation request started a fresh different-account flow instead of completing the identity workflow.",
+    "expected": "Complete the identity-confirmation workflow for the verified caller; clear authorization only for an actual identity change.",
+    "actual": "Initial identity trial had no finished result; repeat transcript asked for a new patient ID/code and still had no result. Repeat process reached its55-second bound. Billing initially had no result but its repeat completed correctly.",
+    "evidence": "evidence/2026-10-11/kpi-expansion/expert-routing-8fdd85d5/identity.json",
+    "recommendation": "Capture native action-request text and classifier matches to isolate dispatch cause. Add same-account versus different-account labeled cases; do not weaken authorization to solve a routing usability problem."
   }
 ]

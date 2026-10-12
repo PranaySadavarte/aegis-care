@@ -41,7 +41,8 @@ for run in reversed(history):
     if group:
         functional={"passed":group["total"]-group["failed"] if group.get("total") is not None and group.get("failed") is not None else None,
                     "total":group.get("total"),"source":run["run_id"],"status":group["status"]};break
-data={"generated_at_utc":datetime.now(timezone.utc).isoformat(),"asr":asr,"audio_files":len(manifest)+len(json.loads((root/"fixtures/audio/robustness/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/robustness/manifest.json").exists() else len(manifest),
+data={"generated_at_utc":datetime.now(timezone.utc).isoformat(),"asr":asr,"audio_files":(len(json.loads((root/"fixtures/audio/public/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/public/manifest.json").exists() else 0)+len(manifest)+len(json.loads((root/"fixtures/audio/robustness/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/robustness/manifest.json").exists() else len(manifest),
+      "public_audio_files":len(json.loads((root/"fixtures/audio/public/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/public/manifest.json").exists() else 0,
       "functional":functional,
       "latest_hosted":{"pass":sum(g["status"]=="PASS" for g in groups),"total":len(groups),"run_id":last.get("run_id"),
                        "p50_process_seconds":percentile(.5),"p95_process_seconds":percentile(.95)},
@@ -51,5 +52,5 @@ data={"generated_at_utc":datetime.now(timezone.utc).isoformat(),"asr":asr,"audio
                "WER/CER compare text without numeral equivalence; spoken digit words versus numeric transcription affect scores.",
                "Process p50/p95 are total scripted test runtimes, not speech response latency."]}
 (root/"dashboard/metrics-snapshot.json").write_text(json.dumps(data,indent=2))
-print(json.dumps({"WER":asr.get("WER"),"CER":asr.get("CER"),"audio_files":len(manifest)+len(json.loads((root/"fixtures/audio/robustness/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/robustness/manifest.json").exists() else len(manifest),"security":security}))
+print(json.dumps({"WER":asr.get("WER"),"CER":asr.get("CER"),"audio_files":(len(json.loads((root/"fixtures/audio/public/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/public/manifest.json").exists() else 0)+len(manifest)+len(json.loads((root/"fixtures/audio/robustness/manifest.json").read_text(encoding="utf-8"))) if (root/"fixtures/audio/robustness/manifest.json").exists() else len(manifest),"security":security}))
 

@@ -1,0 +1,228 @@
+{
+  "sample_count": 7,
+  "source_run": "20261012T021726Z-29ba9d",
+  "model": "distilbert/distilbert-base-uncased",
+  "model_revision": "12040accade4e8a0f71eabdb258fecc2e7e948be",
+  "num_layers": 5,
+  "idf": false,
+  "baseline_rescaling": false,
+  "bert_score_f1_mean": 0.8069086670875549,
+  "rouge_f1_means": {
+    "rouge1": 0.2509259362436036,
+    "rouge2": 0.16822712840336046,
+    "rougeL": 0.24387126252226318
+  },
+  "pairs": [
+    {
+      "workflow": "identity",
+      "reference": "Your identity check is complete.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "I can certainly help you with that. Just a moment while I pull up the relevant information. I've finished that identity check for you. Is there anything else I can help you with today? Since I haven't heard back, I'll go ahead and let you go. Thanks for calling HarborCare, and have a great day!",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "89d8e11cd13a32936de9040d8ec1c8b5e233f9c3bed9c6d9d901cc8163901a59",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.05172413793103448,
+          "recall": 0.6,
+          "f1": 0.09523809523809525
+        },
+        "rouge2": {
+          "precision": 0.017543859649122806,
+          "recall": 0.25,
+          "f1": 0.03278688524590164
+        },
+        "rougeL": {
+          "precision": 0.05172413793103448,
+          "recall": 0.6,
+          "f1": 0.09523809523809525
+        }
+      },
+      "bert_score": {
+        "precision": 0.6656641960144043,
+        "recall": 0.8457256555557251,
+        "f1": 0.7449689507484436
+      }
+    },
+    {
+      "workflow": "eligibility",
+      "reference": "Your Synthetic Bronze plan has active coverage.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "I can certainly help you with your eligibility. Just one moment while I look into that for you. I've found that information for you. Your plan is Synthetic Bronze, and your coverage is active. Is there anything else I can help you with today, or are we all set? Since I haven't heard back, I'll go ahead and let you go. Thank you for calling HarborCare, and have a wonderful day!",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "9460184fac7dd70184842a34f0444b700673c978b1d18901a301527f59dceab5",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.08108108108108109,
+          "recall": 0.8571428571428571,
+          "f1": 0.14814814814814817
+        },
+        "rouge2": {
+          "precision": 0.0136986301369863,
+          "recall": 0.16666666666666666,
+          "f1": 0.02531645569620253
+        },
+        "rougeL": {
+          "precision": 0.05405405405405406,
+          "recall": 0.5714285714285714,
+          "f1": 0.09876543209876544
+        }
+      },
+      "bert_score": {
+        "precision": 0.6956931948661804,
+        "recall": 0.8981340527534485,
+        "f1": 0.784057080745697
+      }
+    },
+    {
+      "workflow": "claims",
+      "reference": "Your claim CL-DEMO-1 is pending.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "I can certainly help you with that. Just one moment while I get that pulled up for you. I've found your information. It looks like your claim, CL-DEMO-1, is currently pending. Is there anything else I can help you with today? Since I haven't heard from you, I'll go ahead and let you go. Thanks for calling HarborCare, and have a great day!",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "f6a7ef74d16b1b0d291c3d168b36a0a7254d4fe22f58e83db5607a09b4685e8d",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.10294117647058823,
+          "recall": 1.0,
+          "f1": 0.18666666666666665
+        },
+        "rouge2": {
+          "precision": 0.07462686567164178,
+          "recall": 0.8333333333333334,
+          "f1": 0.136986301369863
+        },
+        "rougeL": {
+          "precision": 0.10294117647058823,
+          "recall": 1.0,
+          "f1": 0.18666666666666665
+        }
+      },
+      "bert_score": {
+        "precision": 0.6946628093719482,
+        "recall": 0.9388468265533447,
+        "f1": 0.7985039949417114
+      }
+    },
+    {
+      "workflow": "appointments",
+      "reference": "Your appointment is confirmed for October 15, 2026 at 9 AM.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "I've got you down for October 15th at 9:00 AM. Just a moment while I finalize that for you. Your appointment is all set and confirmed for October 15th, 2026 at 9:00 AM. Thank you for calling HarborCare, and have a wonderful day. Goodbye!",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "1766d3f72b83196c97190a698a4c32f9c56c7bb93ab073b3c84e7a58acd8340f",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.2127659574468085,
+          "recall": 0.9090909090909091,
+          "f1": 0.3448275862068965
+        },
+        "rouge2": {
+          "precision": 0.13043478260869565,
+          "recall": 0.6,
+          "f1": 0.21428571428571427
+        },
+        "rougeL": {
+          "precision": 0.2127659574468085,
+          "recall": 0.9090909090909091,
+          "f1": 0.3448275862068965
+        }
+      },
+      "bert_score": {
+        "precision": 0.7582597732543945,
+        "recall": 0.919224202632904,
+        "f1": 0.8310192227363586
+      }
+    },
+    {
+      "workflow": "billing",
+      "reference": "Your account balance is 50 dollars.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "I can certainly help you with your billing. Just one moment while I get that set up for you. I have that information for you now. Your account balance is 50.00 dollars.",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "566a96265d227be76e544e11189cc4d120e4c92e77e22c5138382316c4e91ce2",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.18181818181818182,
+          "recall": 1.0,
+          "f1": 0.3076923076923077
+        },
+        "rouge2": {
+          "precision": 0.125,
+          "recall": 0.8,
+          "f1": 0.21621621621621623
+        },
+        "rougeL": {
+          "precision": 0.18181818181818182,
+          "recall": 1.0,
+          "f1": 0.3076923076923077
+        }
+      },
+      "bert_score": {
+        "precision": 0.7480607628822327,
+        "recall": 0.9520766735076904,
+        "f1": 0.8378278017044067
+      }
+    },
+    {
+      "workflow": "payments",
+      "reference": "Your demo payment of 10 dollars is recorded. No real charge was made.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "Thank you for confirming that. Let me get that processed for you, one moment please. Your demo payment of 10.00 dollars is recorded, and no real charge was made. Is there anything else I can help you with today? Are you still there? Since I haven't heard back from you, I'll go ahead and let you go. Thank you for calling HarborCare, and have a great day!",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "49e2ed20a6a0a264723315c2f59caade321aec605dbfb8ed1d6d3da748355e47",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.18571428571428572,
+          "recall": 1.0,
+          "f1": 0.3132530120481928
+        },
+        "rouge2": {
+          "precision": 0.14492753623188406,
+          "recall": 0.8333333333333334,
+          "f1": 0.2469135802469136
+        },
+        "rougeL": {
+          "precision": 0.18571428571428572,
+          "recall": 1.0,
+          "f1": 0.3132530120481928
+        }
+      },
+      "bert_score": {
+        "precision": 0.7071846127510071,
+        "recall": 0.938140869140625,
+        "f1": 0.8064529895782471
+      }
+    },
+    {
+      "workflow": "denied",
+      "reference": "I could not verify those details. Please check your patient ID and code.",
+      "source": "Synthetic backend fixture and expected task outcome; not a mandatory generated sentence",
+      "candidate": "Thank you for that information. Just one moment while I get everything pulled up for you. I'm sorry, but I couldn't verify those details. Please check your patient ID and code and try calling us again. Thank you for calling HarborCare, and have a good day.",
+      "source_run": "20261012T021726Z-29ba9d",
+      "source_sha256": "4c977cf78cbc2098550ca69b196ce8d4a719db3a7355112cb81565b53e864073",
+      "rouge": {
+        "rouge1": {
+          "precision": 0.22916666666666666,
+          "recall": 0.8461538461538461,
+          "f1": 0.360655737704918
+        },
+        "rouge2": {
+          "precision": 0.19148936170212766,
+          "recall": 0.75,
+          "f1": 0.3050847457627119
+        },
+        "rougeL": {
+          "precision": 0.22916666666666666,
+          "recall": 0.8461538461538461,
+          "f1": 0.360655737704918
+        }
+      },
+      "bert_score": {
+        "precision": 0.7659162282943726,
+        "recall": 0.9436163902282715,
+        "f1": 0.84553062915802
+      }
+    }
+  ],
+  "scope": "Seven recorded synthetic outcome response spans, not entire calls; similarity does not establish factual accuracy or safety."
+}

@@ -1,5 +1,5 @@
 {
-  "refreshed_at_utc": "2026-10-12T02:38:02.712254+00:00",
+  "refreshed_at_utc": "2026-10-12T04:04:15.065272+00:00",
   "calls": [
     {
       "call": "call-f1118c1650",
@@ -210,6 +210,28 @@
       "evidence": "Local sanitized Expert event",
       "channel": "Unclassified local session",
       "duration_source": "No closing event / platform duration"
+    },
+    {
+      "call": "call-aeb50d669b",
+      "platform_time": "2026-10-12T02:47:43.292142+00:00",
+      "timezone": "UTC Expert timestamp",
+      "duration": "0:12",
+      "direction": "inbound",
+      "workflow": "billing",
+      "outcome": "Expert outcome: returned",
+      "grade": "Scoped authorization check: PASS",
+      "evidence": "Local sanitized Expert event",
+      "evaluation": {
+        "authorization_gate": "PASS",
+        "workflow_outcome": "COMPLETED",
+        "semantic_accuracy": "NOT_EVALUATED",
+        "asr_accuracy": "NOT_MEASURED",
+        "scope": "Expert result metadata only; no transcript/ASR or model confidence grading"
+      },
+      "termination": "user-hangup",
+      "channel": "text",
+      "duration_source": "Expert lifecycle timestamps, not carrier billing",
+      "duration_seconds": 12.771
     }
   ],
   "note": "At most 30 inbound records for the configured number since 2026-10-11. Empty/missing records do not prove no call attempt. No transcripts or phone numbers embedded."

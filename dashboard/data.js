@@ -690,6 +690,22 @@ window.AEGIS_DATA = {
       "InstallationMethodScope": "Not installation-specific",
       "PipelineStage": "Business logic / authorization / mock APIs",
       "Direction": "Inbound prototype; outbound untested"
+    },
+    {
+      "ID": "ROB-008",
+      "Layer": "Expert reliability",
+      "Threat_or_behavior": "Same-identity confirmation rerouted to different-account verification",
+      "Setup": "Verified synthetic caller",
+      "Steps": "Request same-identity confirmation",
+      "Expected": "Complete the identity-confirmation workflow for the verified caller; clear authorization only for an actual identity change.",
+      "Owner": "AEGIS identity-intent dispatch; Guava request/classification behavior needs isolation",
+      "Evidence": "evidence/2026-10-11/kpi-expansion/expert-routing-8fdd85d5/identity.json",
+      "Workaround": "Capture native action-request text and classifier matches to isolate dispatch cause. Add same-account versus different-account labeled cases; do not weaken authorization to solve a routing usability problem.",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Identity intent / dialog dispatch",
+      "InstallationMethodScope": "Not installation-specific",
+      "PipelineStage": "Conversation state / Expert callbacks",
+      "Direction": "Hosted inbound-style test"
     }
   ],
   "hosted_seconds": 8.062000000150874,

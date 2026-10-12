@@ -1,0 +1,13 @@
+{
+  "turns": [
+    {
+      "text_submission_to_first_bot_tts_event_seconds": 0.2809999999590218,
+      "scope": "Client monotonic receipt of text event; not audible onset, VAD endpoint or isolated LLM/ASR latency"
+    },
+    {
+      "text_submission_to_first_bot_tts_event_seconds": 0.5309999999590218,
+      "scope": "Client monotonic receipt of text event; not audible onset, VAD endpoint or isolated LLM/ASR latency"
+    }
+  ],
+  "scope": "Two hosted text turns, not speech response latency"
+}
