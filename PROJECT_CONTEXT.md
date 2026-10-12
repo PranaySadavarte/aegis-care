@@ -58,3 +58,10 @@ Details: reports/sdk-evaluation/installer-audit-2026-10-11.md. No machine PATH o
 User confirmed irm (not ifm). Added reports/test-plans/installation-method-matrix.md and component/method scope columns to the catalog.
 uv installation results apply to Python SDK; current irm/iex installer inspection applies to Windows CLI script. Existing CLI original install route remains UNKNOWN; direct artifact inspection is not proof of route.
 No new tests ran. SDK exception behavior is not attributed to uv without controlled comparison evidence.
+
+## Directional/online milestone — 2026-10-11
+User report due tonight; authorized hosted evaluation budget 500 minutes. No paid deployment/purchase or unspecified outbound destination authorized.
+Expanded corrected offline suite: 16 unique tests, 15 PASS, 1 known FAIL. Native SDK event/task/reach_person/production Call APIs exercised. Full SDK/source review and inbound/outbound E2E remain incomplete.
+Prepared bounded synthetic hosted smoke using Agent.test; outcome recorded separately. See reports/sdk-evaluation/directional-kpi-2026-10-11.md for coverage/KPI definitions.
+
+Hosted transition outcome: two synthetic live text runs completed; second asserted exact field and bot-hangup successfully. See reports/test-results/hosted-smoke-2026-10-11.md. No phone listener started; no-answer cause unresolved; billed usage unmeasured.

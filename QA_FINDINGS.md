@@ -69,3 +69,11 @@ SDK-F001 reproduced after uv SDK installation; not established as uv-specific.
 CLI-F001 unsigned binary observed directly; original installation method unknown.
 CLI-F002 verification gap belongs to current downloaded Windows installer; not retroactively assigned to original installed binary's setup.
 Added method-specific test matrix; no new executions or findings. Optional pip comparison and package artifact/hash enforcement tests remain NOT_RUN.
+
+## Directional evaluation — 2026-10-11
+16 corrected unique offline tests: 15 PASS, 1 existing SDK-F001 failure; no new vulnerabilities.
+Initial discovery duplication corrected; raw initial and corrected outputs retained. Production Call isolation is sequential only.
+User-reported inbound no-answer remains an unverified symptom with unknown cause; hosted text smoke does not establish phone routing readiness.
+Current docs' DocumentQA namespace warning added to test planning; not reproduced here.
+
+Hosted results: native Agent.test completed twice; second exact field/termination assertions passed. This establishes live text test viability, not phone routing or authorization security. Detailed evidence and KPI limitations in reports/test-results/hosted-smoke-2026-10-11.md.

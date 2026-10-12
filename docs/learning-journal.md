@@ -24,3 +24,10 @@ Direct downloads over the destination raise a failure-recovery question, not a p
 ## 2026-10-11 — Installation methods
 uv manages Python package/environment installation here. irm retrieves the Windows installer script; iex executes it, and that script installs the CLI binary. Route labels distinguish supply-chain/setup tests from SDK runtime tests.
 A defect observed after uv installation is not automatically caused by uv. Controlled comparisons require matching versions, runtime and transitive artifacts.
+
+## 2026-10-11 — Online and KPI transition
+Offline contracts isolate Expert SDK logic; hosted text tests exercise live dialog/state without validating actual phone transport. Native reach_person and event decoding used for outbound subchecks, not replaced with custom logic.
+A 15/16 test pass count is a regression metric, not a 93.75% voice-agent success rate. Field sensitive serialization is not proof of hosted redaction.
+DocumentQA server mode uploads documents and concurrent instances need namespaces. Full SDK review still in progress.
+
+Hosted Agent.test now executed successfully; added stable extracted-field and termination assertions. Text testing can validate a live dialog/Expert interaction without registering a phone number listener. Actual phone readiness still needs a separate listener/routing test.
