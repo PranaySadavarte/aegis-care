@@ -1,73 +1,27 @@
 {
-  "run_id": "20261012T060103Z-15faaf",
-  "suite": "hosted",
-  "started_at_utc": "2026-10-12T06:01:03.654332+00:00",
-  "status": "RUNNING",
+  "run_id": "fixture-text-00cc4486",
+  "suite": "fixture-text",
+  "status": "OBSERVED",
+  "started_at_utc": "2026-10-12T06:24:26.977713+00:00",
+  "completed_at_utc": "2026-10-12T06:24:54.707344+00:00",
+  "timestamp_scope": "Process-artifact creation/completion timestamps; not billing or speech timings",
+  "sdk_version": "0.47.0",
+  "profile_sha256": "5dd51df171f11e1d1f5ebe7d29cdce208f82c36b37173331c912e8e77bc081d9",
+  "working_tree_dirty": true,
+  "source_commit": "f993029",
   "groups": [
     {
-      "group": "Hosted identity",
-      "status": "FAIL",
-      "exit_code": 1,
-      "total": 1,
-      "failed": 1,
-      "duration_seconds": 12.985,
+      "group": "Text fixture backlog",
+      "status": "OBSERVED",
+      "total": 3,
+      "failed": null,
       "command": [
-        "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
-        "tests/integration/harborcare_hosted.py",
-        "identity"
+        "baseline/sdk-0.47.0/.venv/Scripts/python.exe",
+        "tests/integration/run_text_backlog.py"
       ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-identity.txt",
-      "limit_seconds": 50
-    },
-    {
-      "group": "Hosted eligibility",
-      "status": "PASS",
-      "exit_code": 0,
-      "total": 1,
-      "failed": 0,
-      "duration_seconds": 13.219,
-      "command": [
-        "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
-        "tests/integration/harborcare_hosted.py",
-        "eligibility"
-      ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-eligibility.txt",
-      "limit_seconds": 50
-    },
-    {
-      "group": "Hosted claims",
-      "status": "FAIL",
-      "exit_code": 1,
-      "total": 1,
-      "failed": 1,
-      "duration_seconds": 13.515,
-      "command": [
-        "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
-        "tests/integration/harborcare_hosted.py",
-        "claims"
-      ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-claims.txt",
-      "limit_seconds": 50
-    },
-    {
-      "group": "Hosted billing",
-      "status": "PASS",
-      "exit_code": 0,
-      "total": 1,
-      "failed": 0,
-      "duration_seconds": 13.297,
-      "command": [
-        "C:\\Users\\prana\\aegis-care\\baseline\\sdk-0.47.0\\.venv\\Scripts\\python.exe",
-        "tests/integration/harborcare_hosted.py",
-        "billing"
-      ],
-      "evidence_file": "evidence/2026-10-11/suite-runs/20261012T060103Z-15faaf/Hosted-billing.txt",
-      "limit_seconds": 50
+      "evidence_file": "dashboard/text-backlog-results.json",
+      "limit_seconds": 170,
+      "scope": "Scoped fixture observations; no full workflow pass/fail verdict."
     }
-  ],
-  "sdk_version": "0.47.0",
-  "python_version": "3.12.14",
-  "source_commit": "16231ce",
-  "working_tree_dirty": true,
-  "profile_sha256": "5dd51df171f11e1d1f5ebe7d29cdce208f82c36b37173331c912e8e77bc081d9"
+  ]
 }

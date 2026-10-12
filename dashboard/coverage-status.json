@@ -1,0 +1,51 @@
+{
+  "counts": {
+    "Text prompts": {
+      "OBSERVED_SAFE_INVARIANTS": 3,
+      "LATEST_VARIANT_PASS": 2,
+      "LATEST_VARIANT_FAIL": 1,
+      "OBSERVED_REVIEW_FINDINGS": 11,
+      "OBSERVED": 15
+    },
+    "Coverage plan": {
+      "PARTIAL": 24,
+      "PARTIAL_FAIL": 17,
+      "NOT_RUN": 5
+    },
+    "Audio fixtures": {
+      "OBSERVED": 24
+    },
+    "Executable methods": {
+      "PASS": 79,
+      "FAIL": 6
+    }
+  },
+  "not_run": [
+    {
+      "id": "SDK-005",
+      "reason": "No second controlled organization/principal configured; application session checks do not prove platform cross-organization isolation.",
+      "source": "Coverage plan"
+    },
+    {
+      "id": "SDK-010",
+      "reason": "Dedicated disconnect/replay fault harness not implemented; ordinary session completion does not test reconnection.",
+      "source": "Coverage plan"
+    },
+    {
+      "id": "SDK-012",
+      "reason": "Only Windows is available; no Linux/macOS execution environment tested.",
+      "source": "Coverage plan"
+    },
+    {
+      "id": "APP-008",
+      "reason": "No controlled speech-disclosure interruption/acknowledgment experiment implemented; an interrupted callback alone is insufficient.",
+      "source": "Coverage plan"
+    },
+    {
+      "id": "CAN-001",
+      "reason": "No deployed production canary, scheduled observation window or monitoring thresholds configured.",
+      "source": "Coverage plan"
+    }
+  ],
+  "summary": "85 executable unit/contract methods ran: 79 PASS, 6 FAIL. All 24 audio fixture entries now have scoped observations. Five broad plans remain NOT_RUN; 24 PARTIAL and 17 PARTIAL_FAIL plans remain incomplete. Inventory entries are not a combined pass-rate denominator."
+}

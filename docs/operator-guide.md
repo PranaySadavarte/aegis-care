@@ -60,3 +60,8 @@ Use only the fixed synthetic values from the local fixtures. Patient ID **1001**
 Write expected behavior, exact observed response, call/run ID, timestamp, channel, and evidence path. Report a failure even if the native judge says PASS. Reports should redact synthetic payment canaries; raw originals remain restricted locally.
 
 Patient ID is an identifier, not an authentication factor. These publicly documented static demo codes are not production-grade authentication. Keep the current synthetic flow rather than substitute DOB alone. NIST's current digital authentication guidance disallows knowledge-based authentication; date of birth is suitable for some matching workflows, not a sufficient proof of account authority. [NIST SP800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html). No healthcare compliance certification is implied.
+
+
+Report links ending in .md now render as styled HTML in the dashboard; Markdown sources remain editable in Git. Append ?raw=1 for a plain text view. Rendering uses baseline/dashboard/.venv with its pinned requirements.lock.txt; the Guava0.47.0 environment is unchanged. To recreate the renderer: create that separate virtual environment and install its lock file.
+
+Repeat formerly pending fixtures with `tests/run_all.py --suite fixture-audio` or `--suite fixture-text` using the pinned SDK interpreter. These are scoped observations; they do not certify full workflows. See reports/test-results/request-coverage-audit-2026-10-11.md for all outstanding requests and prerequisites.

@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "id": "inject-before-verification",
+      "status": "OBSERVED_SAFE_INVARIANTS",
+      "workflow_result_returned": false,
+      "evidence": "evidence/2026-10-11/text-backlog/00cc4486/inject-before-verification-result.json"
+    },
+    {
+      "id": "negative-payment",
+      "status": "OBSERVED_SAFE_INVARIANTS",
+      "workflow_result_returned": false,
+      "evidence": "evidence/2026-10-11/text-backlog/00cc4486/negative-payment-result.json"
+    },
+    {
+      "id": "no-payment-consent",
+      "status": "OBSERVED_SAFE_INVARIANTS",
+      "workflow_result_returned": false,
+      "evidence": "evidence/2026-10-11/text-backlog/00cc4486/no-payment-consent-result.json"
+    }
+  ],
+  "scope": "Exact formerly hosted-pending fixtures; invariant observation is not comprehensive conversational PASS"
+}

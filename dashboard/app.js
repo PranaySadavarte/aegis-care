@@ -7,7 +7,7 @@ el("checks").innerHTML=d.checks.map(c=>'<tr><td>'+esc(c.name)+'</td><td><span cl
 el("pending").innerHTML=["Inbound establishment","Outbound connection","Aggregate field accuracy","Speech latency p50 / p95","Barge-in delay","Recovery / duplicate actions","Unauthorized action rate","RAG groundedness","Billed usage"].map(k=>'<div class="metric"><span>'+k+'</span><span class="muted">Not measured</span></div>').join("");
 el("stage").innerHTML += [...new Set(d.cases.map(c=>c.PipelineStage))].map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').join("");
 el("harborcare").innerHTML = (d.harborcare_runs||[]).map(r=>'<div class="metric"><span>'+esc(r.workflow)+'</span><span class="badge '+(r.status==="PASS"?"pass":"fail")+'">'+esc(r.status)+'</span></div>').join("") || "Hosted application runs pending";
-function render(){const q=el("search").value.toLowerCase(),s=el("status").value;const rows=d.cases.filter(c=>(!s||c.Status===s)&&(!el("stage").value||c.PipelineStage===el("stage").value)&&(!el("inventory").value||c.SourceType===el("inventory").value)&&JSON.stringify(c).toLowerCase().includes(q));el("count").textContent=rows.length+" / "+d.cases.length+" cases";el("cases").innerHTML=rows.map(c=>'<tr><td>'+esc(c.ID)+'</td><td>'+esc(c.PipelineStage)+'<br><small class="muted">'+esc(c.Direction)+'</small></td><td>'+esc(c.Threat_or_behavior)+'</td><td><span class="badge '+(c.Status==="PARTIAL_FAIL"?"fail":c.Status==="PARTIAL"?"warn":"")+'">'+esc(c.Status)+'</span></td><td>'+esc(c.Expected)+'</td><td>'+esc(c.SourcePath||c.Evidence||'')+'<details><summary>Run command</summary><pre>'+esc(c.RunCommand||'See Test runs and runbook')+'</pre></details></td></tr>').join("");}
+function render(){const q=el("search").value.toLowerCase(),s=el("status").value;const rows=d.cases.filter(c=>(!s||c.Status===s)&&(!el("stage").value||c.PipelineStage===el("stage").value)&&(!el("inventory").value||c.SourceType===el("inventory").value)&&JSON.stringify(c).toLowerCase().includes(q));el("count").textContent=rows.length+" / "+d.cases.length+" cases";el("cases").innerHTML=rows.map(c=>'<tr><td>'+esc(c.ID)+'</td><td>'+esc(c.PipelineStage)+'<br><small class="muted">'+esc(c.Direction)+'</small></td><td>'+esc(c.Threat_or_behavior)+'</td><td><span class="badge '+(["PARTIAL_FAIL","FAIL","ERROR","TIMEOUT","LATEST_VARIANT_FAIL"].includes(c.Status)?"fail":c.Status==="PARTIAL"?"warn":"")+'">'+esc(c.Status)+'</span><br><small>'+esc(c.ExecutionReason||'See scoped execution evidence')+'</small></td><td>'+esc(c.Expected)+'</td><td>'+esc(c.SourcePath||c.Evidence||'')+'<details><summary>Run command</summary><pre>'+esc(c.RunCommand||'See Test runs and runbook')+'</pre></details></td></tr>').join("");}
 el("stage").addEventListener("change",render);el("search").addEventListener("input",render);el("status").addEventListener("change",render);render();
 el("export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=url;a.download="aegis-results-"+d.updated+".json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 
@@ -21,9 +21,9 @@ const rows=[["Application tests",m.functional.passed+"/"+m.functional.total],
 ["ASR CER (same clip)",(m.asr.CER*100).toFixed(2)+"%"],
 ["Labeled audio corpus",m.audio_files+" files"],
 ["Latest hosted suite",m.latest_hosted.pass+"/"+m.latest_hosted.total],
-["Speech latency / barge-in","Not measured"],
+["Speech latency / barge-in","Not measured: acoustic reference timing unavailable"],
 ["ASR RTF / model confidence","Not exposed by reviewed API"],
-["Billed usage / real accent coverage","Not measured"]];
+["Billed usage / real accent coverage","Not measured: usage export and balanced speaker data unavailable"]];
 el("pending").innerHTML=rows.map(([k,v])=>'<div class="metric"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join("");
 }).catch(()=>{el("pending").textContent="Metric snapshot unavailable; no values inferred.";});
 window.addEventListener("error",e=>{const note=document.createElement("p");note.textContent="Display error: "+e.message+" â€” reload this page.";document.querySelector("main").prepend(note);});
@@ -45,3 +45,5 @@ Promise.all(["intent-metrics.json","answer-metrics.json","expert-routing-metrics
 }).catch(()=>{const node=document.getElementById("additional-metrics");if(node)node.textContent="Some metric artifacts unavailable; no values inferred.";});
 
 fetch("metrics-snapshot.json",{cache:"no-store"}).then(r=>r.json()).then(m=>{const text=m.sdk.passed+" / "+m.sdk.total;el("offline-readiness").textContent=text;el("offline-description").textContent=text+" SDK contracts passed; "+m.sdk.failed+" failed. ";document.querySelector(".bar div").style.width=(m.sdk.passed/m.sdk.total*100)+"%";});
+
+fetch("coverage-status.json",{cache:"no-store"}).then(r=>r.json()).then(s=>{const n=document.getElementById("coverage-note");if(n)n.textContent=s.summary;});

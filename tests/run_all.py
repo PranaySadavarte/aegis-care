@@ -45,6 +45,10 @@ def run(suite):
         groups.append(("Local SDK health observations",["tests/sdk/health_probe.py"],15))
     if suite in ("adaptive","all"):
         groups.append(("Adaptive Ybbag roleplay",["tests/integration/adaptive_harness.py"],390))
+    if suite in ("fixture-audio","all"):
+        groups.append(("Audio fixture backlog",["tests/audio/run_fixture_backlog.py"],570))
+    if suite in ("fixture-text","all"):
+        groups.append(("Text fixture backlog",["tests/integration/run_text_backlog.py"],170))
     for label,args,limit in groups:
         started=time.monotonic()
         try:
@@ -67,7 +71,7 @@ def run(suite):
                 result["status"]="OPEN_FINDINGS" if not audit["explicit_hash_verification_command_present"] or not audit["explicit_authenticode_command_present"] else "OBSERVED"
                 result["failed"]=None
                 result["observations"]={"explicit_hash_check":audit["explicit_hash_verification_command_present"],"explicit_signature_check":audit["explicit_authenticode_command_present"]}
-            if (label.startswith("Audio") or label in ("Sensitive field observations","KPI observations","Native helper observations","Local SDK health observations")) and p.returncode==0:
+            if (label.startswith("Audio") or label in ("Sensitive field observations","KPI observations","Native helper observations","Local SDK health observations","Text fixture backlog")) and p.returncode==0:
                 result["status"]="OBSERVED";result["failed"]=None
         except subprocess.TimeoutExpired:
             result={"group":label,"status":"TIMEOUT","total":None,"failed":None,"limit_seconds":limit}
@@ -78,11 +82,11 @@ def run(suite):
     history_path=ROOT/"dashboard/run-history.json"
     history=json.loads(history_path.read_text()) if history_path.exists() else []
     history.append(state);atomic(history_path,history)
-    for builder in ("build_evidence_pages.py","build_metrics_snapshot.py","build_metrics_pages.py","build_defect_dashboard.py","build_inventory.py","build_data.py","build_extended_pages.py"):
+    for builder in ("build_evidence_pages.py","build_metrics_snapshot.py","build_metrics_pages.py","build_defect_dashboard.py","build_inventory.py","build_data.py","build_extended_pages.py","build_coverage_status.py"):
         updated=subprocess.run([str(PY),str(ROOT/"dashboard"/builder)],cwd=ROOT,capture_output=True,text=True,timeout=15)
         (folder/(builder+".txt")).write_text(updated.stdout+updated.stderr,encoding="utf-8")
         if updated.returncode:print("Metric refresh failed; previous snapshot retained. See local builder evidence.")
     print(json.dumps(state));return 0 if state["status"]=="PASS" else 1
 if __name__=="__main__":
-    parser=argparse.ArgumentParser();parser.add_argument("--suite",choices=["offline","hosted","security","audio","adversarial","robustness","kpi","extended","adaptive","all"],default="offline")
+    parser=argparse.ArgumentParser();parser.add_argument("--suite",choices=["offline","hosted","security","audio","adversarial","robustness","kpi","extended","adaptive","fixture-audio","fixture-text","all"],default="offline")
     raise SystemExit(run(parser.parse_args().suite))

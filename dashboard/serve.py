@@ -2,6 +2,7 @@ from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
 from threading import Lock
 from pathlib import Path
 import json,subprocess
+from urllib.parse import urlsplit,parse_qs
 from refresh_calls import refresh_calls
 root=Path(__file__).resolve().parents[1]
 lock=Lock()
@@ -22,7 +23,7 @@ class Handler(SimpleHTTPRequestHandler):
             if length<1 or length>1024: raise ValueError()
             request=json.loads(self.rfile.read(length))
             suite=request.get("suite")
-            if suite not in ("offline","hosted","security","audio","adversarial","robustness","kpi","extended","adaptive","all"):raise ValueError()
+            if suite not in ("offline","hosted","security","audio","adversarial","robustness","kpi","extended","adaptive","fixture-audio","fixture-text","all"):raise ValueError()
             with lock:
                 state_path=root/"dashboard/run-status.json"
                 state=json.loads(state_path.read_text()) if state_path.exists() else {}
@@ -52,7 +53,31 @@ class Handler(SimpleHTTPRequestHandler):
             if not any(candidate.is_relative_to(root/area) for area in ("dashboard","reports","docs")):
                 self.send_error(403,"Only dashboard and sanitized reports are served")
                 return
+            if candidate.suffix.lower()==".md" and candidate.is_file():
+                content=candidate.read_bytes()
+                try:text=content.decode("utf-8-sig")
+                except UnicodeDecodeError:text=content.decode("cp1252",errors="replace")
+                # Repair historical display-only encoding artifacts without changing source/evidence.
+                for bad,good in [("\u00c2\u00b7"," / "),("\u00e2\u2020\u2014",""),("\u00e2\u20ac\u201d","-"),("\u00e2\u20ac\u201c","-")]:text=text.replace(bad,good)
+                raw=parse_qs(urlsplit(self.path).query).get("raw")==["1"]
+                if raw:body=text.encode("utf-8");content_type="text/plain; charset=utf-8"
+                else:
+                    renderer=root/"baseline/dashboard/.venv/Scripts/python.exe"
+                    try:
+                        rendered=subprocess.run([str(renderer),str(root/"dashboard/render_report.py")],input=json.dumps({"text":text,"path":candidate.relative_to(root).as_posix()}),capture_output=True,text=True,encoding="utf-8",timeout=10)
+                        if rendered.returncode:raise RuntimeError("Report renderer failed")
+                        body=rendered.stdout.encode("utf-8");content_type="text/html; charset=utf-8"
+                    except (OSError,subprocess.TimeoutExpired,RuntimeError):
+                        self.send_error(503,"Report renderer unavailable; see operator guide for isolated reporting environment");return
+                self.send_response(200);self.send_header("Content-Type",content_type)
+                self.send_header("Content-Length",str(len(body)))
+                self.send_header("X-Content-Type-Options","nosniff")
+                self.send_header("Content-Security-Policy","default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'")
+                self.end_headers();self.wfile.write(body);return
             super().do_GET()
+class LocalDashboardServer(ThreadingHTTPServer):
+    allow_reuse_address=False
+
 if __name__=="__main__":
     print("Dashboard on http://127.0.0.1:8765/dashboard/",flush=True)
-    ThreadingHTTPServer(("127.0.0.1",8765),Handler).serve_forever()
+    LocalDashboardServer(("127.0.0.1",8765),Handler).serve_forever()

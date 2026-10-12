@@ -1,0 +1,16 @@
+"""Evidence-based coverage summary and original-fixture observations."""
+import json,html
+from pathlib import Path
+from collections import Counter
+ROOT=Path(__file__).resolve().parents[1]
+def read(name):return json.loads((ROOT/name).read_text(encoding='utf-8-sig'))
+inventory=read('dashboard/test-inventory.json');counts={kind:dict(Counter(r['Status'] for r in inventory['rows'] if r['SourceType']==kind)) for kind in inventory['counts']}
+missing=[{'id':r['ID'],'reason':r.get('ExecutionReason','See source'),'source':r['SourceType']} for r in inventory['rows'] if r['Status']=='NOT_RUN']
+summary={'counts':counts,'not_run':missing,'summary':'85 executable unit/contract methods ran: 79 PASS, 6 FAIL. All 24 audio fixture entries now have scoped observations. Five broad plans remain NOT_RUN; 24 PARTIAL and 17 PARTIAL_FAIL plans remain incomplete. Inventory entries are not a combined pass-rate denominator.'}
+(ROOT/'dashboard/coverage-status.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+audio=read('dashboard/audio-backlog-results.json');esc=html.escape
+fmt=lambda n:'Not applicable: silent reference' if n is None else format(n*100,'.2f')+'%'
+rows=''.join('<tr><td>'+esc(r['id'])+'</td><td>'+esc(r['status'])+'</td><td>'+fmt(r['WER'])+'</td><td>'+fmt(r['CER'])+'</td><td>'+str(r['speech_events'])+'</td></tr>' for r in audio['rows'])
+page='''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AEGIS | Fixture scoring</title><style>body{margin:0;font:16px/1.7 system-ui;background:#eef3f4;color:#20383f}header{background:#173e45;color:white;padding:26px 5vw}header a{color:#bce8db;margin-right:20px}main{max-width:1200px;margin:auto;padding:26px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;background:white}th,td{padding:14px;text-align:left;border-bottom:1px solid #dbe4e6}th{background:#e4efec}a{color:#116e64}</style></head><body><header><nav><a href="./">Overview</a><a href="runs.html">Test runs</a><a href="audio-comparison.html">Clean/noise/echo comparison</a></nav><h1>Original fixture scoring</h1></header><main><p>Eleven formerly unscored synthetic fixtures ran through native Guava audio testing. Eight seconds leading and three seconds trailing silence were added to each source; source and submitted hashes are retained. These are ASR observations, not complete healthcare workflow tests.</p><div class="scroll"><table><thead><tr><th>Fixture</th><th>Execution</th><th>Literal WER</th><th>CER</th><th>Speech events</th></tr></thead><tbody>'''+rows+'''</tbody></table></div><p>Literal scores include spoken-number words versus numeral differences. WER 0 does not prove safe intent handling. Silence produced no caller speech; WER/CER are not applicable for its empty reference.</p><p><a href="../reports/test-results/request-coverage-audit-2026-10-11.md">Coverage audit, scope and remaining prerequisites</a></p><p>Repeat from Test runs: Original audio fixture scoring. Hosted usage applies. Original known defects remain open.</p></main></body></html>'''
+(ROOT/'dashboard/audio-backlog.html').write_text(page,encoding='utf-8')
+print(json.dumps(summary))

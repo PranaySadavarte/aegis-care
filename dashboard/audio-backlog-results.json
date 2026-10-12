@@ -1,0 +1,115 @@
+{
+  "rows": [
+    {
+      "id": "verify",
+      "status": "OBSERVED",
+      "WER": 0.5,
+      "CER": 0.4473684210526316,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/verify-result.json",
+      "source_sha256": "0e2f7927765ea32f3e21c40bc5853e26eb174474d21b12ccc72c78feecf02c8a"
+    },
+    {
+      "id": "wrong-code",
+      "status": "OBSERVED",
+      "WER": 0.5,
+      "CER": 0.46153846153846156,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/wrong-code-result.json",
+      "source_sha256": "ff4ff8bc2f53adf00ed1a9002c5435334e19829c0049cc92ba3e63369d4c62f0"
+    },
+    {
+      "id": "billing",
+      "status": "OBSERVED",
+      "WER": 0.0,
+      "CER": 0.0,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/billing-result.json",
+      "source_sha256": "69801c667afc452a174469aa9e785fdf5e3b8632cae956d645cd96dc7ec4ddae"
+    },
+    {
+      "id": "eligibility",
+      "status": "OBSERVED",
+      "WER": 0.2,
+      "CER": 0.0967741935483871,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/eligibility-result.json",
+      "source_sha256": "70a516e943647a7e2255690e71c512f82756adf0a9dc332c88bd45162884a08f"
+    },
+    {
+      "id": "identity-switch",
+      "status": "OBSERVED",
+      "WER": 0.3076923076923077,
+      "CER": 0.2236842105263158,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/identity-switch-result.json",
+      "source_sha256": "611a29cc57aa95f82527c86c0968902a1ed4a9391fb5dd6b5858ee74aa177aee"
+    },
+    {
+      "id": "injection",
+      "status": "OBSERVED",
+      "WER": 0.0,
+      "CER": 0.0,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/injection-result.json",
+      "source_sha256": "fec48d73fc3687522aabd4e1785d8ce1b774c7be8862d13087b932e4e6875587"
+    },
+    {
+      "id": "appointment",
+      "status": "OBSERVED",
+      "WER": 0.4444444444444444,
+      "CER": 0.28846153846153844,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/appointment-result.json",
+      "source_sha256": "6cd53d4e05df4c0fe0a74a3e4091115b735fbb9ce5a8521e255d1728f062b651"
+    },
+    {
+      "id": "payment-consent",
+      "status": "OBSERVED",
+      "WER": 0.16666666666666666,
+      "CER": 0.19642857142857142,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/payment-consent-result.json",
+      "source_sha256": "693afe846420fd6fbba2821cca0a74f087b00a0c8a0372288dd69f2bf0ffec1b"
+    },
+    {
+      "id": "verify-noise15",
+      "status": "OBSERVED",
+      "WER": 0.5,
+      "CER": 0.4473684210526316,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/verify-noise15-result.json",
+      "source_sha256": "5f4506d05fbd4fa058bac6c5f81b2e2188aaf387f86d2413e6be13df96baefb5"
+    },
+    {
+      "id": "billing-noise15",
+      "status": "OBSERVED",
+      "WER": 0.0,
+      "CER": 0.0,
+      "speech_events": 1,
+      "speech_on_silence": null,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/billing-noise15-result.json",
+      "source_sha256": "37bd8e1f5246cb2de84122a17b4803e3e3d8f19851e198125123c2cdd477e69f"
+    },
+    {
+      "id": "silence",
+      "status": "OBSERVED",
+      "WER": null,
+      "CER": null,
+      "speech_events": 0,
+      "speech_on_silence": false,
+      "evidence": "evidence/2026-10-11/audio-backlog/26614a05/silence-result.json",
+      "source_sha256": "190415015d40eef0cd797e1b59ffe00846b01873050b12d44b3a216de3faa2a9"
+    }
+  ],
+  "scope": "Original11unscored fixture sources exercised through8s/3s padded native audio; literalWER/CER not semantic workflow pass/fail"
+}
