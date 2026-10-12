@@ -65,3 +65,7 @@ Expanded corrected offline suite: 16 unique tests, 15 PASS, 1 known FAIL. Native
 Prepared bounded synthetic hosted smoke using Agent.test; outcome recorded separately. See reports/sdk-evaluation/directional-kpi-2026-10-11.md for coverage/KPI definitions.
 
 Hosted transition outcome: two synthetic live text runs completed; second asserted exact field and bot-hangup successfully. See reports/test-results/hosted-smoke-2026-10-11.md. No phone listener started; no-answer cause unresolved; billed usage unmeasured.
+
+## Dashboard milestone — 2026-10-11
+Local dashboard: dashboard/index.html (preview http://127.0.0.1:8765/dashboard/). Sanitized snapshot with actual results, unresolved installer findings, coverage filters, JSON export and report links; no external hosting or live monitoring.
+Generator validates preserved result counts. SDK-016/017 catalog corrected to PARTIAL for existing executed subchecks; no new SDK tests. See dashboard/README.md for refresh and scope limitations.

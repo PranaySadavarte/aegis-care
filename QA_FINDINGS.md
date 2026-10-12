@@ -77,3 +77,5 @@ User-reported inbound no-answer remains an unverified symptom with unknown cause
 Current docs' DocumentQA namespace warning added to test planning; not reproduced here.
 
 Hosted results: native Agent.test completed twice; second exact field/termination assertions passed. This establishes live text test viability, not phone routing or authorization security. Detailed evidence and KPI limitations in reports/test-results/hosted-smoke-2026-10-11.md.
+
+Dashboard milestone: installer control gaps remain unresolved and separate from unit-test failure count. Healthcare implementation and phone/audio KPIs remain pending. Browser search/filter/export validated; no vulnerability fix or SDK test executed during this milestone.

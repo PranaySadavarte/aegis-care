@@ -31,3 +31,6 @@ A 15/16 test pass count is a regression metric, not a 93.75% voice-agent success
 DocumentQA server mode uploads documents and concurrent instances need namespaces. Full SDK review still in progress.
 
 Hosted Agent.test now executed successfully; added stable extracted-field and termination assertions. Text testing can validate a live dialog/Expert interaction without registering a phone number listener. Actual phone readiness still needs a separate listener/routing test.
+
+## 2026-10-11 — Results dashboard
+A test pass count is not a count of resolved findings. Static installer observations, hypotheses and unexecuted coverage require separate views. A snapshot dashboard must label freshness and cannot imply continuous monitoring.

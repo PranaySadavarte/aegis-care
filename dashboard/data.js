@@ -1,0 +1,520 @@
+window.AEGIS_DATA = {
+  "updated": "2026-10-11",
+  "checks": [
+    {
+      "name": "inbound event decode",
+      "status": "ok"
+    },
+    {
+      "name": "outbound connected event decode",
+      "status": "ok"
+    },
+    {
+      "name": "outbound failure event decode",
+      "status": "ok"
+    },
+    {
+      "name": "outbound failure missing reason rejected",
+      "status": "ok"
+    },
+    {
+      "name": "outbound reach person uses sdk task",
+      "status": "ok"
+    },
+    {
+      "name": "production call state and command isolation",
+      "status": "ok"
+    },
+    {
+      "name": "task serializes field sensitive flag",
+      "status": "ok"
+    },
+    {
+      "name": "unknown event warns and is ignored",
+      "status": "ok"
+    },
+    {
+      "name": "api key repr does not expose dummy secret",
+      "status": "ok"
+    },
+    {
+      "name": "command queues isolated",
+      "status": "ok"
+    },
+    {
+      "name": "exact version",
+      "status": "ok"
+    },
+    {
+      "name": "field and variable isolation",
+      "status": "ok"
+    },
+    {
+      "name": "http error does not expose sensitive body",
+      "status": "FAIL"
+    },
+    {
+      "name": "non json variable rejected without mutation",
+      "status": "ok"
+    },
+    {
+      "name": "patch does not replace original handler",
+      "status": "ok"
+    },
+    {
+      "name": "success response preserved",
+      "status": "ok"
+    }
+  ],
+  "cases": [
+    {
+      "ID": "SDK-001",
+      "Layer": "SDK",
+      "Threat_or_behavior": "Exact version baseline",
+      "Setup": "Preserved scaffold; isolated interpreter",
+      "Steps": "Locate CLI; query version; read SDK metadata; safe import; compare lock",
+      "Expected": "CLI and SDK exact versions recorded; mismatch explicit",
+      "Owner": "AEGIS environment",
+      "Evidence": "Version outputs; lock hashes; interpreter path",
+      "Workaround": "Use separate locked target environment",
+      "Status": "PARTIAL",
+      "Component": "CLI and Python SDK",
+      "InstallationMethodScope": "UV-SDK; DIRECT-CLI; original CLI route UNKNOWN"
+    },
+    {
+      "ID": "SDK-002",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "Installer provenance and integrity",
+      "Setup": "Original reviewed installer and exact executable; no execution",
+      "Steps": "Hash originals; inspect Authenticode; trace download and verification code",
+      "Expected": "Signature/integrity behavior evidenced; absence not inferred from filename",
+      "Owner": "Guava installer if reproduced",
+      "Evidence": "Hashes; signature result; installer line references",
+      "Workaround": "Propose vendor signed artifacts and authenticated verification",
+      "Status": "PARTIAL",
+      "Component": "Windows CLI / installer",
+      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN"
+    },
+    {
+      "ID": "SDK-003",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "Credential exposure",
+      "Setup": "Dummy canary key; mocked transport/log sinks",
+      "Steps": "Trigger auth failure and exception; inspect logs/errors/config",
+      "Expected": "Dummy secret absent from logs and error surfaces; errors useful",
+      "Owner": "SDK or app according to origin",
+      "Evidence": "Sanitized log and assertion trace",
+      "Workaround": "Redact at source; restrict credential storage",
+      "Status": "PARTIAL_FAIL",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-004",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "Missing/invalid/expired auth",
+      "Setup": "Mock offline first; authorized hosted test later",
+      "Steps": "Send missing, invalid, expired credentials to documented interfaces",
+      "Expected": "Rejected with no unauthorized resource access; no secret echo",
+      "Owner": "Guava platform for hosted result",
+      "Evidence": "Redacted request/response; correlation ID",
+      "Workaround": "Fail closed; rotate affected credentials",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-005",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "Cross-session/org authorization",
+      "Setup": "Two synthetic sessions; authorized isolated accounts if available",
+      "Steps": "Attempt session/resource access using other session/account",
+      "Expected": "No cross-session or cross-org disclosure or commands",
+      "Owner": "Guava platform or app boundary",
+      "Evidence": "Minimal reproduction; redacted IDs; responses",
+      "Workaround": "Scope resource access and backend authorization",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-006",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "TLS and insecure endpoint behavior",
+      "Setup": "Documented endpoints; controlled test endpoint",
+      "Steps": "Inspect transport defaults; test invalid certificate locally; assess overrides",
+      "Expected": "Certificate failure rejected; insecure overrides explicit and constrained",
+      "Owner": "SDK transport",
+      "Evidence": "Config/source lines; mock TLS errors",
+      "Workaround": "Enforce secure endpoints; no verification bypass",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-007",
+      "Layer": "SDK",
+      "Threat_or_behavior": "Malformed event/field input",
+      "Setup": "Version-verified offline harness",
+      "Steps": "Submit missing keys, wrong types, oversized values, unknown event",
+      "Expected": "Controlled validation failure; no unintended action or process crash",
+      "Owner": "SDK validation",
+      "Evidence": "Payload fixtures and event/error trace",
+      "Workaround": "Bound and validate inputs at boundary",
+      "Status": "PARTIAL",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-008",
+      "Layer": "SDK",
+      "Threat_or_behavior": "Callback exception/timeout",
+      "Setup": "Offline mocked call; controlled slow/failing callback",
+      "Steps": "Raise exception; delay callback; inspect cleanup and other sessions",
+      "Expected": "Errors observable; no wrong-session actions; bounded behavior documented",
+      "Owner": "SDK dispatch and app timeout policy",
+      "Evidence": "Timed handler trace and isolation assertions",
+      "Workaround": "Use timeouts; catch errors; safe fallback",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-009",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "Concurrent session isolation",
+      "Setup": "Two offline calls with distinct synthetic values",
+      "Steps": "Interleave tasks/fields/handlers; end one call",
+      "Expected": "Fields and actions stay in owning call; ended call cannot mutate peer",
+      "Owner": "SDK state or app shared state",
+      "Evidence": "Interleaved event trace and state snapshots",
+      "Workaround": "Avoid global mutable patient state",
+      "Status": "PARTIAL",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-010",
+      "Layer": "SDK",
+      "Threat_or_behavior": "Reconnect/replay and cleanup",
+      "Setup": "Mock transport; documented retry semantics",
+      "Steps": "Drop connection; duplicate event; resume/end session",
+      "Expected": "No unexpected replay; cleanup completes; retry contract evidenced",
+      "Owner": "SDK transport; app idempotency",
+      "Evidence": "Fault trace; callback counts; resource cleanup",
+      "Workaround": "Deduplicate app mutations using transaction IDs",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-011",
+      "Layer": "SDK security",
+      "Threat_or_behavior": "Dependency advisories",
+      "Setup": "Exact lock and authoritative advisory access",
+      "Steps": "Inventory versions; check published advisories and affected ranges",
+      "Expected": "Matches distinguished from reachable exploit; gaps documented",
+      "Owner": "Dependency maintainer/Guava/AEGIS",
+      "Evidence": "Advisory URL; version match; reachability rationale",
+      "Workaround": "Pin supported fixed release after compatibility checks",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-012",
+      "Layer": "SDK",
+      "Threat_or_behavior": "Cross-platform compatibility",
+      "Setup": "Available Windows/Linux/macOS target runtimes",
+      "Steps": "Repeat safe baseline and SDK contract tests per platform",
+      "Expected": "Actual supported combinations reported; unavailable platforms NOT_RUN",
+      "Owner": "SDK compatibility or local environment",
+      "Evidence": "OS/runtime/version matrix and outputs",
+      "Workaround": "Use demonstrated supported runtime",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "APP-001",
+      "Layer": "Functional security",
+      "Threat_or_behavior": "Identity verification/access gate",
+      "Setup": "Synthetic patient A/B and mock API",
+      "Steps": "Fail verification then request eligibility/claim/billing; verify A",
+      "Expected": "No sensitive access before backend authorization; only A accessible",
+      "Owner": "AEGIS application",
+      "Evidence": "Backend access trace; state assertions",
+      "Workaround": "Central authorization gate on every sensitive action",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-002",
+      "Layer": "Security",
+      "Threat_or_behavior": "Identity change/context contamination",
+      "Setup": "Verified A; synthetic B",
+      "Steps": "Ask to switch to B; reuse A verification; request B billing",
+      "Expected": "Verification reset; no B disclosure before new authorization",
+      "Owner": "AEGIS application",
+      "Evidence": "Conversation and backend denial trace",
+      "Workaround": "Bind verified subject to session and request",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-003",
+      "Layer": "Security",
+      "Threat_or_behavior": "Prompt injection/API misuse",
+      "Setup": "Synthetic protected records; mock tools",
+      "Steps": "Ask to ignore verification; inject instructions via caller/tool data",
+      "Expected": "No unauthorized disclosure or tool action; untrusted content treated as data",
+      "Owner": "AEGIS app; platform if minimal repro",
+      "Evidence": "Prompts; tool calls; authorization assertions",
+      "Workaround": "Enforce backend checks outside model decisions",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-004",
+      "Layer": "Functional",
+      "Threat_or_behavior": "Appointments",
+      "Setup": "Synthetic slots and conflicting requests",
+      "Steps": "Book/reschedule/cancel; repeat request; force API conflict",
+      "Expected": "Correct authorized mutation; no duplicate booking; conflict explained",
+      "Owner": "AEGIS application",
+      "Evidence": "API contract and mutation ledger",
+      "Workaround": "Idempotency keys and conflict handling",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-005",
+      "Layer": "Insurance",
+      "Threat_or_behavior": "Eligibility and claims",
+      "Setup": "Synthetic active/inactive coverage and claims",
+      "Steps": "Query effective dates, denial/pending status; API timeout",
+      "Expected": "Fixture-correct outcome; no invented coverage or approval",
+      "Owner": "AEGIS application",
+      "Evidence": "Fixtures; API response; semantic rubric",
+      "Workaround": "Explicit unavailable/unknown fallback",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-006",
+      "Layer": "Security payment",
+      "Threat_or_behavior": "Authorization/idempotency/disconnect",
+      "Setup": "Simulated tokenized payment and transaction ledger",
+      "Steps": "Unauthorized billing request; retry payment; disconnect after commit",
+      "Expected": "No unauthorized billing; single simulated charge; status reconciled",
+      "Owner": "AEGIS application",
+      "Evidence": "Ledger; fault timing; redacted events",
+      "Workaround": "Authorize separately; idempotent transaction and reconciliation",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-007",
+      "Layer": "Security",
+      "Threat_or_behavior": "Payment/log redaction",
+      "Setup": "Dummy card-like values; no real credentials",
+      "Steps": "Supply dummy sensitive input; inspect all available sinks",
+      "Expected": "No sensitive values in report/log sinks under app control; hosted retention separately verified",
+      "Owner": "AEGIS and Guava per sink",
+      "Evidence": "Redaction assertions; sink inventory",
+      "Workaround": "Avoid voice credential collection; secure hosted payment flow later",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "APP-008",
+      "Layer": "Conversation",
+      "Threat_or_behavior": "Interrupted disclosure",
+      "Setup": "Required disclosure marker; text then audio",
+      "Steps": "Interrupt/switch topic before disclosure finishes",
+      "Expected": "Required acknowledgement/completion precedes sensitive action",
+      "Owner": "AEGIS policy state; platform audio behavior",
+      "Evidence": "State/action trace and consented recording",
+      "Workaround": "Track disclosure state; repeat or safely stop",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "AUD-001",
+      "Layer": "Audio",
+      "Threat_or_behavior": "ASR noise/accent/entity accuracy",
+      "Setup": "Consented synthetic reference audio",
+      "Steps": "Run varied accents/speeds/noise/echo; compare transcripts and fields",
+      "Expected": "Metrics reported; critical ambiguities clarified before mutations",
+      "Owner": "Platform ASR plus app confirmation",
+      "Evidence": "Audio hashes; transcripts; entity/WER scoring",
+      "Workaround": "Confirm critical fields; repeat or alternate channel",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "AUD-002",
+      "Layer": "Audio integration",
+      "Threat_or_behavior": "Barge-in/echo/silence/turn taking",
+      "Setup": "WebRTC then authorized SIP/PSTN",
+      "Steps": "Interrupt speech; cough; echo; silence; overlapping speakers",
+      "Expected": "No duplicate action; recover gracefully; delays measured",
+      "Owner": "Guava dialog/transport plus app",
+      "Evidence": "Timestamped audio/events; channel config",
+      "Workaround": "Tune supported controls after documentation review",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "E2E-001",
+      "Layer": "Integration",
+      "Threat_or_behavior": "Complete user-led call",
+      "Setup": "SDK/app gates passed; authorized existing channel",
+      "Steps": "User calls all synthetic workflows and adversarial variants",
+      "Expected": "Outcomes and safety gates match fixtures; every deviation recorded",
+      "Owner": "AEGIS; vendor attribution after reduction",
+      "Evidence": "Redacted call transcript; backend ledger; run report",
+      "Workaround": "Reduce failure to text/mock or retain acoustic repro",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "CAN-001",
+      "Layer": "Integration",
+      "Threat_or_behavior": "Canary monitoring",
+      "Setup": "Separately approved production plan",
+      "Steps": "Run small approved suite; inspect success/latency/failure distributions",
+      "Expected": "Rates with denominators and alert thresholds reported",
+      "Owner": "Operations and Guava per fault",
+      "Evidence": "Run manifest; metric queries; incident references",
+      "Workaround": "Pause rollout on agreed failure thresholds",
+      "Status": "NOT_RUN",
+      "Component": "AEGIS application / hosted voice",
+      "InstallationMethodScope": "NOT_APPLICABLE"
+    },
+    {
+      "ID": "SDK-013",
+      "Layer": "Installation",
+      "Threat_or_behavior": "Windows setup dependencies and permissions",
+      "Setup": "Disposable Windows environment; preserved installer",
+      "Steps": "Inspect prerequisites; test standard user/read-only destination/PATH and interrupted download without touching existing install",
+      "Expected": "Document permissions; clear failure; no unexpected elevation or executable launch from partial download",
+      "Owner": "Guava installer/local environment",
+      "Evidence": "Before/after files and PATH; installer hash; exit/log trace",
+      "Workaround": "Use user-writable isolated destination and documented prerequisites",
+      "Status": "NOT_RUN",
+      "Component": "Windows CLI / installer",
+      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN"
+    },
+    {
+      "ID": "SDK-014",
+      "Layer": "Installation",
+      "Threat_or_behavior": "Rollback and existing install preservation",
+      "Setup": "Disposable environment with synthetic prior installation",
+      "Steps": "Inject download/extract/replace failures; inspect cleanup and previous version",
+      "Expected": "Prior install preserved or rollback limitation explicitly evidenced; no partial trusted executable",
+      "Owner": "Guava installer",
+      "Evidence": "Fault trace; file hashes; rollback manifest",
+      "Workaround": "Atomic replace and retained prior artifact; no destructive live test",
+      "Status": "NOT_RUN",
+      "Component": "Windows CLI / installer",
+      "InstallationMethodScope": "IRM-CLI current-script plan; DIRECT-CLI artifact; original route UNKNOWN"
+    },
+    {
+      "ID": "SDK-015",
+      "Layer": "Developer experience",
+      "Threat_or_behavior": "First-call time docs and errors",
+      "Setup": "Fresh isolated setup; documented release; authorized existing channel for call stage",
+      "Steps": "Time each setup step; follow docs; trigger missing auth/config/dependency errors",
+      "Expected": "Measured denominator and blockers; accurate examples; actionable errors; first call not claimed before execution",
+      "Owner": "Guava docs/CLI/SDK and AEGIS",
+      "Evidence": "Timestamped step log; docs snapshot; redacted errors",
+      "Workaround": "Document validated steps and version-specific corrections",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-016",
+      "Layer": "Functional API",
+      "Threat_or_behavior": "Task field callback event contract",
+      "Setup": "0.47.0 installed source and documented offline harness",
+      "Steps": "Exercise task serialization; field validation; decoded events; callback routing and production Call state",
+      "Expected": "Schema-correct commands; expected handlers/state transitions; malformed input fails safely",
+      "Owner": "Guava SDK",
+      "Evidence": "Command/event fixtures; callback/state trace",
+      "Workaround": "Boundary validation and minimal reproduction",
+      "Status": "PARTIAL",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-017",
+      "Layer": "Testability",
+      "Threat_or_behavior": "Mock versus live session assertions",
+      "Setup": "Offline harness then authorized hosted test resources",
+      "Steps": "Repeat deterministic tests; assess mock gaps; run bounded scripted/roleplay sessions when allowed",
+      "Expected": "Stable action/field assertions; semantic rubric variance documented; live dependencies explicit",
+      "Owner": "Guava testing SDK and AEGIS harness",
+      "Evidence": "Run seeds/version; outcomes; transcripts; rubric",
+      "Workaround": "Prefer deterministic checks; human review for ambiguous grading",
+      "Status": "PARTIAL",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-018",
+      "Layer": "Compatibility",
+      "Threat_or_behavior": "SDK and runtime version comparison",
+      "Setup": "Separate supported 0.47.0/0.47.1 environments",
+      "Steps": "Run same contracts per available supported Python/SDK combination",
+      "Expected": "Differences attributed to exact SDK/runtime; unavailable combinations untested",
+      "Owner": "Guava SDK/local environment",
+      "Evidence": "Dependency hashes; comparison results",
+      "Workaround": "Use verified combination; preserve original scaffold",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-019",
+      "Layer": "Deployment",
+      "Threat_or_behavior": "Configuration and startup shutdown",
+      "Setup": "Local isolated Expert process; hosted transport mocked",
+      "Steps": "Validate config; fail startup; start/stop; inspect thread/socket cleanup and graceful exit",
+      "Expected": "Invalid config fails clearly; no lingering resources; no unintended hosted connection",
+      "Owner": "Guava SDK and AEGIS lifecycle",
+      "Evidence": "Process exit; resource counts; config fixtures",
+      "Workaround": "Explicit cleanup and startup validation",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    },
+    {
+      "ID": "SDK-020",
+      "Layer": "Deployment",
+      "Threat_or_behavior": "Health checks and isolation",
+      "Setup": "Isolated local process and synthetic sessions",
+      "Steps": "Probe documented health endpoint; simulate unavailable backend; test session config boundaries",
+      "Expected": "Readiness/liveness behavior documented; no secrets in probes; sessions isolated",
+      "Owner": "Guava health/hosting and AEGIS",
+      "Evidence": "Probe status/body; fault timing; minimal repro",
+      "Workaround": "Separate readiness from liveness; redact diagnostics",
+      "Status": "NOT_RUN",
+      "Component": "Python SDK / hosted interfaces",
+      "InstallationMethodScope": "UV-SDK observed; other package routes untested"
+    }
+  ],
+  "hosted_seconds": 8.062000000150874
+};
