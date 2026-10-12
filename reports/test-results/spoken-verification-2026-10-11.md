@@ -24,3 +24,5 @@ Sources: SDK 0.47.0 agent.py call_local and webrtc_helper.py; https://goguava.ai
 webrtc_helper.py uses manifest sha256 via download_and_check for a newly downloaded helper. Static review only; helper download/tamper enforcement not executed here. Cached helper revalidation also not established.
 This helper behavior does not fix the separate Windows CLI installer verification gap.
 Raw evidence: evidence/2026-10-11/spoken-verification/ and prior phone listener logs, kept local; caller numbers/session IDs omitted from this report.
+
+Hosted numeric-credential check completed with exit 0: patient 1001 / code 4242 accepted and billing balance 5000 asserted. Raw evidence: spoken-verification/hosted-easy.json. This validates hosted text extraction, not microphone ASR or post-fix PSTN success.

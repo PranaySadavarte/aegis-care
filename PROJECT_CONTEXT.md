@@ -82,3 +82,5 @@ BERTScore and ROUGE names confirmed; metric pages regenerated. Startup WebSocket
 ## Spoken verification fix — 2026-10-11
 User live calls repeatedly failed verification; four accepted call sessions visible in raw listener evidence, but actual entered field values absent. Exact live root cause unknown. Strict credential string handling identified as application limitation.
 Easy synthetic credentials 1001/4242 added; legacy credentials preserved; bounded formatting normalization added. Corrected suite 12/12 functional methods PASS. Updated approved phone listener running; native local-audio mode ready, not launched. Local/WebRTC usage cannot be assumed free.
+
+Numeric credentials also passed one hosted text billing test (exit 0); live audio verification still awaits user retest.
