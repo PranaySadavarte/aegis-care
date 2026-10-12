@@ -600,7 +600,7 @@ window.AEGIS_DATA = {
     {
       "workflow": "denied",
       "status": "PASS",
-      "process_seconds": 9.405999999959022
+      "process_seconds": 11.047000000020489
     },
     {
       "workflow": "eligibility",
@@ -619,8 +619,8 @@ window.AEGIS_DATA = {
     }
   ],
   "functional": {
-    "test_methods": 12,
-    "passed": 12,
+    "test_methods": 17,
+    "passed": 17,
     "workflow_subcases": 6
   }
 };

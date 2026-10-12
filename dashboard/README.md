@@ -9,3 +9,5 @@ Verified: data generator validates 16 unique checks; 32 cases; JS syntax; HTTP 2
 SDK-016 and SDK-017 catalog statuses corrected to PARTIAL based on directional contracts and hosted smoke; no new SDK tests executed for dashboard QA.
 
 Call history: run dashboard/serve.py with baseline interpreter, then use Refresh call records. It performs read-only native CLI import on demand, keeps timestamped raw evidence, and serves only dashboard/reports/docs. Four historical records recovered; expected scenarios unrecorded. Future listener events add masked workflow/result outcomes without credentials.
+
+Suite runner: Test runs page or tests/run_all.py --suite offline/hosted/all. Hosted now includes native rubric billing; each run has timestamped raw output and sanitized history. Expected open findings remain visible. Calls have their own page; full suites are not triggered automatically by each call.

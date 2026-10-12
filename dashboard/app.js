@@ -11,17 +11,4 @@ function render(){const q=el("search").value.toLowerCase(),s=el("status").value;
 el("stage").addEventListener("change",render);el("search").addEventListener("input",render);el("status").addEventListener("change",render);render();
 el("export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:"application/json"}));const a=document.createElement("a");a.href=url;a.download="aegis-results-"+d.updated+".json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 
-function showCalls(snapshot){
- d.manual_calls=snapshot;
- el("call-refresh").textContent="Last native import: "+snapshot.refreshed_at_utc+" · "+snapshot.calls.length+" returned records. Platform timestamp timezone is unspecified; no grading inferred.";
- el("call-history").innerHTML=snapshot.calls.map(c=>'<tr><td>'+esc(c.call)+'</td><td>'+esc(c.platform_time)+'<br><small class="muted">Timezone unspecified by CLI</small></td><td>'+esc(c.duration)+'</td><td>'+esc(c.outcome)+'</td><td>'+esc(c.grade)+'</td></tr>').join("")||'<tr><td colspan="5">No records returned. This does not prove no call attempt.</td></tr>';
-}
-if(window.AEGIS_CALLS)showCalls(window.AEGIS_CALLS);
-el("refresh-calls").addEventListener("click",async()=>{
- const button=el("refresh-calls");button.disabled=true;el("call-refresh").textContent="Reading native Guava conversation records…";
- try{const response=await fetch("/api/calls/refresh");if(!response.ok)throw new Error();const snapshot=await response.json();if(!Array.isArray(snapshot.calls))throw new Error();showCalls(snapshot);}
- catch{el("call-refresh").textContent="Refresh unavailable. Previous snapshot retained. Open the local dashboard at port 8765 or use the native CLI conversation commands.";}
- finally{button.disabled=false;}
-});
-
 

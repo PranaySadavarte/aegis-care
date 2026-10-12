@@ -8,7 +8,7 @@ Agent scaffold: harborcare-agent (HarborCare inbound agent)
 Evaluate Guava CLI/SDK v0.47.0 and build a healthcare-first voice agent for patient identity verification, insurance eligibility, claims, appointments, billing and payment security. Use synthetic patient/insurance records and simulated payments. Produce an evidence-backed technical assessment for Guava's founders and CEO.
 
 ## Current milestone
-Initial scaffold audit completed and recorded in reports/scaffold-audit-2026-10-11.md. Git baseline: 47e92e7. Application remains Guava's introduction/RAG demo; healthcare features have not been implemented.
+Initial scaffold audit completed and recorded in reports/scaffold-audit-2026-10-11.md. Git baseline: 47e92e7. Original demo preserved; synthetic HarborCare is now implemented and tested. Latest milestones below record current coverage and limitations.
 Target CLI/SDK: 0.47.0. CLI version/authentication: user-reported, not reverified. Actual locked and installed SDK metadata: 0.47.1. Do not attribute 0.47.1 results to 0.47.0. Preserve current lock/environment evidence before selecting a separate 0.47.0 evaluation environment.
 
 ## Verified checks and limitations
@@ -88,3 +88,10 @@ Numeric credentials also passed one hosted text billing test (exit 0); live audi
 ## Per-call history — 2026-10-11
 Dashboard now displays individual native inbound conversation records and on-demand refresh. Four historical records recovered; transcripts report verification denial; outcomes unscored. Timestamp timezone unknown in CLI display.
 Future approved listener now records masked start/finish/end outcomes locally; no credentials or transcript in dashboard. No new live call evaluated during this instrumentation milestone.
+
+## Service and evaluation runner — 2026-10-11
+AEGIS Care = QA umbrella; HarborCare = agent persona. Service wording revised; synthetic limitations retained.
+Dedicated Calls and Test runs pages. tests/run_all.py runs offline/hosted/all fixed suites; full regressions on demand. Automatic per-call metadata checks added, with explicit semantic/ASR limits.
+Latest functional 17 PASS; SDK 15/16 PASS (known failure); installer audit open findings. Six revised hosted workflows PASS; malformed text denial returned no backend result (open robustness observation); valid-format wrong-code rerun PASS; native billing rubric PASS.
+See reports/test-results/service-runner-2026-10-11.md. Broad test catalog and production feature scope still incomplete.
+

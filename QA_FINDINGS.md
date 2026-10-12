@@ -96,3 +96,7 @@ WebRTC helper checksum path found by static review; distinct from unresolved CLI
 
 QA-014: observability gap, AEGIS application. Manual calls were absent from snapshot dashboard; added native conversation import and masked per-call outcome journal. Four historical denial records recovered, not automatically graded. Refresh latest 30 records is on demand; no historical pagination/full recording viewer yet.
 12 functional regression methods PASS; live validation of newly added recorder awaits another call. Raw originals retained.
+
+QA-015: hosted malformed-code path produced no expected backend result in revised service; assertion failed, exact cause unverified because initial transcript not saved. Valid-format wrong numeric code rerun passed; original failure retained. Owner undetermined between application flow/hosted dialog pending minimal reproduction; no unauthorized disclosure demonstrated.
+QA-016: caller experience / evaluation orchestration gap addressed with service-style wording, dedicated pages, fixed runner and limited per-call authorization observation. This does not complete broad semantic/audio/production evaluation.
+Native SDK TestSession.evaluate billing rubric actually executed and passed. Latest run results/limits in service-runner report.

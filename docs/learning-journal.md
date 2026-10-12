@@ -53,3 +53,9 @@ call_local means local microphone/speakers with hosted WebRTC, not local model i
 ## 2026-10-11 — Call outcomes versus test grades
 A completed call or transcript denial is an observation. Pass/fail requires a known expected scenario: rejecting a wrong code may be correct, while rejecting a correct code is a defect.
 Native conversation records can reconstruct past calls, but precise application outcomes are easier to capture at the Expert callback. Mask identifiers and omit credentials; retain raw originals locally for attribution.
+
+## 2026-10-11 — Background evaluation versus regression
+HarborCare is the caller-facing service; AEGIS Care evaluates it. Do not narrate test internals during every call.
+Each call can receive scoped observation checks without launching unrelated regressions. Full suites are explicit operator actions. No test result means inconclusive, not pass.
+Native SDK semantic rubric evaluation complements deterministic backend checks but does not produce calibrated confidence or acoustic metrics.
+Preserve transcript before asserting outcomes so failed hosted cases remain diagnosable. Malformed code and valid-format wrong code test different boundaries.

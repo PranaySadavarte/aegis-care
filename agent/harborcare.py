@@ -10,18 +10,33 @@ from backend.synthetic import SyntheticBackend, AccessDenied, Conflict
 
 def create_agent(backend=None, outcomes=None, recorder=None):
     backend=backend or SyntheticBackend()
-    agent=guava.Agent(name="HarborCare",organization="AEGIS Care Synthetic Lab",
-                      purpose="Handle synthetic healthcare administrative workflows.")
+    agent=guava.Agent(name="HarborCare",organization="HarborCare",
+                      purpose="Help callers with healthcare administration.")
     def finish(call, result):
-        if recorder: recorder(call,"finished",{"workflow":call.get_field("workflow") or "verification","result_status":result.get("status","returned") if isinstance(result,dict) else "returned"})
+        if recorder: recorder(call,"finished",{"workflow":call.get_field("workflow") or "verification","result_status":result.get("status","returned") if isinstance(result,dict) else "returned","verified":call.id in backend.authorized})
         if outcomes is not None: outcomes.append(result)
         call.set_variable("qa_result",result)
-        call.hangup("Read this synthetic result accurately, explain that no real healthcare or payment action occurred, then end: "+json.dumps(result))
+        if isinstance(result,dict) and result.get("status")=="denied":
+            message="I could not verify those details. Please check your patient ID and code and call again."
+        elif isinstance(result,dict) and "balance_cents" in result:
+            message="Your account balance is "+format(result["balance_cents"]/100,".2f")+" dollars."
+        elif isinstance(result,dict) and "plan" in result:
+            message="Your plan is "+result["plan"]+". Coverage is "+("active." if result["active"] else "inactive.")
+        elif isinstance(result,list):
+            message="Your claim "+result[0]["id"]+" is "+result[0]["status"]+"." if result else "There are no claims on this account."
+        elif isinstance(result,dict) and result.get("status") in ("booked","already_booked"):
+            message="Your appointment is confirmed for "+result["slot"]+"."
+        elif isinstance(result,dict) and result.get("status")=="simulated_only":
+            message="Your demo payment of "+format(result["amount_cents"]/100,".2f")+" dollars is recorded. No real charge was made."
+        elif isinstance(result,dict) and result.get("status")=="verified":
+            message="Your identity check is complete."
+        else: message="I am unable to complete this request right now. Please try again."
+        call.hangup("Tell the caller this result naturally, then close courteously: "+message)
     @agent.on_call_start
     def start(call):
         if recorder: recorder(call,"started")
-        call.set_task("verify",objective="Explain this is a synthetic test. Verify the synthetic patient before discussing records. Do not request real personal or payment details.",
-                       checklist=[guava.Say("Welcome to HarborCare. This is a synthetic test, not medical advice or a real payment service."),
+        call.set_task("verify",objective="Welcome the caller. Mention demo data once, briefly. Verify identity before discussing records. Never request real personal or card details.",
+                       checklist=[guava.Say("Welcome to HarborCare. This demo uses sample records. I can help with your coverage, claims, appointments, or account."),
                                   guava.Field(key="patient_id",description="Collect synthetic patient ID as digits, such as 1001. Legacy HC-prefixed IDs also work."),
                                   guava.Field(key="verification_code",description="Collect the four-digit synthetic verification code as digits, preserving zeros. Do not guess or disclose a code. Legacy DEMO-prefixed codes also work.",sensitive=True)])
     @agent.on_task_complete("verify")
@@ -30,7 +45,7 @@ def create_agent(backend=None, outcomes=None, recorder=None):
             logging.getLogger("harborcare").info("Synthetic verification denied; exact accepted credentials did not match. No credential values logged.")
             finish(call,{"status":"denied","message":"Synthetic verification failed."})
             return
-        call.set_task("choose",objective="Ask which one synthetic workflow the caller needs.",
+        call.set_task("choose",objective="Ask how you can help with coverage, claims, appointments, billing or a demo payment. Use the matching workflow without naming internal test labels.",
                        checklist=[guava.Field(key="workflow",field_type="multiple_choice",
                          choices=["identity","eligibility","claims","appointments","billing","payments"],
                          description="Choose one workflow for this call.")])
@@ -67,7 +82,7 @@ def create_agent(backend=None, outcomes=None, recorder=None):
         except (AccessDenied,ValueError,Conflict): finish(call,{"status":"rejected","message":"No simulated payment completed."})
     @agent.on_question
     def question(call, question):
-        return "This synthetic prototype supports administrative test workflows only. It cannot provide medical advice or collect real payment credentials."
+        return "I can help with coverage, claims, appointments and billing after verification. For medical questions, please contact your clinician. Please do not share card details."
     @agent.on_session_end
     def ended(call, event):
         if recorder: recorder(call,"ended",{"termination":event.termination_reason})
@@ -90,6 +105,7 @@ if __name__=="__main__":
     elif options.mode=="webrtc": agent.listen_webrtc()
     elif options.mode=="local": agent.call_local()
     else: agent.chat()
+
 
 
 

@@ -42,7 +42,12 @@ def refresh_calls():
         if event["event"]=="finished":
             row["workflow"]=event["detail"]["workflow"]
             row["outcome"]="Expert outcome: "+event["detail"]["result_status"]
-        if event["event"]=="ended": row["termination"]=event["detail"]["termination"]
+            if event.get("evaluation"): row["evaluation"]=event["evaluation"];row["grade"]="Scoped authorization check: "+event["evaluation"]["authorization_gate"]
+        if event["event"]=="ended":
+            row["termination"]=event["detail"]["termination"]
+            if event.get("evaluation"):
+                row["evaluation"]=event["evaluation"]
+                row["grade"]="Scoped authorization check: "+event["evaluation"]["authorization_gate"]
     data={"refreshed_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),"calls":calls,
           "note":"At most 30 inbound records for the configured number since 2026-10-11. Empty/missing records do not prove no call attempt. No transcripts or phone numbers embedded."}
     (ROOT/"dashboard/calls.json").write_text(json.dumps(data,indent=2),encoding="utf-8")
@@ -51,6 +56,8 @@ def refresh_calls():
 if __name__=="__main__":
     result=refresh_calls()
     print(json.dumps({"retrieved":len(result["calls"]),"refreshed_at_utc":result["refreshed_at_utc"]}))
+
+
 
 
 
