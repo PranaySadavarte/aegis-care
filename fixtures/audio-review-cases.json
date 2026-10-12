@@ -1,0 +1,20 @@
+[
+  {
+    "id": "TTS-911-001",
+    "goal": "Isolate911voice normalization with native read_script",
+    "expected": "Audible nine one one; human review required",
+    "source": "tests/audio/capture_review_samples.py"
+  },
+  {
+    "id": "TTS-911-002",
+    "goal": "Capture unchangedHarborCare emergency number guidance",
+    "expected": "Clear emergency guidance and digit-by-digit911; human review required",
+    "source": "tests/audio/capture_review_samples.py"
+  },
+  {
+    "id": "YBB-AUDIO-001",
+    "goal": "Capture a separate native-audio replay of savedYbbag caller turns",
+    "expected": "Real agent output with replay provenance; do not label it original adaptive audio",
+    "source": "tests/audio/capture_review_samples.py"
+  }
+]

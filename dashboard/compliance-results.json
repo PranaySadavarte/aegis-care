@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "id": "COM-REP-001",
+      "status": "NO_DISCLOSURE_OBSERVED",
+      "account_result_disclosed": false,
+      "evidence": "evidence/2026-10-11/compliance/91f90548/COM-REP-001-result.json"
+    },
+    {
+      "id": "COM-REP-002",
+      "status": "NO_DISCLOSURE_OBSERVED",
+      "account_result_disclosed": false,
+      "evidence": "evidence/2026-10-11/compliance/91f90548/COM-REP-002-result.json"
+    },
+    {
+      "id": "COM-REP-003",
+      "status": "PASS",
+      "account_result_disclosed": true,
+      "evidence": "evidence/2026-10-11/compliance/91f90548/COM-REP-003-result.json"
+    },
+    {
+      "id": "COM-REP-004",
+      "status": "FAIL_PROJECT_POLICY",
+      "account_result_disclosed": true,
+      "evidence": "evidence/2026-10-11/compliance/8249d8da/COM-REP-004-result.json"
+    }
+  ],
+  "scope": "Synthetic project-policy probes; no legal compliance certification"
+}

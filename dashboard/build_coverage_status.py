@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def read(name):return json.loads((ROOT/name).read_text(encoding='utf-8-sig'))
 inventory=read('dashboard/test-inventory.json');counts={kind:dict(Counter(r['Status'] for r in inventory['rows'] if r['SourceType']==kind)) for kind in inventory['counts']}
 missing=[{'id':r['ID'],'reason':r.get('ExecutionReason','See source'),'source':r['SourceType']} for r in inventory['rows'] if r['Status']=='NOT_RUN']
-summary={'counts':counts,'not_run':missing,'summary':'85 executable unit/contract methods ran: 79 PASS, 6 FAIL. All 24 audio fixture entries now have scoped observations. Five broad plans remain NOT_RUN; 24 PARTIAL and 17 PARTIAL_FAIL plans remain incomplete. Inventory entries are not a combined pass-rate denominator.'}
+summary={'counts':counts,'not_run':missing,'summary':str(sum(counts['Executable methods'].values()))+' executable unit/contract methods ran: '+str(counts['Executable methods'].get('PASS',0))+' PASS, '+str(counts['Executable methods'].get('FAIL',0))+' FAIL. '+str(sum(counts['Audio fixtures'].values()))+' audio fixture entries have scoped observations; three additional review captures need separate acceptance. '+str(len(missing))+' plans remain NOT_RUN. PARTIAL plans remain incomplete; inventories are not a combined pass-rate denominator.'}
 (ROOT/'dashboard/coverage-status.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
 audio=read('dashboard/audio-backlog-results.json');esc=html.escape
 fmt=lambda n:'Not applicable: silent reference' if n is None else format(n*100,'.2f')+'%'

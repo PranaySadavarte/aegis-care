@@ -49,6 +49,10 @@ def run(suite):
         groups.append(("Audio fixture backlog",["tests/audio/run_fixture_backlog.py"],570))
     if suite in ("fixture-text","all"):
         groups.append(("Text fixture backlog",["tests/integration/run_text_backlog.py"],170))
+    if suite in ("compliance","all"):
+        groups.append(("Representative authorization",["tests/integration/run_compliance.py"],220))
+    if suite in ("review-audio","all"):
+        groups.append(("Audio review samples",["tests/audio/capture_review_samples.py"],345))
     for label,args,limit in groups:
         started=time.monotonic()
         try:
@@ -88,5 +92,5 @@ def run(suite):
         if updated.returncode:print("Metric refresh failed; previous snapshot retained. See local builder evidence.")
     print(json.dumps(state));return 0 if state["status"]=="PASS" else 1
 if __name__=="__main__":
-    parser=argparse.ArgumentParser();parser.add_argument("--suite",choices=["offline","hosted","security","audio","adversarial","robustness","kpi","extended","adaptive","fixture-audio","fixture-text","all"],default="offline")
+    parser=argparse.ArgumentParser();parser.add_argument("--suite",choices=["offline","hosted","security","audio","adversarial","robustness","kpi","extended","adaptive","fixture-audio","fixture-text","compliance","review-audio","all"],default="offline")
     raise SystemExit(run(parser.parse_args().suite))

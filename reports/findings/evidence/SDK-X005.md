@@ -1,5 +1,24 @@
 # SDK-X005: Explicit empty outreach settings replaced by global SMS
 
+## In plain language
+
+An empty contact outreach list inherits globalSMS. That behavior matters if an application assumes an empty list means do not contact; the documented meaning still needs clarification.
+
+## Which test caught this?
+
+**Case:** `SDK-X005`
+
+**Detector:** `HelperAndTenacityCoverage.test_tenacity_explicit_empty_contact_preserved`
+
+**Source:** `tests/sdk/test_extended_contracts.py`
+
+**Relevant owner:** Guava SDK
+
+**Execution layer:** Mocked contact upload
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-x005)
+
+
 **Current step:** SDK and unchanged Expert adversarial evaluation.
 
 **Status and scope:** Explicit empty outreach settings replaced by global SMS. Confirmed client behavior; downstream impact limited or unverified.
@@ -10,7 +29,7 @@
 
 **Expected:** An explicitly supplied per-contact setting follows documented precedence.
 
-**Actual:** Mocked upload replaced contact outreach_modalities=[] with global[sms]. No SMS sent. Empty-list opt-out semantics need vendor clarification.
+**Actual:** Mocked upload replaced contact outreach_modalities=[] with global [sms]. No SMS sent. Empty-list opt-out semantics need vendor clarification.
 
 **Preserved evidence:** Raw files are local and deliberately not served by the dashboard. SHA-256 identifies the exact artifact. Excerpts below redact synthetic payment canaries.
 

@@ -5,11 +5,8 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'reports/findings/evidence';OUT.mkdir(parents=True,exist_ok=True)
 FILE=ROOT/'reports/findings/robustness-findings-2026-10-11.json'
 findings=json.loads(FILE.read_text())
-def mask(text):
- text=re.sub(r'(?<![\w.])(?:\d[ -]?){12,18}\d(?![\w.])','[REDACTED_SYNTHETIC_PAN]',text)
- text=re.sub(r'(?i)((?:security code|cvv)(?: is)?\s*[:=]?\s*)123\b',r'\1[REDACTED_SYNTHETIC_CVV]',text)
- text=re.sub(r'\b123\b','[REDACTED_SYNTHETIC_CVV]',text)
- return text.replace('SYNTHETIC-NAMESPACE-B-ONLY','[REDACTED_SYNTHETIC_CANARY]')
+from evidence_format import mask
+
 def excerpts(path,fid):
  text=path.read_text(encoding='utf-8-sig',errors='replace')
  if path.suffix=='.txt':
@@ -17,6 +14,9 @@ def excerpts(path,fid):
   match=re.search(r'FAIL: '+str(name)+r'.*?(?=\n={10}|\n-{10}\nRan)',text,re.S)
   return (match.group() if match else text[:1600])
  obj=json.loads(text);items=[]
+ if isinstance(obj,dict) and 'checks' in obj:
+  wanted={'ROB-005':['TEST-TRANSCRIPT-REDACTION'],'ROB-006':['AUTH-RATE-LIMIT','PERSISTENCE'],'ROB-007':['JOURNAL-UNTRUSTED-DETAIL']}.get(fid,[])
+  if wanted:return json.dumps({'scope':obj.get('scope'),'checks':[r for r in obj['checks'] if r['id'] in wanted]},indent=2)
  if 'stdout' in obj:
   for line in obj['stdout'].splitlines():
    try:row=json.loads(line)
@@ -59,4 +59,13 @@ except httpx.HTTPStatusError as exc:actual=str(exc)
 (OUT/'SDK-F001.md').write_text('# SDK-F001: Response body included in exception\n\nActual exception, reproduced with a synthetic in-memory response (no HTTP request):\n\n```text\n'+actual+'\n```\n\nProposed default message, not applied:\n\n```text\nHTTP 401 Unauthorized for url https://offline.invalid/; response body omitted\n```\n\nThe body marker must not appear in the default exception. Real response bodies may contain credentials, patient details, payment values or internal diagnostics; none should be copied wholesale into shared exceptions/logs. Request identifiers may be included only when present and allowlisted. URL query strings also need redaction when sensitive.\n\nReproduce: `python -m unittest discover -s tests/sdk -p test_offline_contracts.py -v`. Original source: `guava/utils.py:check_response`, SDK0.47.0; this is independent of uv installation. Raw suite output is preserved under `evidence/2026-10-11/suite-runs/`. No production secret leak is claimed.\n',encoding='utf-8')
 for fid,title,actual in [('CLI-F001','Installed Windows CLI unsigned','The installed executable was observed as NotSigned in the prior Authenticode inspection.'),('CLI-F002','Installer verification controls absent','Current official installer source has no explicit downloaded-binary checksum comparison or Authenticode check. Neither control has been fixed.')]:
  (OUT/(fid+'.md')).write_text(f'# {fid}: {title}\n\n{actual}\n\n[Installer audit and evidence provenance](../../sdk-evaluation/installer-audit-2026-10-11.md)\n\nExpected owner behavior: publish a trusted digest/signing identity and enforce artifact verification before atomic replacement. This is a proposed solution, not an applied SDK or installer fix. Unsigned status is not evidence of malware. The originally used installer route/provenance remains unknown. Partial-download rollback evidence is documented in [CLI-X003](CLI-X003.md).\n',encoding='utf-8')
+# Enrich every page after specialized original SDK/installer page generation.
+for f in findings:
+ page=OUT/(f['id']+'.md');text=page.read_text(encoding='utf-8');head,tail=text.split('\n',1);d=f['detected_by']
+ intro='\n\n## In plain language\n\n'+f['plain_language']+'\n\n## Which test caught this?\n\n**Case:** `'+d['case_id']+'`\n\n**Detector:** `'+d['method']+'`\n\n**Source:** `'+d['source']+'`\n\n**Relevant owner:** '+f['owner']+'\n\n**Execution layer:** '+d['mode']+'\n\n[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#'+f['id'].lower()+')\n\n'
+ if f['id']=='ROB-007':intro += '**What we deliberately did:** In a temporary journal, our test supplied a session-ended event whose termination value was a synthetic marker instead of an allowed reason. The journal stored it. No caller made this input during a live call.\n\n**Why investigate:** If an untrusted event can reach this field, it could pollute reports or retain information that should not be exported. The live path has not been established; severity is low until it is. This is not code execution or unauthorized patient access.\n\n'
+ if f['id']=='ROB-008':intro += '**Caller intent:** Confirm the same identity after valid verification. No different patient was requested.\n\n**Why this counts as a workflow fault:** The agent introduced a different-account flow and did not finish the requested confirmation. A normal request can be phrased differently, but that does not justify inventing an account switch.\n\n**What we still need:** Capture the action-request summary and identity helper matches. The transcript does not isolate an Expert dispatch error from dialogue classification. The55-second limit belongs to the harness, not a measured audio delay.\n\n'
+ if f['id']=='ROB-009':intro += '**Listen before grading:** Both native output files contain spoken audio, but the text events only say911. A listener must record whether the voice says nine one one or nine hundred and eleven. User-observed pronunciation is not yet reproduced by review. [Listen to captures](../../../dashboard/audio-review.html).\n\n'
+ if f['id']=='ROB-010':intro += '**Important nuance:** Being a brother is not automatically disqualifying under HIPAA. Some family disclosures are permitted with patient agreement or other defined circumstances. This test explicitly said no permission, and the agent itself refused before disclosing. We report a synthetic authorization-policy failure, not a statutory determination. [HHS family disclosure guidance](https://www.hhs.gov/hipaa/for-professionals/faq/does-hipaa-permit-a-doctor-to-discuss-a-patients-health-status-with-the-patients-family-and-friends/index.html).\n\n'
+ page.write_text(head+intro+tail,encoding='utf-8')
 print(json.dumps({'reviewed_evidence_pages':len(findings),'original_findings_pages':3}))

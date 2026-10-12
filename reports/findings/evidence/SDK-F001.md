@@ -1,5 +1,24 @@
 # SDK-F001: Response body included in exception
 
+## In plain language
+
+An HTTP error can carry its entire response body into downstream logs. We demonstrated this with a synthetic marker, not a real secret.
+
+## Which test caught this?
+
+**Case:** `SDK-003`
+
+**Detector:** `SDKContracts.test_http_error_does_not_expose_sensitive_body`
+
+**Source:** `tests/sdk/test_offline_contracts.py`
+
+**Relevant owner:** Guava SDK and downstream application logging
+
+**Execution layer:** In-memory HTTP response; no network
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-f001)
+
+
 Actual exception, reproduced with a synthetic in-memory response (no HTTP request):
 
 ```text

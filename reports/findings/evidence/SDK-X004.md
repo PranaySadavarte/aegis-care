@@ -1,5 +1,24 @@
 # SDK-X004: Empty RAG instance produces unscoped document query
 
+## In plain language
+
+An empty document collection sends no explicit key restriction. We need the vendor to explain how the server interprets this before calling it a data leak.
+
+## Which test caught this?
+
+**Case:** `SDK-X004`
+
+**Detector:** `HelperAndTenacityCoverage.test_rag_empty_namespace_does_not_query_all_documents`
+
+**Source:** `tests/sdk/test_extended_contracts.py`
+
+**Relevant owner:** Guava SDK
+
+**Execution layer:** Mocked retrieval boundary
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-x004)
+
+
 **Current step:** SDK and unchanged Expert adversarial evaluation.
 
 **Status and scope:** Empty RAG instance produces unscoped document query. Confirmed client behavior; downstream impact limited or unverified.

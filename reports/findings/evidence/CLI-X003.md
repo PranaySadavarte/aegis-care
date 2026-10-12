@@ -1,5 +1,24 @@
 # CLI-X003: Interrupted destination download loses prior binary in fault probe
 
+## In plain language
+
+An interrupted replacement can destroy the previous artifact in our isolated simulation. The actual installed Guava executable was not changed.
+
+## Which test caught this?
+
+**Case:** `SDK-014 / partial-write fault`
+
+**Detector:** `installer_fault_probe.ps1 -Mode partial-write`
+
+**Source:** `tests/sdk/installer_fault_probe.ps1`
+
+**Relevant owner:** Guava installer
+
+**Execution layer:** Mocked download, real installer control flow
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#cli-x003)
+
+
 **Current step:** SDK and unchanged Expert adversarial evaluation.
 
 **Status and scope:** Interrupted destination download loses prior binary in fault probe. Confirmed client behavior; downstream impact limited or unverified.

@@ -1,0 +1,32 @@
+{
+  "rows": [
+    {
+      "id": "TTS-911-001",
+      "status": "AUDIO_CAPTURED_REVIEW_PENDING",
+      "audio_url": "assets/review/TTS-911-001-19d97312.wav",
+      "evidence": "evidence/2026-10-11/audio-review/19d97312/TTS-911-001-result.json",
+      "duration_seconds": 14.78,
+      "human_pronunciation_verdict": "NOT_REVIEWED",
+      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI."
+    },
+    {
+      "id": "TTS-911-002",
+      "status": "AUDIO_CAPTURED_REVIEW_PENDING",
+      "audio_url": "assets/review/TTS-911-002-19d97312.wav",
+      "evidence": "evidence/2026-10-11/audio-review/19d97312/TTS-911-002-result.json",
+      "duration_seconds": 22.51,
+      "human_pronunciation_verdict": "NOT_REVIEWED",
+      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI."
+    },
+    {
+      "id": "YBB-AUDIO-001",
+      "status": "AUDIO_CAPTURED_REVIEW_PENDING",
+      "audio_url": "assets/review/YBB-AUDIO-001-19d97312.wav",
+      "evidence": "evidence/2026-10-11/audio-review/19d97312/YBB-AUDIO-001-result.json",
+      "duration_seconds": 63.26,
+      "human_pronunciation_verdict": "NOT_APPLICABLE",
+      "scope": "Real Guava agent audio capture. Ybbag sample is a separate fixed-timing audio replay of two previously generated caller turns; not original roleplay audio or an adaptive duplex call. Caller audio uses WindowsSAPI."
+    }
+  ],
+  "scope": "Selected synthetic captures; original adaptive text roleplay has no audio bytes in nativeBotTTS protocol"
+}

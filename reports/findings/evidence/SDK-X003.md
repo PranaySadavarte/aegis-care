@@ -1,5 +1,24 @@
 # SDK-X003: DatetimeFilter trusts invented schema-valid slots
 
+## In plain language
+
+The helper checks output shape but does not ensure a returned appointment was actually in the supplied availability list.
+
+## Which test caught this?
+
+**Case:** `SDK-X003`
+
+**Detector:** `HelperAndTenacityCoverage.test_datetime_invented_slot_should_be_rejected`
+
+**Source:** `tests/sdk/test_extended_contracts.py`
+
+**Relevant owner:** Guava SDK
+
+**Execution layer:** Mocked model output
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-x003)
+
+
 **Current step:** SDK and unchanged Expert adversarial evaluation.
 
 **Status and scope:** DatetimeFilter trusts invented schema-valid slots. Confirmed client behavior; downstream impact limited or unverified.
@@ -10,7 +29,7 @@
 
 **Expected:** Every returned slot belongs to the source list regardless of model output.
 
-**Actual:** Mocked model returned2099slot outside source; helper passed it through. Live adversarial query stayed in source.
+**Actual:** Mocked model returned a 2099 slot outside source; helper passed it through. Live adversarial query stayed in source.
 
 **Preserved evidence:** Raw files are local and deliberately not served by the dashboard. SHA-256 identifies the exact artifact. Excerpts below redact synthetic payment canaries.
 

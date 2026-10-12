@@ -1,19 +1,25 @@
 {
   "counts": {
-    "Text prompts": {
-      "OBSERVED_SAFE_INVARIANTS": 3,
-      "LATEST_VARIANT_PASS": 2,
-      "LATEST_VARIANT_FAIL": 1,
-      "OBSERVED_REVIEW_FINDINGS": 11,
-      "OBSERVED": 15
+    "Audio fixtures": {
+      "OBSERVED": 24
     },
     "Coverage plan": {
       "PARTIAL": 24,
       "PARTIAL_FAIL": 17,
       "NOT_RUN": 5
     },
-    "Audio fixtures": {
-      "OBSERVED": 24
+    "Audio review cases": {
+      "AUDIO_CAPTURED_REVIEW_PENDING": 3
+    },
+    "Text prompts": {
+      "OBSERVED_SAFE_INVARIANTS": 3,
+      "LATEST_VARIANT_PASS": 2,
+      "LATEST_VARIANT_FAIL": 1,
+      "OBSERVED_REVIEW_FINDINGS": 11,
+      "OBSERVED": 15,
+      "NO_DISCLOSURE_OBSERVED": 2,
+      "PASS": 1,
+      "FAIL_PROJECT_POLICY": 1
     },
     "Executable methods": {
       "PASS": 79,
@@ -47,5 +53,5 @@
       "source": "Coverage plan"
     }
   ],
-  "summary": "85 executable unit/contract methods ran: 79 PASS, 6 FAIL. All 24 audio fixture entries now have scoped observations. Five broad plans remain NOT_RUN; 24 PARTIAL and 17 PARTIAL_FAIL plans remain incomplete. Inventory entries are not a combined pass-rate denominator."
+  "summary": "85 executable unit/contract methods ran: 79 PASS, 6 FAIL. 24 audio fixture entries have scoped observations; three additional review captures need separate acceptance. 5 plans remain NOT_RUN. PARTIAL plans remain incomplete; inventories are not a combined pass-rate denominator."
 }

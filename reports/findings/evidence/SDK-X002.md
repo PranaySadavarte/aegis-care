@@ -1,5 +1,24 @@
 # SDK-X002: Rejected voicemail settings mutate call state
 
+## In plain language
+
+An invalid voicemail request throws an error after partially changing state. Catching the error does not restore the original call state.
+
+## Which test caught this?
+
+**Case:** `SDK-X002`
+
+**Detector:** `CommandCoverage.test_voicemail_invalid_does_not_mutate_state`
+
+**Source:** `tests/sdk/test_extended_contracts.py`
+
+**Relevant owner:** Guava SDK
+
+**Execution layer:** Native MockCall
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-x002)
+
+
 **Current step:** SDK and unchanged Expert adversarial evaluation.
 
 **Status and scope:** Rejected voicemail settings mutate call state. Confirmed client behavior; downstream impact limited or unverified.

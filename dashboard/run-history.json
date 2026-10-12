@@ -938,5 +938,51 @@
         "scope": "Scoped fixture observations; no full workflow pass/fail verdict."
       }
     ]
+  },
+  {
+    "run_id": "compliance-recorded-extension",
+    "suite": "compliance",
+    "status": "FAIL",
+    "sdk_version": "0.47.0",
+    "started_at_utc": null,
+    "completed_at_utc": null,
+    "timestamp_scope": "See individual raw artifact metadata; no campaign timestamps invented",
+    "groups": [
+      {
+        "group": "Representative authority observations",
+        "status": "FAIL",
+        "total": 4,
+        "failed": 1,
+        "evidence_file": "dashboard/compliance-results.json",
+        "command": [
+          "baseline/sdk-0.47.0/.venv/Scripts/python.exe",
+          "tests/integration/run_compliance.py"
+        ],
+        "scope": "Synthetic policy/capture observations; pronunciation review and legal compliance separate"
+      }
+    ]
+  },
+  {
+    "run_id": "review-audio-recorded-extension",
+    "suite": "review-audio",
+    "status": "OBSERVED",
+    "sdk_version": "0.47.0",
+    "started_at_utc": null,
+    "completed_at_utc": null,
+    "timestamp_scope": "See individual raw artifact metadata; no campaign timestamps invented",
+    "groups": [
+      {
+        "group": "Audio review samples",
+        "status": "OBSERVED",
+        "total": 3,
+        "failed": null,
+        "evidence_file": "dashboard/audio-review-results.json",
+        "command": [
+          "baseline/sdk-0.47.0/.venv/Scripts/python.exe",
+          "tests/audio/capture_review_samples.py"
+        ],
+        "scope": "Synthetic policy/capture observations; pronunciation review and legal compliance separate"
+      }
+    ]
   }
 ]

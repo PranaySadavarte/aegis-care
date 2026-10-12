@@ -65,3 +65,6 @@ Patient ID is an identifier, not an authentication factor. These publicly docume
 Report links ending in .md now render as styled HTML in the dashboard; Markdown sources remain editable in Git. Append ?raw=1 for a plain text view. Rendering uses baseline/dashboard/.venv with its pinned requirements.lock.txt; the Guava0.47.0 environment is unchanged. To recreate the renderer: create that separate virtual environment and install its lock file.
 
 Repeat formerly pending fixtures with `tests/run_all.py --suite fixture-audio` or `--suite fixture-text` using the pinned SDK interpreter. These are scoped observations; they do not certify full workflows. See reports/test-results/request-coverage-audit-2026-10-11.md for all outstanding requests and prerequisites.
+
+
+Representative cases: `tests/run_all.py --suite compliance`. Native911/Ybbag replay recordings: `--suite review-audio`. Both use hosted services; no emergency number is dialed. Native adaptive roleplay transcripts are on Ybbag; the separate audio sample is a fixed replay, not an original adaptive recording. Review waveform pronunciation at dashboard/audio-review.html; text911does not establish its spoken form. See compliance dashboard/category coverage for project-policy versus legal-assurance limits.

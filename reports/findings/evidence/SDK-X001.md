@@ -1,5 +1,24 @@
 # SDK-X001: Transfer destination not validated client-side
 
+## In plain language
+
+The SDK accepts a plainly malformed transfer destination locally. That shows missing early validation; it does not mean a carrier accepted or completed the transfer.
+
+## Which test caught this?
+
+**Case:** `SDK-X001`
+
+**Detector:** `CommandCoverage.test_transfer_invalid_destination_should_reject`
+
+**Source:** `tests/sdk/test_extended_contracts.py`
+
+**Relevant owner:** Guava SDK
+
+**Execution layer:** Native MockCall
+
+[Finding-to-test traceability](../../test-plans/finding-to-test-map.md#sdk-x001)
+
+
 **Current step:** SDK and unchanged Expert adversarial evaluation.
 
 **Status and scope:** Transfer destination not validated client-side. Confirmed client behavior; downstream impact limited or unverified.

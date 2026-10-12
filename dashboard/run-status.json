@@ -1,27 +1,23 @@
 {
-  "run_id": "fixture-text-00cc4486",
-  "suite": "fixture-text",
+  "run_id": "review-audio-recorded-extension",
+  "suite": "review-audio",
   "status": "OBSERVED",
-  "started_at_utc": "2026-10-12T06:24:26.977713+00:00",
-  "completed_at_utc": "2026-10-12T06:24:54.707344+00:00",
-  "timestamp_scope": "Process-artifact creation/completion timestamps; not billing or speech timings",
   "sdk_version": "0.47.0",
-  "profile_sha256": "5dd51df171f11e1d1f5ebe7d29cdce208f82c36b37173331c912e8e77bc081d9",
-  "working_tree_dirty": true,
-  "source_commit": "f993029",
+  "started_at_utc": null,
+  "completed_at_utc": null,
+  "timestamp_scope": "See individual raw artifact metadata; no campaign timestamps invented",
   "groups": [
     {
-      "group": "Text fixture backlog",
+      "group": "Audio review samples",
       "status": "OBSERVED",
       "total": 3,
       "failed": null,
+      "evidence_file": "dashboard/audio-review-results.json",
       "command": [
         "baseline/sdk-0.47.0/.venv/Scripts/python.exe",
-        "tests/integration/run_text_backlog.py"
+        "tests/audio/capture_review_samples.py"
       ],
-      "evidence_file": "dashboard/text-backlog-results.json",
-      "limit_seconds": 170,
-      "scope": "Scoped fixture observations; no full workflow pass/fail verdict."
+      "scope": "Synthetic policy/capture observations; pronunciation review and legal compliance separate"
     }
   ]
 }
