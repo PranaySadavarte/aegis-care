@@ -125,5 +125,299 @@
       }
     ],
     "completed_at_utc": "2026-10-12T02:00:02.697070+00:00"
+  },
+  {
+    "run_id": "20261012T020500Z-1cf07e",
+    "suite": "offline",
+    "started_at_utc": "2026-10-12T02:05:00.308413+00:00",
+    "status": "FAIL",
+    "groups": [
+      {
+        "group": "SDK offline",
+        "status": "FAIL",
+        "exit_code": 1,
+        "total": 16,
+        "failed": 1,
+        "duration_seconds": 0.578
+      },
+      {
+        "group": "Application functional",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 17,
+        "failed": 0,
+        "duration_seconds": 0.515
+      },
+      {
+        "group": "Installer source audit",
+        "status": "OPEN_FINDINGS",
+        "exit_code": 0,
+        "total": null,
+        "failed": null,
+        "duration_seconds": 0.719,
+        "observations": {
+          "explicit_hash_check": false,
+          "explicit_signature_check": false
+        }
+      }
+    ],
+    "completed_at_utc": "2026-10-12T02:05:02.121799+00:00"
+  },
+  {
+    "run_id": "20261012T021002Z-87acd1",
+    "suite": "hosted",
+    "started_at_utc": "2026-10-12T02:10:02.437635+00:00",
+    "status": "PASS",
+    "groups": [
+      {
+        "group": "Hosted identity",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 12.219
+      },
+      {
+        "group": "Hosted eligibility",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 20.406
+      },
+      {
+        "group": "Hosted claims",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 20.485
+      },
+      {
+        "group": "Hosted billing",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 30.047
+      },
+      {
+        "group": "Hosted appointments",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 32.984
+      },
+      {
+        "group": "Hosted payments",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 31.641
+      },
+      {
+        "group": "Hosted denied",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 10.75
+      },
+      {
+        "group": "Hosted native rubric billing",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 13.125
+      }
+    ],
+    "completed_at_utc": "2026-10-12T02:12:54.099922+00:00"
+  },
+  {
+    "run_id": "20261012T021717Z-5da805",
+    "suite": "offline",
+    "started_at_utc": "2026-10-12T02:17:17.531260+00:00",
+    "status": "FAIL",
+    "groups": [
+      {
+        "group": "SDK offline",
+        "status": "FAIL",
+        "exit_code": 1,
+        "total": 16,
+        "failed": 1,
+        "duration_seconds": 0.484
+      },
+      {
+        "group": "Application functional",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 17,
+        "failed": 0,
+        "duration_seconds": 0.657
+      },
+      {
+        "group": "Installer source audit",
+        "status": "OPEN_FINDINGS",
+        "exit_code": 0,
+        "total": null,
+        "failed": null,
+        "duration_seconds": 0.484,
+        "observations": {
+          "explicit_hash_check": false,
+          "explicit_signature_check": false
+        }
+      }
+    ],
+    "completed_at_utc": "2026-10-12T02:17:19.170210+00:00"
+  },
+  {
+    "run_id": "20261012T021726Z-29ba9d",
+    "suite": "hosted",
+    "started_at_utc": "2026-10-12T02:17:26.372759+00:00",
+    "status": "PASS",
+    "groups": [
+      {
+        "group": "Hosted identity",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 20.438
+      },
+      {
+        "group": "Hosted eligibility",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 21.438
+      },
+      {
+        "group": "Hosted claims",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 20.875
+      },
+      {
+        "group": "Hosted billing",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 11.953
+      },
+      {
+        "group": "Hosted appointments",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 16.75
+      },
+      {
+        "group": "Hosted payments",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 31.187
+      },
+      {
+        "group": "Hosted denied",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 9.36
+      },
+      {
+        "group": "Hosted native rubric billing",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 1,
+        "failed": 0,
+        "duration_seconds": 21.734
+      }
+    ],
+    "completed_at_utc": "2026-10-12T02:20:00.121847+00:00"
+  },
+  {
+    "run_id": "20261012T024456Z-1dced0",
+    "suite": "offline",
+    "started_at_utc": "2026-10-12T02:44:56.719814+00:00",
+    "status": "FAIL",
+    "groups": [
+      {
+        "group": "SDK offline",
+        "status": "FAIL",
+        "exit_code": 1,
+        "total": 16,
+        "failed": 1,
+        "duration_seconds": 0.531
+      },
+      {
+        "group": "Application functional",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 26,
+        "failed": 0,
+        "duration_seconds": 0.672
+      },
+      {
+        "group": "Installer source audit",
+        "status": "OPEN_FINDINGS",
+        "exit_code": 0,
+        "total": null,
+        "failed": null,
+        "duration_seconds": 0.812,
+        "observations": {
+          "explicit_hash_check": false,
+          "explicit_signature_check": false
+        }
+      }
+    ],
+    "completed_at_utc": "2026-10-12T02:44:58.738705+00:00"
+  },
+  {
+    "run_id": "20261012T030048Z-fe905f",
+    "suite": "offline",
+    "started_at_utc": "2026-10-12T03:00:48.162977+00:00",
+    "status": "FAIL",
+    "groups": [
+      {
+        "group": "SDK offline",
+        "status": "FAIL",
+        "exit_code": 1,
+        "total": 16,
+        "failed": 1,
+        "duration_seconds": 0.578
+      },
+      {
+        "group": "Application functional",
+        "status": "PASS",
+        "exit_code": 0,
+        "total": 26,
+        "failed": 0,
+        "duration_seconds": 0.641
+      },
+      {
+        "group": "Installer source audit",
+        "status": "OPEN_FINDINGS",
+        "exit_code": 0,
+        "total": null,
+        "failed": null,
+        "duration_seconds": 0.828,
+        "observations": {
+          "explicit_hash_check": false,
+          "explicit_signature_check": false
+        }
+      }
+    ],
+    "completed_at_utc": "2026-10-12T03:00:50.213616+00:00"
   }
 ]

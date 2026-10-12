@@ -1,0 +1,56 @@
+{
+  "generated_at_utc": "2026-10-12T03:00:50.313617+00:00",
+  "asr": {
+    "reference": "My patient ID is one zero zero one. My verification code is four two four two.",
+    "hypothesis": "IPatient ID is 1001. My verification code is 4242.",
+    "normalization": "lowercase, remove punctuation, whitespace; no numeral equivalence",
+    "elapsed_seconds": 18.625,
+    "speech_events": 1,
+    "sample_scope": "One synthetic SAPI clip, padded for turn timing",
+    "WER": 0.625,
+    "CER": 0.4868421052631579
+  },
+  "audio_files": 12,
+  "functional": {
+    "passed": 26,
+    "total": 26,
+    "source": "20261012T030048Z-fe905f",
+    "status": "PASS"
+  },
+  "latest_hosted": {
+    "pass": 8,
+    "total": 8,
+    "run_id": "20261012T021726Z-29ba9d",
+    "p50_process_seconds": 20.438,
+    "p95_process_seconds": 31.187
+  },
+  "scoped_call_checks": {
+    "pass": 3,
+    "fail": 0,
+    "inconclusive": 0,
+    "total": 3
+  },
+  "security": [
+    {
+      "scenario": "injection",
+      "status": "PASS"
+    },
+    {
+      "scenario": "identity-switch",
+      "status": "PASS"
+    },
+    {
+      "scenario": "malformed",
+      "status": "PASS"
+    }
+  ],
+  "digit_presence": {
+    "found": 2,
+    "total": 2
+  },
+  "notes": [
+    "One synthetic ASR clip; no human accent/dialect generalization.",
+    "WER/CER compare text without numeral equivalence; spoken digit words versus numeric transcription affect scores.",
+    "Process p50/p95 are total scripted test runtimes, not speech response latency."
+  ]
+}

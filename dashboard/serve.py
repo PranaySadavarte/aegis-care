@@ -8,6 +8,9 @@ lock=Lock()
 active_run=None
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self,*args,**kwargs):super().__init__(*args,directory=str(root),**kwargs)
+    def end_headers(self):
+        self.send_header("Cache-Control","no-store")
+        super().end_headers()
     def do_POST(self):
         global active_run
         allowed_hosts=("127.0.0.1:8765","localhost:8765")
@@ -19,7 +22,7 @@ class Handler(SimpleHTTPRequestHandler):
             if length<1 or length>1024: raise ValueError()
             request=json.loads(self.rfile.read(length))
             suite=request.get("suite")
-            if suite not in ("offline","hosted","all"):raise ValueError()
+            if suite not in ("offline","hosted","security","audio","all"):raise ValueError()
             with lock:
                 state_path=root/"dashboard/run-status.json"
                 state=json.loads(state_path.read_text()) if state_path.exists() else {}
@@ -53,6 +56,3 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__=="__main__":
     print("Dashboard on http://127.0.0.1:8765/dashboard/",flush=True)
     ThreadingHTTPServer(("127.0.0.1",8765),Handler).serve_forever()
-
-
-

@@ -10,6 +10,8 @@ from backend.synthetic import SyntheticBackend, AccessDenied, Conflict
 
 def create_agent(backend=None, outcomes=None, recorder=None):
     backend=backend or SyntheticBackend()
+    from guava.helpers.llm import IntentRecognizer
+    identity_intents=IntentRecognizer({"switch_patient":"Caller changes their identity or requests a different patient account; fresh verification is required."})
     agent=guava.Agent(name="HarborCare",organization="HarborCare",
                       purpose="Help callers with healthcare administration.")
     def finish(call, result):
@@ -80,6 +82,25 @@ def create_agent(backend=None, outcomes=None, recorder=None):
             finish(call,backend.pay(call.id,call.get_field("amount_cents"),"SIMULATED-TOKEN",
                                    call.get_field("simulation_consent")=="yes",call.id+":payment"))
         except (AccessDenied,ValueError,Conflict): finish(call,{"status":"rejected","message":"No simulated payment completed."})
+    @agent.on_action_request
+    def action_request(call,request):
+        actions=identity_intents.classify(request)
+        if actions and any(item.key=="switch_patient" for item in actions):
+            backend.close(call.id)
+            return [guava.SuggestedAction(key="switch_patient",description="Verify the different patient before any account access.")]
+        return None
+    @agent.on_action("switch_patient")
+    def switch_patient(call):
+        backend.close(call.id)
+        call.set_task("switch_verify",objective="Explain that access to a different account requires fresh verification. Do not reuse the earlier code.",
+                      checklist=[guava.Field(key="new_patient_id",description="The different patient ID."),
+                                 guava.Field(key="new_verification_code",description="The code for that patient; never guess it.",sensitive=True)])
+    @agent.on_task_complete("switch_verify")
+    def switch_verified(call):
+        if not backend.verify(call.id,str(call.get_field("new_patient_id") or ""),str(call.get_field("new_verification_code") or "")):
+            finish(call,{"status":"denied"});return
+        call.set_task("choose",objective="Ask how you can help with coverage, claims, appointments, billing or a demo payment.",
+                      checklist=[guava.Field(key="workflow",field_type="multiple_choice",choices=["identity","eligibility","claims","appointments","billing","payments"])])
     @agent.on_question
     def question(call, question):
         return "I can help with coverage, claims, appointments and billing after verification. For medical questions, please contact your clinician. Please do not share card details."
@@ -89,24 +110,35 @@ def create_agent(backend=None, outcomes=None, recorder=None):
         backend.close(call.id)
     return agent, backend
 
+def plain_text_chat(agent):
+    """Simple terminal view built on native TestSession, not a new dialog engine."""
+    from websockets.exceptions import ConnectionClosedOK
+    with agent.test() as session:
+        printed=0
+        while True:
+            try: session.wait_for_turn()
+            except ConnectionClosedOK:
+                print(session.get_transcript()[printed:]);break
+            transcript=session.get_transcript();print(transcript[printed:]);printed=len(transcript)
+            try:message=input("You: ").strip()
+            except EOFError:break
+            if message.lower() in ("quit","exit"):break
+            if message:session.say(message)
+
 if __name__=="__main__":
     import tomllib
     args=argparse.ArgumentParser()
-    args.add_argument("--mode",choices=["chat","phone","webrtc","local"],default="chat")
+    args.add_argument("--mode",choices=["chat","text","phone","webrtc","local"],default="chat")
     options=args.parse_args()
     from guava import logging_utils
     logging_utils.configure_logging()
     from backend.call_journal import CallJournal
-    journal=CallJournal(Path(__file__).resolve().parents[1]/"evidence/2026-10-11/call-history/manual-events.jsonl")
+    journal=CallJournal(Path(__file__).resolve().parents[1]/"evidence/2026-10-11/call-history/manual-events.jsonl",channel=options.mode)
     agent,_=create_agent(recorder=journal)
     if options.mode=="phone":
         config=tomllib.loads((Path(__file__).resolve().parents[1]/"harborcare-agent/guava.toml").read_text())
         agent.listen_phone(config["phone_number"])
     elif options.mode=="webrtc": agent.listen_webrtc()
     elif options.mode=="local": agent.call_local()
+    elif options.mode=="text": plain_text_chat(agent)
     else: agent.chat()
-
-
-
-
-

@@ -6,3 +6,6 @@ Run supported suites with baseline/sdk-0.47.0/.venv/Scripts/python.exe tests/run
 After each instrumented call: limited local authorization/outcome checks. Full suites run on demand. Broad planned catalog, audio/outbound scenarios and production features remain incomplete.
 Read PROJECT_CONTEXT.md, QA_FINDINGS.md and reports/test-results/service-runner-2026-10-11.md for exact results.
 Original harborcare-agent scaffold and prior evidence retained. No real patient records/payments. Do not provide real personal/card details.
+
+### Text and audio evaluation update
+Use the baseline interpreter with `agent/harborcare.py --mode text` for plain terminal chat. `--mode chat` is text-only; `--mode webrtc` prints a temporary browser audio URL; `--mode local` uses native audio helper and hosted services. Browser two-way audio is user-confirmed, native helper routing remains unverified. Synthetic patient1001 / code4242. On Test runs select offline, hosted, security, audio or all; full tests run on demand. Corpus references are in fixtures/audio/manifest.json and text scenarios in fixtures/text-security-scenarios.json; executed hostile scripts in tests/integration/security_hosted.py. See reports/test-results/usability-repair-2026-10-11.md for actual results and limitations.

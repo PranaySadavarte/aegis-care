@@ -13,3 +13,16 @@ el("export").addEventListener("click",()=>{const url=URL.createObjectURL(new Blo
 
 
 fetch("calls.json",{cache:"no-store"}).then(r=>r.json()).then(s=>{d.manual_calls=s;if(el("call-count"))el("call-count").textContent=s.calls.length;}).catch(()=>{if(el("call-count"))el("call-count").textContent="See Calls";});
+
+fetch("metrics-snapshot.json",{cache:"no-store"}).then(r=>r.json()).then(m=>{
+const rows=[["Application tests",m.functional.passed+"/"+m.functional.total],
+["ASR WER (one synthetic clip)",(m.asr.WER*100).toFixed(2)+"%"],
+["ASR CER (same clip)",(m.asr.CER*100).toFixed(2)+"%"],
+["Labeled audio corpus",m.audio_files+" files"],
+["Latest hosted suite",m.latest_hosted.pass+"/"+m.latest_hosted.total],
+["Speech latency / barge-in","Not measured"],
+["ASR RTF / model confidence","Not exposed by reviewed API"],
+["Billed usage / real accent coverage","Not measured"]];
+el("pending").innerHTML=rows.map(([k,v])=>'<div class="metric"><span>'+esc(k)+'</span><strong>'+esc(v)+'</strong></div>').join("");
+}).catch(()=>{el("pending").textContent="Metric snapshot unavailable; no values inferred.";});
+window.addEventListener("error",e=>{const note=document.createElement("p");note.textContent="Display error: "+e.message+" — reload this page.";document.querySelector("main").prepend(note);});

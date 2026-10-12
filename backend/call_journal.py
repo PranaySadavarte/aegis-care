@@ -4,10 +4,10 @@ from datetime import datetime,timezone
 from threading import Lock
 from backend.evaluation import evaluate_observation
 class CallJournal:
-    def __init__(self,path):self.path=path;self.lock=Lock();self.finished=set()
+    def __init__(self,path,channel="unknown"):self.path=path;self.channel=channel;self.lock=Lock();self.finished=set()
     def __call__(self,call,event,detail=None):
         row={"call":"call-"+hashlib.sha256(call.id.encode()).hexdigest()[:10],
-             "at_utc":datetime.now(timezone.utc).isoformat(),"event":event,"detail":detail}
+             "at_utc":datetime.now(timezone.utc).isoformat(),"event":event,"detail":detail,"channel":self.channel}
         if event=="finished": row["evaluation"]=evaluate_observation(detail or {})
         with self.lock:
             if event=="finished": self.finished.add(row["call"])
@@ -17,6 +17,3 @@ class CallJournal:
                 self.finished.discard(row["call"])
             self.path.parent.mkdir(parents=True,exist_ok=True)
             with self.path.open("a",encoding="utf-8") as out:out.write(json.dumps(row)+"\n")
-
-
-

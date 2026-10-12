@@ -20,6 +20,12 @@ def run(suite):
         for flow in ("identity","eligibility","claims","billing","appointments","payments","denied"):
             groups.append(("Hosted "+flow,["tests/integration/harborcare_hosted.py",flow],50))
         groups.append(("Hosted native rubric billing",["tests/integration/harborcare_hosted.py","billing","--rubric"],50))
+    if suite in ("security","all"):
+        for scenario in ("injection","identity-switch","malformed"):
+            groups.append(("Hosted security "+scenario,["tests/integration/security_hosted.py",scenario],60))
+    if suite in ("audio","all"):
+        groups.append(("Audio file capture",["tests/audio/run_native_capture.py"],40))
+        groups.append(("Audio ASR observation",["tests/audio/run_native_asr.py"],50))
     for label,args,limit in groups:
         started=time.monotonic()
         try:
@@ -39,18 +45,22 @@ def run(suite):
                 result["status"]="OPEN_FINDINGS" if not audit["explicit_hash_verification_command_present"] or not audit["explicit_authenticode_command_present"] else "OBSERVED"
                 result["failed"]=None
                 result["observations"]={"explicit_hash_check":audit["explicit_hash_verification_command_present"],"explicit_signature_check":audit["explicit_authenticode_command_present"]}
+            if label.startswith("Audio") and p.returncode==0:
+                result["status"]="OBSERVED";result["failed"]=None
         except subprocess.TimeoutExpired:
             result={"group":label,"status":"TIMEOUT","total":None,"failed":None,"limit_seconds":limit}
         state["groups"].append(result);atomic(ROOT/"dashboard/run-status.json",state)
-    state["status"]="PASS" if all(g["status"]=="PASS" for g in state["groups"]) else "FAIL"
+    state["status"]="PASS" if all(g["status"] in ("PASS","OBSERVED") for g in state["groups"]) else "FAIL"
     state["completed_at_utc"]=datetime.now(timezone.utc).isoformat()
     atomic(folder/"summary.json",state);atomic(ROOT/"dashboard/run-status.json",state)
     history_path=ROOT/"dashboard/run-history.json"
     history=json.loads(history_path.read_text()) if history_path.exists() else []
     history.append(state);atomic(history_path,history)
+    for builder in ("build_metrics_snapshot.py","build_metrics_pages.py"):
+        updated=subprocess.run([str(PY),str(ROOT/"dashboard"/builder)],cwd=ROOT,capture_output=True,text=True,timeout=15)
+        (folder/(builder+".txt")).write_text(updated.stdout+updated.stderr,encoding="utf-8")
+        if updated.returncode:print("Metric refresh failed; previous snapshot retained. See local builder evidence.")
     print(json.dumps(state));return 0 if state["status"]=="PASS" else 1
 if __name__=="__main__":
-    parser=argparse.ArgumentParser();parser.add_argument("--suite",choices=["offline","hosted","all"],default="offline")
+    parser=argparse.ArgumentParser();parser.add_argument("--suite",choices=["offline","hosted","security","audio","all"],default="offline")
     raise SystemExit(run(parser.parse_args().suite))
-
-

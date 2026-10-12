@@ -95,3 +95,8 @@ Dedicated Calls and Test runs pages. tests/run_all.py runs offline/hosted/all fi
 Latest functional 17 PASS; SDK 15/16 PASS (known failure); installer audit open findings. Six revised hosted workflows PASS; malformed text denial returned no backend result (open robustness observation); valid-format wrong-code rerun PASS; native billing rubric PASS.
 See reports/test-results/service-runner-2026-10-11.md. Broad test catalog and production feature scope still incomplete.
 
+
+## Text/audio and dashboard repair milestone — 2026-10-11
+Application 26/26 PASS; SDK 15/16 PASS, known exception failure and installer controls unresolved. Native hosted adversarial cases: latest injection, identity-switch and malformed-code PASS; initial incomplete-script failure retained. Windows-curses installed; plain --mode text exit0. One prerecorded synthetic ASR clip scored WER62.50% / CER48.68% without numeral equivalence, expected digit strings2/2. Twelve labeled audio assets prepared; other clips unscored. User confirmed browser playback of greeting; native microphone/speaker routing remains unverified. Calls now report duration provenance/unknowns and explicit local channel labels. Dashboard measured pages and runner security/audio suites added. See usability-repair report for limits and evidence.
+
+Browser WebRTC: user explicitly reported hearing HarborCare and receiving responses to speech. This is user-confirmed two-way audio, not a transcript-scored workflow or measured latency. No matching new listener journal entry was found at the check; the inspected diagnostic tab was Idle. Session attribution remains unverified.

@@ -59,3 +59,8 @@ HarborCare is the caller-facing service; AEGIS Care evaluates it. Do not narrate
 Each call can receive scoped observation checks without launching unrelated regressions. Full suites are explicit operator actions. No test result means inconclusive, not pass.
 Native SDK semantic rubric evaluation complements deterministic backend checks but does not produce calibrated confidence or acoustic metrics.
 Preserve transcript before asserting outcomes so failed hosted cases remain diagnosable. Malformed code and valid-format wrong code test different boundaries.
+
+## 2026-10-11 — layered text and audio evidence
+A text chat mode does not exercise microphones or speakers. Browser playback, native output capture, microphone permission, transport registration and successful speech recognition are different observations. Test each boundary separately. Native Agent.test_audio and on_caller_speech avoid inventing a parallel transport; Jiwer supplies standard WER/CER. Spoken digit words versus numeric transcripts can inflate literal errors even when identity values survive. Report normalization and sample scope. IntentRecognizer in installed0.47.0 returns SuggestedAction lists; read the pinned implementation when current documentation examples differ. Clear authorization before changing identity and collect fresh fields. Assert exact business values/actions and semantic safety; allow natural paraphrases.
+
+Browser WebRTC: user explicitly reported hearing HarborCare and receiving responses to speech. This is user-confirmed two-way audio, not a transcript-scored workflow or measured latency. No matching new listener journal entry was found at the check; the inspected diagnostic tab was Idle. Session attribution remains unverified.

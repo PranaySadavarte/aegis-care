@@ -301,7 +301,7 @@ window.AEGIS_DATA = {
       "Owner": "AEGIS app; platform if minimal repro",
       "Evidence": "Prompts; tool calls; authorization assertions",
       "Workaround": "Enforce backend checks outside model decisions",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
       "InstallationMethodScope": "NOT_APPLICABLE",
       "PipelineStage": "Business logic / authorization / mock APIs",
@@ -397,7 +397,7 @@ window.AEGIS_DATA = {
       "Owner": "Platform ASR plus app confirmation",
       "Evidence": "Audio hashes; transcripts; entity/WER scoring",
       "Workaround": "Confirm critical fields; repeat or alternate channel",
-      "Status": "NOT_RUN",
+      "Status": "PARTIAL",
       "Component": "AEGIS application / hosted voice",
       "InstallationMethodScope": "NOT_APPLICABLE",
       "PipelineStage": "ASR / endpointing / TTS / audio transport",
@@ -619,8 +619,8 @@ window.AEGIS_DATA = {
     }
   ],
   "functional": {
-    "test_methods": 17,
-    "passed": 17,
+    "test_methods": 26,
+    "passed": 26,
     "workflow_subcases": 6
   }
 };
