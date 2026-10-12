@@ -619,8 +619,8 @@ window.AEGIS_DATA = {
     }
   ],
   "functional": {
-    "test_methods": 10,
-    "passed": 10,
+    "test_methods": 12,
+    "passed": 12,
     "workflow_subcases": 6
   }
 };

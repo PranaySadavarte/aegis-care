@@ -45,3 +45,7 @@ ASR RTF requires isolated recognition processing duration; total agent runtime c
 The local Expert registered with Guava via native listen_phone. Registration confirms an available listener but does not establish PSTN/audio quality or successful caller workflow.
 Startup deprecation warnings require tracking independently of actual failures; do not promote them into vulnerabilities.
 User confirmed BERTScore and ROUGE. Scores remain unmeasured.
+
+## 2026-10-11 — Voice-friendly credentials
+Text correctness and spoken usability differ. Defined format normalization is safer than fuzzy credential matching; wrong digits still reject. Logs without entered values protect privacy but limit ASR root-cause attribution.
+call_local means local microphone/speakers with hosted WebRTC, not local model inference or necessarily free usage. Offline backend tests are the known no-hosted-call path.

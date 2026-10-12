@@ -88,3 +88,8 @@ Phone attachment blocked by automatic approval review; routing unchanged. Report
 
 Phone milestone: approved listener registration confirmed; zero other listeners reported. Previous no-answer symptom not yet confirmed resolved until a user call succeeds.
 QA-012: observed WebSocket connect() deprecation warning during SDK 0.47.0 startup; registration succeeded. Compatibility observation, not proven defect/vulnerability. Preserve warning for dependency/runtime review.
+
+QA-013: application verification usability. Exact-match-only credential handling rejects formatting variations; repeated live failures user-reported, actual ASR/field values unavailable. Defined normalization and simple numeric aliases implemented and functional-tested; phone outcome after fix unverified.
+Initial normalization escaping bug caught and corrected before listener restart; raw initial failures retained.
+Four accepted PSTN sessions observed; no successful healthcare phone workflow claimed. Local microphone/WebRTC mode uses hosted service; metering unknown.
+WebRTC helper checksum path found by static review; distinct from unresolved CLI installer checksum/AuthentiCode gaps.

@@ -6,3 +6,5 @@ Six workflows: identity, eligibility, claims, appointments (booking only), billi
 State resets on restart; no real API/payment/medical functionality; one workflow per call. Never supply real patient or card details.
 Results: reports/test-results/harborcare-2026-10-11.md.
 Run tests/functional with unittest for backend and native handler checks; integration hosted scripts consume live services and are bounded by the parent runner.
+
+Voice-friendly demo: patient 1001, code 4242. Old codes remain accepted. --mode local uses native microphone/speaker helper and hosted WebRTC; may consume account usage. It is not offline mode.

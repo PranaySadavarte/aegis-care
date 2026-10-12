@@ -78,3 +78,7 @@ Phone listener was rejected by automatic approval review due to possible live/sh
 ## Approved phone listener — 2026-10-11
 User approved attachment to configured inbound number; listener registered successfully with zero other registered listeners. See reports/test-results/phone-listener-2026-10-11.md. No completed phone call claimed; awaiting user test.
 BERTScore and ROUGE names confirmed; metric pages regenerated. Startup WebSocket deprecation warning observed without registration failure.
+
+## Spoken verification fix — 2026-10-11
+User live calls repeatedly failed verification; four accepted call sessions visible in raw listener evidence, but actual entered field values absent. Exact live root cause unknown. Strict credential string handling identified as application limitation.
+Easy synthetic credentials 1001/4242 added; legacy credentials preserved; bounded formatting normalization added. Corrected suite 12/12 functional methods PASS. Updated approved phone listener running; native local-audio mode ready, not launched. Local/WebRTC usage cannot be assumed free.

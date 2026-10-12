@@ -1,6 +1,7 @@
 """HarborCare synthetic prototype; native Guava tasks/fields/callbacks."""
 import argparse
 import json
+import logging
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
@@ -19,11 +20,12 @@ def create_agent(backend=None, outcomes=None):
     def start(call):
         call.set_task("verify",objective="Explain this is a synthetic test. Verify the synthetic patient before discussing records. Do not request real personal or payment details.",
                        checklist=[guava.Say("Welcome to HarborCare. This is a synthetic test, not medical advice or a real payment service."),
-                                  guava.Field(key="patient_id",description="Synthetic patient ID, such as HC-1001."),
-                                  guava.Field(key="verification_code",description="Synthetic verification code.",sensitive=True)])
+                                  guava.Field(key="patient_id",description="Collect synthetic patient ID as digits, such as 1001. Legacy HC-prefixed IDs also work."),
+                                  guava.Field(key="verification_code",description="Collect the four-digit synthetic verification code as digits, preserving zeros. Do not guess or disclose a code. Legacy DEMO-prefixed codes also work.",sensitive=True)])
     @agent.on_task_complete("verify")
     def verified(call):
         if not backend.verify(call.id,str(call.get_field("patient_id") or "").strip(),str(call.get_field("verification_code") or "").strip()):
+            logging.getLogger("harborcare").info("Synthetic verification denied; exact accepted credentials did not match. No credential values logged.")
             finish(call,{"status":"denied","message":"Synthetic verification failed."})
             return
         call.set_task("choose",objective="Ask which one synthetic workflow the caller needs.",
@@ -65,13 +67,13 @@ def create_agent(backend=None, outcomes=None):
     def question(call, question):
         return "This synthetic prototype supports administrative test workflows only. It cannot provide medical advice or collect real payment credentials."
     @agent.on_session_end
-    def ended(call): backend.close(call.id)
+    def ended(call, event): backend.close(call.id)
     return agent, backend
 
 if __name__=="__main__":
     import tomllib
     args=argparse.ArgumentParser()
-    args.add_argument("--mode",choices=["chat","phone","webrtc"],default="chat")
+    args.add_argument("--mode",choices=["chat","phone","webrtc","local"],default="chat")
     options=args.parse_args()
     from guava import logging_utils
     logging_utils.configure_logging()
@@ -80,6 +82,8 @@ if __name__=="__main__":
         config=tomllib.loads((Path(__file__).resolve().parents[1]/"harborcare-agent/guava.toml").read_text())
         agent.listen_phone(config["phone_number"])
     elif options.mode=="webrtc": agent.listen_webrtc()
+    elif options.mode=="local": agent.call_local()
     else: agent.chat()
+
 
 
